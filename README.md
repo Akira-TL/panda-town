@@ -5,6 +5,7 @@
 **当前处于规格和任务拆分阶段，尚无可运行游戏。用户要求先把内容定下来，本轮不进行开发。**
 
 - [首版完整规格草案](docs/specs/panda-town.md)
+- [24 项任务草案与并行依赖](docs/plans/task-breakdown.md)
 - [十二类事件与十六处场景](docs/design/event-catalog.md)
 - [视觉生产：效果图 → 元素资产 → 三维实现 → 对照验收](docs/design/visual-production.md)
 
