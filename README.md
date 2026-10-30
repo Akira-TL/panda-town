@@ -7,6 +7,8 @@
 - [已确认的产品方向](docs/product-brief.md)
 - [领域概念](CONTEXT.md)
 - [画像研究的候选依据](docs/research/profile-foundations.md)
+- [成熟玩法研究](docs/research/gameplay-cases.md)
+- [玩法与三维场景方案](docs/gameplay-direction.md)
 - [GitHub 决策与问题](https://github.com/Akira-TL/panda-town/issues)
 - [项目技能安装记录](docs/agents/skills-setup.md)
 
