@@ -9,7 +9,9 @@ Panda Town 是面向 PandaAI 赛道的三维童话小镇游戏。正式文档使
 ## 工程约定
 
 - 工程入口为 `ask-akira`；当前比赛任务使用其竞赛流程。
-- 当前用户明确要求使用 `wayfinder` 完成内容决策，禁止开发游戏、搭建应用或创建实施任务；重新获得开发指令后再进入实现。
+- 当前用户已进入 `to-spec` / `to-tickets` 设计及任务拆分阶段；允许编写规格和任务草案，按所调用技能完成确认后发布 GitHub 任务。仍禁止开发游戏或搭建应用，须取得后续开发指令。
+- 编写或执行任务前先读 `docs/specs/panda-town.md`，共享规则以该规格及其确认后关联的 GitHub 规格 Issue 为准；规划任务不等于授权实施。
+- 涉及场景、角色、物品、对话或画像界面的视觉任务，必须读取 `docs/design/visual-production.md`：先用 imagegen 生成效果图，再生成并使用元素图，最后对照效果图完成真实三维场景与界面。
 - 使用 Next.js 15.4、React 19、TypeScript、ESM、Tailwind CSS 4；三维实现选型单独记录。
 - 不使用 `any` 或未定义结构的数据对象；接口和事件需有明确类型。
 - 启停通过 `scripts/*.sh`，日志写入 `logs/`。Windows 使用 Git Bash 执行脚本。
