@@ -5,6 +5,9 @@ import {
   getDecisionFeedback,
   getEventDialogue,
   getEventForLocation,
+  getMaterialComparison,
+  SALES_MATERIALS,
+  SUPPLY_MATERIALS,
   type LocationId,
 } from "./content";
 
@@ -147,4 +150,33 @@ test("临时工作反馈使用实际地点的任务且不额外入账", () => {
   assert.match(getDecisionFeedback(state).text, /新鲜面包装好/);
   assert.equal(state.cash, 1250);
   assert.deepEqual(state, before);
+});
+
+test("两组资料比较区分可支持的事实与未知，不泄露客观题选项或计算答案", () => {
+  const sales = getMaterialComparison(SALES_MATERIALS);
+  const supply = getMaterialComparison(SUPPLY_MATERIALS);
+  assert.match(sales ?? "", /营业记录.*个人看法/);
+  assert.match(sales ?? "", /不足以.*未来收益/);
+  assert.match(supply ?? "", /时间范围.*证据类型/);
+  assert.match(supply ?? "", /没有提供下周.*实际成交/);
+  for (const result of [sales, supply]) {
+    assert.ok(result);
+    assert.doesNotMatch(result, /消息甲|消息乙|答对|正确答案|120|100|90|20/);
+  }
+  assert.equal(getMaterialComparison([...SALES_MATERIALS].reverse()), sales);
+});
+
+test("单份、重复来源与非已定资料对不生成比较结论，也不改写原资料", () => {
+  const before = structuredClone(SALES_MATERIALS);
+  assert.equal(getMaterialComparison(SALES_MATERIALS.slice(0, 1)), null);
+  assert.equal(
+    getMaterialComparison([SALES_MATERIALS[0]!, SALES_MATERIALS[0]!]),
+    null,
+  );
+  assert.equal(
+    getMaterialComparison([SALES_MATERIALS[0]!, SUPPLY_MATERIALS[0]!]),
+    null,
+  );
+  getMaterialComparison(SALES_MATERIALS);
+  assert.deepEqual(SALES_MATERIALS, before);
 });

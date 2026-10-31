@@ -114,6 +114,22 @@ export const SUPPLY_MATERIALS: readonly Material[] = [
     text: "演示消息乙｜截至今天：实际成交价仍为 100。来源：码头成交记录。",
   },
 ];
+/** 仅解释已定资料对的证据边界，不给出客观题选项或计算答案。 */
+export function getMaterialComparison(
+  materials: readonly Material[],
+): string | null {
+  if (
+    materials.length !== 2 ||
+    materials[0]?.sourceId === materials[1]?.sourceId
+  )
+    return null;
+  const ids = new Set(materials.map((material) => material.id));
+  if (ids.has("sales-record") && ids.has("sales-rumor"))
+    return "营业记录提供已发生的历史样例，访谈记录个人看法。两者不能直接互相替代，也不足以证明新口味会提高全镇销量或未来收益。";
+  if (ids.has("supply-wish") && ids.has("supply-trade"))
+    return "两份消息的时间范围和证据类型不同。核对各自写的是计划、意愿，还是可追溯的记录；本组资料没有提供下周的实际成交结果。";
+  return null;
+}
 interface EventCopy {
   title: string;
   speaker: string;

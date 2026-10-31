@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { type GameState, type visibleGame } from "../game/engine";
+import { getMaterialComparison } from "../game/content";
 import { MaterialChart } from "./GameDetails";
 
 type PublicEvent = NonNullable<ReturnType<typeof visibleGame>["event"]>;
@@ -33,10 +34,23 @@ export function StudyPanel({
 }) {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<"materials" | "questions">("materials");
-  const [compared, setCompared] = useState(false);
   const entryRef = useRef<HTMLButtonElement>(null),
     closeRef = useRef<HTMLButtonElement>(null);
   const materials = event.materials ?? [];
+  const comparisonIds = materials.slice(0, 2).map((material) => material.id);
+  const compared =
+    comparisonIds.length === 2 &&
+    game.evidence.some(
+      (entry) =>
+        entry.action === "compare" &&
+        entry.day === game.day &&
+        entry.contextId === event.contextId &&
+        entry.choice.split("|").length === 2 &&
+        comparisonIds.every((id) => entry.choice.split("|").includes(id)),
+    );
+  const comparisonExplanation = compared
+    ? getMaterialComparison(materials.slice(0, 2))
+    : null;
   useEffect(() => {
     if (open) closeRef.current?.focus();
   }, [open]);
@@ -162,7 +176,12 @@ export function StudyPanel({
                   <MaterialChart eventId={event.id} game={game} />
                 )}{" "}
                 {materials.length >= 2 && (
-                  <div className="compare-panel">
+                  <div
+                    className="compare-panel"
+                    tabIndex={-1}
+                    role="group"
+                    aria-label="资料比较"
+                  >
                     <p>来源不同，能支持的判断也不同。</p>
                     <button
                       className="primary"
@@ -172,18 +191,25 @@ export function StudyPanel({
                           .every((m) => game.inspected.includes(m.id)) ||
                         compared
                       }
-                      onClick={() => {
+                      onClick={(event) => {
+                        event.currentTarget
+                          .closest<HTMLElement>(".compare-panel")
+                          ?.focus();
                         compare([materials[0]!.id, materials[1]!.id]);
-                        setCompared(true);
                       }}
                     >
                       {compared ? "✓ 已比较两份来源" : "比较两份来源"}
                     </button>
                     <small>
                       {compared
-                        ? "本局记录了这次主动比较。"
+                        ? "本局记录了这次主动比较，现金与回合不变。"
                         : "先分别展开两份资料，再比较。"}
                     </small>
+                    {comparisonExplanation && (
+                      <div className="study-explanation" role="status">
+                        <p>{comparisonExplanation}</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </>
