@@ -8,6 +8,7 @@ import { LOCATIONS, type LocationId } from "../game/content";
 import { LOCATION_POSITIONS, ribbonGeometry, routeCurve } from "./geometry";
 import { buildLandscape, groundHeight } from "./landscape";
 import { createRendering } from "./rendering";
+import { planFollowCamera } from "./follow-camera";
 import {
   buildLandmark,
   type SurfaceName,
@@ -239,7 +240,8 @@ export default function TownScene(props: TownSceneProps) {
       targetHeight: number,
     ): void {
       const hasMobileModel = name === "panda" || name === "bakery";
-      const modelVariant = hasMobileModel && window.innerWidth < 720 ? "-mobile" : "";
+      const modelVariant =
+        hasMobileModel && window.innerWidth < 720 ? "-mobile" : "";
       const modelMotion = name === "panda" ? "-rigged" : "";
       const modelUrl = `/models/${name}${modelVariant}${modelMotion}.glb`;
       loader.load(
@@ -323,6 +325,7 @@ export default function TownScene(props: TownSceneProps) {
       "rival",
       "cafe",
     ];
+    const cameraObstacles: THREE.Object3D[] = [];
     buildingIds.forEach((id, index) => {
       const anchor = new THREE.Group();
       const [x, y, z] = LOCATION_POSITIONS[id];
@@ -340,6 +343,7 @@ export default function TownScene(props: TownSceneProps) {
       const preview = buildLandmark(id, index, surfaces);
       anchor.add(preview);
       scene.add(anchor);
+      cameraObstacles.push(anchor);
       loadModel(id, anchor, preview, 4.4 + (index % 3) * 0.5);
     });
     const infill: ReadonlyArray<readonly [number, number, number]> = [
@@ -369,6 +373,7 @@ export default function TownScene(props: TownSceneProps) {
       house.position.set(x, groundHeight(x, z), z);
       house.rotation.y = rotation;
       scene.add(house);
+      cameraObstacles.push(house);
     });
     const player = new THREE.Group();
     const panda = pandaPreview();
@@ -408,6 +413,8 @@ export default function TownScene(props: TownSceneProps) {
     let curve: THREE.CatmullRomCurve3 | null = null;
     let progress = 1;
     let lastTime = performance.now();
+    let lastCameraPlan = -Infinity;
+    let followPlan: ReturnType<typeof planFollowCamera> | null = null;
     if (previousMode === "overview") {
       camera.position.set(33, 36, 42);
       controls.target.set(0, 0, -2);
@@ -460,10 +467,17 @@ export default function TownScene(props: TownSceneProps) {
           ? new THREE.Vector3(...LOCATION_POSITIONS.cafe)
           : player.position;
         const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
-        const desired = focus.clone().add(new THREE.Vector3(-5, 5, 7));
+        if (!followPlan || time - lastCameraPlan > 200) {
+          followPlan = planFollowCamera(focus, cameraObstacles);
+          lastCameraPlan = time;
+        }
+        const desired = followPlan.position;
+        container.dataset.cameraObstructed = String(followPlan.blocked);
         camera.position.lerp(
           desired,
-          current.reducedMotion ? 1 : 1 - Math.exp(-delta * 5),
+          current.reducedMotion || followPlan.intersects(camera.position) > 0
+            ? 1
+            : 1 - Math.exp(-delta * 5),
         );
         controls.target.copy(target);
         camera.lookAt(target);
