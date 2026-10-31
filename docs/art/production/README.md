@@ -11,18 +11,18 @@
 | cafe-opening.png | 咖啡馆开张演出参考 | 露台、桥、暖光与角色呼应同一美术方向 |
 | profile-desktop.png | 桌面报告层次与装饰参考 | 生成文本虚构了超出八回合的行为次数及未设计题目；仅作视觉参考，实际内容严格按证据生成 |
 | profile-mobile.png | 竖屏报告风格参考 | 文案含未经证据支持的人格描述；正式界面替换为规格中的有限线索与不足说明 |
-| panda-tripo-source.png | 熊猫图转模型输入 | 完整角色与干净背景，尚待 Tripo 生成及检查 |
+| panda-tripo-source.png | 熊猫图转模型输入 | 已完成 Tripo 网格、桌面/手机降面及骨骼动作，见 models/README.md 和 models/panda-rig.md |
 | bakery-tripo-source.png | 面包店图转模型输入 | 单体完整、附属物连接；需检查重建后窗户、屋背和细部面数 |
 
 四类基础纹理与现金、资产、资料独立图标已生成。纹理提示词见 `texture-prompts.md`，图标提示词与检查见 `icon-prompts.md`。T01 仍缺独立熊猫头像及完整视觉对照，不因效果图已生成而关闭任务。
 
 ## 上传通道状态
 
-旧 Edge 上传流程未成功且已停止操作。用户随后授权独立内置浏览器或项目专用 Chrome；内置浏览器在子线程显示不可用，跨线程标签不可见，默认创建亦超时。正在按授权核验专用 Chrome 路径。尚无已下载 Tripo 模型，不宣称积分、许可或模型检查已完成。
+旧 Edge 上传流程已停止。主线程通过已登录内置浏览器推进 Tripo 生产；子线程无法绑定主线程标签，不重复登录或操作旧 Edge。熊猫原件由主 Agent 从用户 Downloads 接收、核验并加工，现有桌面/手机两档静态与骨骼 GLB、源工程、统计和预览。其它八处主要建筑输入及树输入已准备，仍须逐项生成和接入真实模型；当前不能认定它们已完成。来源账号计划及许可仍待核实，不将外部模型自动改标 MIT。
 
 ## 熊猫角色建模输入
 
-文件：`panda-tripo-source.png`。2026-10-31 使用内置 imagegen 生成，参考 `docs/art/fairytale-town-reference.png` 的风格。用途：Tripo 图像转三维输入；尚未生成三维模型，不宣称可绑定骨骼或已优化。
+文件：`panda-tripo-source.png`。2026-10-31 使用内置 imagegen 生成，参考 `docs/art/fairytale-town-reference.png` 的风格。用途：Tripo 图像转三维输入；现已完成模型及项目自建骨骼，原图仍保留作来源追踪。实际来源任务、哈希、面数、UV、纹理及动作检查见 `models/README.md`、`models/panda-rig.md`。
 
 提示词：
 

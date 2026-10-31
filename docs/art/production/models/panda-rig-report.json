@@ -1,0 +1,77 @@
+[
+  {
+    "source": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\public\\models\\panda.glb",
+    "output": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\public\\models\\panda-rigged.glb",
+    "blend": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-rigged.blend",
+    "dimensions": [
+      1.83332,
+      1.41611,
+      2.10066
+    ],
+    "bones": [
+      "Body",
+      "Head",
+      "UpperArm.L",
+      "Forearm.L",
+      "Thigh.L",
+      "Shin.L",
+      "UpperArm.R",
+      "Forearm.R",
+      "Thigh.R",
+      "Shin.R"
+    ],
+    "actions": [
+      "Idle",
+      "Walk"
+    ],
+    "vertices": 87308,
+    "unweighted": 0,
+    "uv_layers": [
+      "UVMap"
+    ],
+    "preview_paths": [
+      "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-rigged-walk-front.png",
+      "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-rigged-walk-back.png"
+    ],
+    "limitations": [
+      "规则权重依据已检查的熊猫轮廓；需检查腋下、裤腿、背包与肩部形变。",
+      "关节动作真实存在，不用整模型跳动代替；尚需运行镜头和连续周期检查。"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\public\\models\\panda-mobile.glb",
+    "output": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\public\\models\\panda-mobile-rigged.glb",
+    "blend": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-mobile-rigged.blend",
+    "dimensions": [
+      1.83308,
+      1.41557,
+      2.10128
+    ],
+    "bones": [
+      "Body",
+      "Head",
+      "UpperArm.L",
+      "Forearm.L",
+      "Thigh.L",
+      "Shin.L",
+      "UpperArm.R",
+      "Forearm.R",
+      "Thigh.R",
+      "Shin.R"
+    ],
+    "actions": [
+      "Idle",
+      "Walk"
+    ],
+    "vertices": 24508,
+    "unweighted": 0,
+    "uv_layers": [
+      "UVMap"
+    ],
+    "preview_paths": [],
+    "limitations": [
+      "规则权重依据已检查的熊猫轮廓；需检查腋下、裤腿、背包与肩部形变。",
+      "关节动作真实存在，不用整模型跳动代替；尚需运行镜头和连续周期检查。"
+    ]
+  }
+]

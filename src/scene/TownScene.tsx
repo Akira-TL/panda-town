@@ -228,14 +228,21 @@ export default function TownScene(props: TownSceneProps) {
       canvas: surface("canvas"),
     };
     const loader = new GLTFLoader();
+    let characterMixer: THREE.AnimationMixer | null = null;
+    let idleAction: THREE.AnimationAction | null = null;
+    let walkAction: THREE.AnimationAction | null = null;
+    let wasWalking = false;
     function loadModel(
       name: string,
       parent: THREE.Group,
       placeholder: THREE.Group,
       targetHeight: number,
     ): void {
+      const modelVariant = name === "panda" && window.innerWidth < 720 ? "-mobile" : "";
+      const modelMotion = name === "panda" ? "-rigged" : "";
+      const modelUrl = `/models/${name}${modelVariant}${modelMotion}.glb`;
       loader.load(
-        `/models/${name}${name === "panda" && window.innerWidth < 720 ? "-mobile" : ""}.glb`,
+        modelUrl,
         (gltf) => {
           if (disposed) {
             disposeObject(gltf.scene);
@@ -270,6 +277,22 @@ export default function TownScene(props: TownSceneProps) {
           // 基础纹理由整镇共享，替换单体模型时保留其余建筑仍在使用的纹理。
           disposeObject(placeholder, false);
           parent.add(gltf.scene);
+          if (name === "panda") {
+            characterMixer = new THREE.AnimationMixer(gltf.scene);
+            const idle = gltf.animations.find((clip) =>
+              /idle/i.test(clip.name),
+            );
+            const walk = gltf.animations.find((clip) =>
+              /walk/i.test(clip.name),
+            );
+            idleAction = idle ? characterMixer.clipAction(idle) : null;
+            walkAction = walk ? characterMixer.clipAction(walk) : null;
+            idleAction?.play();
+            if (container)
+              container.dataset.characterAnimations = gltf.animations
+                .map((clip) => clip.name)
+                .join(" ");
+          }
           assetStatus.loaded.push(name);
           publishAssetStatus();
           latest.current.onAssetStatus?.({
@@ -402,6 +425,19 @@ export default function TownScene(props: TownSceneProps) {
       progress = current.reducedMotion
         ? 1
         : Math.min(1, progress + delta * 1.8);
+      const walking = progress < 1 && !current.reducedMotion;
+      container.dataset.characterState = walking ? "Walk" : "Idle";
+      if (walking !== wasWalking) {
+        const next = walking ? walkAction : idleAction;
+        const previous = walking ? idleAction : walkAction;
+        previous?.fadeOut(0.15);
+        next?.reset().fadeIn(0.15).play();
+        wasWalking = walking;
+      }
+      if (characterMixer) {
+        characterMixer.timeScale = current.reducedMotion ? 0 : 1;
+        characterMixer.update(delta);
+      }
       if (curve) {
         player.position.copy(curve.getPoint(progress));
         const tangent = curve.getTangent(progress);
@@ -443,6 +479,7 @@ export default function TownScene(props: TownSceneProps) {
       observer.disconnect();
       renderer.domElement.removeEventListener("webglcontextlost", lost);
       controls.dispose();
+      characterMixer?.stopAllAction();
       rendering.dispose();
       disposeObject(scene);
       Object.values(surfaces).forEach((texture) => texture.dispose());
