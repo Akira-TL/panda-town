@@ -238,7 +238,8 @@ export default function TownScene(props: TownSceneProps) {
       placeholder: THREE.Group,
       targetHeight: number,
     ): void {
-      const modelVariant = name === "panda" && window.innerWidth < 720 ? "-mobile" : "";
+      const hasMobileModel = name === "panda" || name === "bakery";
+      const modelVariant = hasMobileModel && window.innerWidth < 720 ? "-mobile" : "";
       const modelMotion = name === "panda" ? "-rigged" : "";
       const modelUrl = `/models/${name}${modelVariant}${modelMotion}.glb`;
       loader.load(

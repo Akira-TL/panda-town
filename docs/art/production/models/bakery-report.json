@@ -1,0 +1,129 @@
+{
+  "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bakery-source.glb",
+  "blender_version": "5.2.3 LTS",
+  "normalized_blend": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bakery-normalized.blend",
+  "height_metres": 4.4,
+  "source_model": {
+    "objects": 1,
+    "triangles": 1861885,
+    "vertices": 1013980,
+    "materials": [
+      "tripo_material_15ec515c-aa49-4d68-a427-8e7a61bb75b3"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "animations": [],
+    "textures": [
+      {
+        "name": "bakery_shop_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "bakery_shop_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "bakery_shop_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096
+      }
+    ],
+    "dimensions": [
+      0.98077,
+      0.74496,
+      0.97858
+    ]
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bakery.glb",
+    "bytes": 5147384,
+    "target_triangles": 30000,
+    "texture_limit": 1024,
+    "model": {
+      "objects": 1,
+      "triangles": 30000,
+      "vertices": 32086,
+      "materials": [
+        "tripo_material_15ec515c-aa49-4d68-a427-8e7a61bb75b3"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "bakery_shop_3d_model_basecolor.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "bakery_shop_3d_model_rm.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "bakery_shop_3d_model_normal.png",
+          "width": 1024,
+          "height": 1024
+        }
+      ],
+      "dimensions": [
+        4.39503,
+        3.35068,
+        4.4086
+      ]
+    }
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bakery-mobile.glb",
+    "bytes": 1626492,
+    "target_triangles": 10000,
+    "texture_limit": 512,
+    "model": {
+      "objects": 1,
+      "triangles": 10000,
+      "vertices": 15094,
+      "materials": [
+        "tripo_material_15ec515c-aa49-4d68-a427-8e7a61bb75b3"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "bakery_shop_3d_model_basecolor.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "bakery_shop_3d_model_rm.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "bakery_shop_3d_model_normal.png",
+          "width": 512,
+          "height": 512
+        }
+      ],
+      "dimensions": [
+        4.38916,
+        3.35127,
+        4.40391
+      ]
+    }
+  },
+  "previews": [
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bakery-front.png",
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bakery-back.png"
+  ],
+  "limitations": [
+    "自动降面和纹理缩放不等于视觉验收，需检查眼睛、耳朵、背包、接缝与轮廓。",
+    "不自动生成骨骼或动画；源文件没有动画时需另行制作。",
+    "许可依据来源账号计划与Tripo页面记录，不自动改为MIT。"
+  ]
+}
