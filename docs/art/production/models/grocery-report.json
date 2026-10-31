@@ -1,0 +1,129 @@
+{
+  "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\grocery-source.glb",
+  "blender_version": "5.2.3 LTS",
+  "normalized_blend": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\grocery-normalized.blend",
+  "height_metres": 4.6,
+  "source_model": {
+    "objects": 1,
+    "triangles": 1866243,
+    "vertices": 1024336,
+    "materials": [
+      "tripo_material_736910ce-1c4f-4372-8cad-5b0aba0f68fa"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "animations": [],
+    "textures": [
+      {
+        "name": "market_stall_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "market_stall_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "market_stall_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096
+      }
+    ],
+    "dimensions": [
+      0.97995,
+      0.66513,
+      0.73471
+    ]
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\grocery.glb",
+    "bytes": 5122148,
+    "target_triangles": 30000,
+    "texture_limit": 1024,
+    "model": {
+      "objects": 1,
+      "triangles": 30000,
+      "vertices": 33486,
+      "materials": [
+        "tripo_material_736910ce-1c4f-4372-8cad-5b0aba0f68fa"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "market_stall_3d_model_basecolor.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "market_stall_3d_model_rm.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "market_stall_3d_model_normal.png",
+          "width": 1024,
+          "height": 1024
+        }
+      ],
+      "dimensions": [
+        6.14322,
+        4.1595,
+        4.64018
+      ]
+    }
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\grocery-mobile.glb",
+    "bytes": 1639128,
+    "target_triangles": 10000,
+    "texture_limit": 512,
+    "model": {
+      "objects": 1,
+      "triangles": 10000,
+      "vertices": 16254,
+      "materials": [
+        "tripo_material_736910ce-1c4f-4372-8cad-5b0aba0f68fa"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "market_stall_3d_model_basecolor.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "market_stall_3d_model_rm.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "market_stall_3d_model_normal.png",
+          "width": 512,
+          "height": 512
+        }
+      ],
+      "dimensions": [
+        6.13273,
+        4.15925,
+        4.61056
+      ]
+    }
+  },
+  "previews": [
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\grocery-front.png",
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\grocery-back.png"
+  ],
+  "limitations": [
+    "自动降面和纹理缩放不等于视觉验收，需检查眼睛、耳朵、背包、接缝与轮廓。",
+    "不自动生成骨骼或动画；源文件没有动画时需另行制作。",
+    "许可依据来源账号计划与Tripo页面记录，不自动改为MIT。"
+  ]
+}
