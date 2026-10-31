@@ -4,7 +4,7 @@
 
 ## 当前素材包
 
-包含八张已经生成的单独物件图。源文件保存在项目 `docs/art/production/`，完整建筑提示词见 `building-inputs.md`；树木提示词与校验值见素材包清单。熊猫与面包店模型已提供，不重复生成。
+包含八张已经生成的单独物件图。源文件保存在项目 `docs/art/production/`，完整建筑提示词见 `building-inputs.md`，树木提示词见本文末尾；图像尺寸与校验值见素材包清单。熊猫与面包店模型已提供，不重复生成。
 
 | 包内图像 | 对应地点或用途 | 建议导出文件名 |
 | --- | --- | --- |
@@ -35,3 +35,11 @@
 - 面包店：`bakery shop 3d model.glb`，已确认 GLB 2 文件头与声明长度一致，65,694,884 字节；SHA256 为 `A7816DDB52D1A7B882BC72D011A3EC2E91E98690360A5457A823CCF68CE6649F`。正在安排独立加工与场景集成。
 
 源码采用 MIT；外部生成模型及图像的来源与使用条件分别记录，不自动改标为 MIT。
+
+## 树木输入图的生成记录
+
+`tree-tripo-source.png` 于 2026-10-31 通过内置 imagegen 生成，以已选童话小镇图作为风格参考。原件保留在 `C:/Users/Akira/.codex/generated_images/01a18dc3-5013-7e02-8655-f76e7f83338b/exec-10d519cc-752d-4451-aa4f-8ee78c3e6852.png`。这是建模输入，尚未生成对应三维模型。
+
+完整提示词：
+
+> Use case: stylized-concept. Asset type: Panda Town Tripo image-to-3D source. Reference image defines the warm storybook village art style. Generate one single complete small leafy village tree with a gently curved brown trunk, clearly branching structure, irregular layered masses of green leaves, several readable individual broad leaves around silhouette, warm moss and restrained golden green tips. Handcrafted stylized game asset, sophisticated natural tree rather than spherical balls, soft painterly physically plausible surfaces. Full tree from root flare to highest leaves, generous margin, front three-quarter product view, plain pale warm gray background, even neutral studio lighting. No terrain disk, no rocks, no pots, no scene, no other plants, no characters, no text, no multi-view sheet. Strong connected topology suitable for Tripo reconstruction, not thousands of detached hairs or detached leaves. Single tree only.
