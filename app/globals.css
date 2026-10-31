@@ -1562,7 +1562,10 @@ body:has(.report-page) {
   animation: sheet-enter 0.2s ease-out;
 }
 .evidence-sheet > header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(110deg, #fffaed, #f2e4c5);
   border-bottom: 1px solid #dcc897;
   padding-bottom: 17px;
   margin-bottom: 16px;
@@ -1580,7 +1583,7 @@ body:has(.report-page) {
 .sheet-close {
   position: absolute;
   right: -9px;
-  top: -8px;
+  top: 0;
   width: 44px;
   background: transparent;
   color: #9c8a61;
