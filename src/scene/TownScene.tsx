@@ -554,7 +554,17 @@ export default function TownScene(props: TownSceneProps) {
           : player.position;
         const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
         if (!followPlan || time - lastCameraPlan > 200) {
-          followPlan = planFollowCamera(focus, cameraObstacles);
+          const viewLocation = current.cafeOpened
+            ? "cafe"
+            : current.playerLocation;
+          const nextLocation = LOCATIONS.find(
+            (place) => place.id === viewLocation,
+          )!.next[0]!;
+          const forward =
+            curve && progress < 1 && !current.cafeOpened
+              ? curve.getTangent(progress)
+              : routeCurve(viewLocation, nextLocation).getTangent(0);
+          followPlan = planFollowCamera(focus, cameraObstacles, forward);
           lastCameraPlan = time;
         }
         const desired = followPlan.position;

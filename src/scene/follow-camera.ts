@@ -4,9 +4,10 @@ import * as THREE from "three";
 export function planFollowCamera(
   focus: THREE.Vector3,
   obstacles: readonly THREE.Object3D[],
+  forward: THREE.Vector3,
 ) {
   const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
-  const inward = new THREE.Vector3(-focus.x, 0, -focus.z).normalize();
+  const inward = new THREE.Vector3(-forward.x, 0, -forward.z).normalize();
   if (inward.lengthSq() < 0.1) inward.set(0, 0, 1);
   const boxes = obstacles.map((obstacle) =>
     new THREE.Box3().setFromObject(obstacle),
