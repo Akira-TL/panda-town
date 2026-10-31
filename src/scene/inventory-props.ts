@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import type { SurfaceTextures } from "./architecture";
 import { LOCATION_POSITIONS } from "./geometry";
+import { groundHeight } from "./landscape";
 
 export interface SceneInventoryState {
   purchasedItems?: readonly string[];
@@ -105,8 +106,25 @@ export function createInventoryProps(surfaces: SurfaceTextures) {
   ];
   const workshop = new THREE.Group();
   workshop.name = "PlayerWorkshop";
-  const [x, y, z] = LOCATION_POSITIONS.market;
-  workshop.position.set(x + 1.6, y + 0.7, z + 0.2);
+  const [x, , z] = LOCATION_POSITIONS.market;
+  workshop.position.set(x + 1.6, groundHeight(x + 1.6, z - 1.4) + 0.7, z - 1.4);
+  const table = part(
+    new THREE.BoxGeometry(0.85, 0.1, 0.6),
+    "#a78b60",
+    surfaces.wood,
+  );
+  table.position.y = -0.05;
+  workshop.add(table);
+  for (const side of [-1, 1])
+    for (const depth of [-1, 1]) {
+      const leg = part(
+        new THREE.CylinderGeometry(0.035, 0.05, 0.65, 6),
+        "#9b805d",
+        surfaces.wood,
+      );
+      leg.position.set(side * 0.34, -0.4, depth * 0.22);
+      workshop.add(leg);
+    }
   const used = wrench(false),
     premium = wrench(true);
   used.rotation.z = premium.rotation.z = Math.PI / 2;
@@ -122,6 +140,8 @@ export function createInventoryProps(surfaces: SurfaceTextures) {
   screwdriver.position.set(0, 0.08, 0.15);
   screwdriver.rotation.z = Math.PI / 2;
   const premiumSet = new THREE.Group();
+  pending.position.y = 0.16;
+  used.position.y = premiumSet.position.y = 0.06;
   used.name = "used-tool";
   premiumSet.name = "premium-tools";
   pending.name = "pending-delivery";
@@ -142,6 +162,7 @@ export function createInventoryProps(surfaces: SurfaceTextures) {
       opponentStall.add(opponentModel);
     },
     update(state: SceneInventoryState) {
+      workshop.visible = Boolean(state.toolPending || state.toolQuality);
       practical.visible =
         state.purchasedItems?.includes("practical-gift") ?? false;
       novel.visible = state.purchasedItems?.includes("novel-gift") ?? false;
