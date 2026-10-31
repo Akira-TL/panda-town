@@ -8,7 +8,7 @@ import {
   type PresentedOption,
 } from "../src/game/engine";
 import {
-  getEventCopy,
+  getEventDialogue,
   getEventForLocation,
   LOCATIONS,
 } from "../src/game/content";
@@ -22,6 +22,8 @@ import {
 } from "../src/game/session";
 import { ReportPanel } from "../src/ui/ReportPanel";
 import { StudyPanel } from "../src/ui/StudyPanel";
+import { InventoryPanel, FinalAssetNote } from "../src/ui/InventoryPanel";
+import { DecisionPanel } from "../src/ui/DecisionPanel";
 import { DiceFace } from "../src/ui/GameDetails";
 import type { AssetStatus } from "../src/scene/TownScene";
 import "./globals.css";
@@ -317,6 +319,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <FinalAssetNote game={game} />
         <ReportPanel report={report} />
         <footer className="report-actions">
           <button className="primary" onClick={begin}>
@@ -330,15 +333,29 @@ export default function Home() {
       </main>
     );
   const event = visible.event;
-  const copy = event ? getEventCopy(event.id) : null;
-  const lastChoice = [...game.evidence]
-    .reverse()
-    .find((e) => e.action === "choose" && e.day === game.day);
+  const copy = event
+    ? getEventDialogue(game, event.id, session.position)
+    : null;
   const projectedCash =
     game.cash +
     (session.sellStall && game.assets.stall ? 480 : 0) +
     (session.sellInvestment ? visible.investmentValue : 0);
   const goalCash = game.result?.cashBeforeOpening ?? game.cash;
+  const investmentOffers =
+    event?.id === "E05"
+      ? event.options
+          .filter((o) => o.effect.kind === "invest" && o.available)
+          .map((o) => {
+            const preview = dispatch(game, {
+              type: "choose",
+              id: `preview-${game.day}-${o.id}`,
+              day: game.day,
+              optionId: o.id,
+            });
+            return `${o.cost} 金币 → ${preview.assets.investment?.shares.toFixed(3)} 份`;
+          })
+          .join(" · ")
+      : null;
   return (
     <main
       className={`game-shell ${game.phase !== "travel" || session.branch ? "has-dialogue" : ""}`}
@@ -407,6 +424,7 @@ export default function Home() {
           <small>工具待交货 · 第 {game.assets.tool.deliveryDay} 天到货</small>
         )}
       </aside>
+      <InventoryPanel game={game} />
       <nav className="view-controls" aria-label="视角和动画">
         <button
           className={cameraMode === "follow" ? "selected" : ""}
@@ -566,6 +584,9 @@ export default function Home() {
             <span className="event-number">第 {game.day} 天</span>
           </div>
           <p className="dialogue-text">{copy.text}</p>
+          {investmentOffers && (
+            <p className="investment-offer-preview">{investmentOffers}</p>
+          )}
           <StudyPanel
             key={`${game.day}-${event.id}`}
             event={event}
@@ -612,38 +633,7 @@ export default function Home() {
           tabIndex={-1}
           ref={dialogRef}
         >
-          <span className="eyebrow">选择已记下</span>
-          <div
-            className={[
-              "result-medallion",
-              (lastChoice?.cashAfter ?? game.cash) >=
-              (lastChoice?.cashBefore ?? game.cash)
-                ? "positive"
-                : "negative",
-            ].join(" ")}
-          >
-            <img src="/art/icon-cash.png" alt="" />
-            <strong>
-              {game.cash - (lastChoice?.cashBefore ?? game.cash) >= 0
-                ? "+"
-                : ""}
-              {game.cash - (lastChoice?.cashBefore ?? game.cash)}
-            </strong>
-            <span>即时收支</span>
-          </div>
-          <h2>
-            {lastChoice?.options.find((o) => o.id === lastChoice.choice)
-              ?.label ?? "本回合已完成"}
-          </h2>
-          <p>
-            现金 {money(lastChoice?.cashBefore ?? game.cash)} →{" "}
-            {money(game.cash)}。接下来结算今天的基础收入与经营收入。
-          </p>
-          <button className="primary" onClick={endTurn}>
-            {game.day === 8
-              ? "结算第八天，准备开张 ↗"
-              : "收好今天的收入，继续 ↗"}
-          </button>
+          <DecisionPanel game={game} onContinue={endTurn} />
         </section>
       )}
       {game.phase === "settlement" && (
