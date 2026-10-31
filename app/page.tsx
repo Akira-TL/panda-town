@@ -370,6 +370,14 @@ export default function Home() {
           cameraMode={cameraMode}
           stallOwned={game.assets.stall !== null}
           cafeOpened={game.result?.opened ?? false}
+          purchasedItems={game.assets.items}
+          toolQuality={
+            game.assets.tool.status === "owned"
+              ? game.assets.tool.quality
+              : null
+          }
+          toolPending={game.assets.tool.status === "pending"}
+          opponentStallOwned={game.opponent.stallBoughtDay !== null}
           reducedMotion={reducedMotion}
           onError={onError}
           onAssetStatus={onAssetStatus}

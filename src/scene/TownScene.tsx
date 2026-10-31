@@ -9,6 +9,11 @@ import { LOCATION_POSITIONS, ribbonGeometry, routeCurve } from "./geometry";
 import { buildLandscape, groundHeight } from "./landscape";
 import { createRendering } from "./rendering";
 import { planFollowCamera } from "./follow-camera";
+import { createResidents } from "./residents";
+import {
+  createInventoryProps,
+  type SceneInventoryState,
+} from "./inventory-props";
 import {
   buildLandmark,
   type SurfaceName,
@@ -19,7 +24,7 @@ export interface AssetStatus {
   loaded: string[];
   missing: string[];
 }
-export interface TownSceneProps {
+export interface TownSceneProps extends SceneInventoryState {
   playerLocation: LocationId;
   cameraMode: "follow" | "overview";
   stallOwned: boolean;
@@ -35,6 +40,7 @@ function disposeObject(root: THREE.Object3D, disposeTextures = true): void {
   const geometries = new Set<THREE.BufferGeometry>();
   root.traverse((node) => {
     if (!(node instanceof THREE.Mesh)) return;
+    if (node instanceof THREE.SkinnedMesh) node.skeleton.dispose();
     geometries.add(node.geometry);
     const list: THREE.Material[] = Array.isArray(node.material)
       ? node.material
@@ -229,6 +235,10 @@ export default function TownScene(props: TownSceneProps) {
       canvas: surface("canvas"),
     };
     const loader = new GLTFLoader();
+    const inventory = createInventoryProps(surfaces);
+    inventory.update(latest.current);
+    scene.add(inventory.workshop, inventory.opponentStall);
+    let residents: ReturnType<typeof createResidents> | null = null;
     let characterMixer: THREE.AnimationMixer | null = null;
     let idleAction: THREE.AnimationAction | null = null;
     let walkAction: THREE.AnimationAction | null = null;
@@ -283,12 +293,40 @@ export default function TownScene(props: TownSceneProps) {
           // 基础纹理由整镇共享，替换单体模型时保留其余建筑仍在使用的纹理。
           disposeObject(placeholder, false);
           parent.add(gltf.scene);
+          if (name === "market") inventory.setMarketModel(gltf.scene);
           for (const slot of infillSlots.filter((item) => item.kind === name)) {
             slot.anchor.remove(slot.placeholder);
             disposeObject(slot.placeholder, false);
             slot.anchor.add(gltf.scene.clone(true));
           }
           if (name === "panda") {
+            const mountResidents = (
+              source: THREE.Object3D,
+              clips: readonly THREE.AnimationClip[],
+            ) => {
+              if (disposed) return;
+              residents = createResidents(source, clips);
+              scene.add(residents.group);
+              if (container)
+                container.dataset.residentCount = String(
+                  residents.group.children.length,
+                );
+            };
+            if (window.innerWidth < 720)
+              mountResidents(gltf.scene, gltf.animations);
+            else
+              loader.load(
+                "/models/panda-mobile-rigged-v2.glb",
+                (residentModel) => {
+                  if (disposed) {
+                    disposeObject(residentModel.scene);
+                    return;
+                  }
+                  mountResidents(residentModel.scene, residentModel.animations);
+                },
+                undefined,
+                () => mountResidents(gltf.scene, gltf.animations),
+              );
             characterMixer = new THREE.AnimationMixer(gltf.scene);
             const idle = gltf.animations.find((clip) =>
               /idle/i.test(clip.name),
@@ -416,6 +454,7 @@ export default function TownScene(props: TownSceneProps) {
     const player = new THREE.Group();
     const panda = pandaPreview();
     player.add(panda);
+    player.add(inventory.carried);
     player.position.set(...LOCATION_POSITIONS[latest.current.playerLocation]);
     scene.add(player);
     loadModel("panda", player, panda, 2.1);
@@ -462,6 +501,15 @@ export default function TownScene(props: TownSceneProps) {
       const delta = Math.min((time - lastTime) / 1000, 0.05);
       lastTime = time;
       const current = latest.current;
+      const visibleInventory = inventory.update(current);
+      residents?.update(delta, current);
+      const sceneItems = visibleInventory.items.join(" ");
+      if (container.dataset.sceneItems !== sceneItems)
+        container.dataset.sceneItems = sceneItems;
+      const toolState = visibleInventory.tool;
+      if (container.dataset.toolState !== toolState)
+        container.dataset.toolState = toolState;
+      container.dataset.opponentStall = String(visibleInventory.opponent);
       landscape.update(time, current.reducedMotion);
       if (location !== current.playerLocation) {
         curve = routeCurve(location, current.playerLocation);
@@ -536,6 +584,7 @@ export default function TownScene(props: TownSceneProps) {
       renderer.domElement.removeEventListener("webglcontextlost", lost);
       controls.dispose();
       characterMixer?.stopAllAction();
+      residents?.dispose();
       rendering.dispose();
       disposeObject(scene);
       Object.values(surfaces).forEach((texture) => texture.dispose());
