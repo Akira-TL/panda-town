@@ -1,0 +1,129 @@
+{
+  "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bank-source.glb",
+  "blender_version": "5.2.3 LTS",
+  "normalized_blend": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bank-normalized.blend",
+  "height_metres": 5.2,
+  "source_model": {
+    "objects": 1,
+    "triangles": 1941158,
+    "vertices": 1027132,
+    "materials": [
+      "tripo_material_6c594a4f-b23c-4b77-818e-eb014e167e7b"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "animations": [],
+    "textures": [
+      {
+        "name": "storybook_cottage_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "storybook_cottage_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "storybook_cottage_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096
+      }
+    ],
+    "dimensions": [
+      0.97955,
+      0.79877,
+      0.73618
+    ]
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bank.glb",
+    "bytes": 4800516,
+    "target_triangles": 30000,
+    "texture_limit": 1024,
+    "model": {
+      "objects": 1,
+      "triangles": 30000,
+      "vertices": 27155,
+      "materials": [
+        "tripo_material_6c594a4f-b23c-4b77-818e-eb014e167e7b"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "storybook_cottage_3d_model_basecolor.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "storybook_cottage_3d_model_rm.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "storybook_cottage_3d_model_normal.png",
+          "width": 1024,
+          "height": 1024
+        }
+      ],
+      "dimensions": [
+        6.92028,
+        5.64222,
+        5.19369
+      ]
+    }
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bank-mobile.glb",
+    "bytes": 1514704,
+    "target_triangles": 10000,
+    "texture_limit": 512,
+    "model": {
+      "objects": 1,
+      "triangles": 10000,
+      "vertices": 11250,
+      "materials": [
+        "tripo_material_6c594a4f-b23c-4b77-818e-eb014e167e7b"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "storybook_cottage_3d_model_basecolor.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "storybook_cottage_3d_model_rm.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "storybook_cottage_3d_model_normal.png",
+          "width": 512,
+          "height": 512
+        }
+      ],
+      "dimensions": [
+        6.90659,
+        5.63332,
+        5.18435
+      ]
+    }
+  },
+  "previews": [
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bank-front.png",
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bank-back.png"
+  ],
+  "limitations": [
+    "自动降面和纹理缩放不等于视觉验收，需检查眼睛、耳朵、背包、接缝与轮廓。",
+    "不自动生成骨骼或动画；源文件没有动画时需另行制作。",
+    "许可依据来源账号计划与Tripo页面记录，不自动改为MIT。"
+  ]
+}
