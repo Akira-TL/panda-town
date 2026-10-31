@@ -38,6 +38,8 @@ export interface EvidenceCard {
   cashBefore: number;
   cashAfter: number;
   assetsBefore: Assets;
+  assetsAfter: Assets;
+  assetChanges: AssetChange[];
   options: {
     label: string;
     available: boolean;
@@ -45,6 +47,63 @@ export interface EvidenceCard {
     shortfall: number;
   }[];
   materials: { sourceId: string; text: string }[];
+}
+export type AssetChange =
+  | {
+      kind: "investment-purchase";
+      amount: number;
+      price: number;
+      shares: number;
+    }
+  | { kind: "investment-sale"; amount: number; shares: number }
+  | { kind: "stall-purchase"; cost: number; boughtDay: number }
+  | {
+      kind: "tool-purchase";
+      cost: number;
+      quality: "used" | "premium";
+      deliveryDay: number | null;
+    }
+  | { kind: "story-item"; count: number };
+/** 金额和份额来自已发生的交易快照，不由之后的行情或结果回填。 */
+export function deriveAssetChanges(
+  evidence: Pick<
+    Evidence,
+    "cashBefore" | "cashAfter" | "assetsBefore" | "assetsAfter"
+  >,
+): AssetChange[] {
+  const before = evidence.assetsBefore,
+    after = evidence.assetsAfter;
+  const changes: AssetChange[] = [];
+  if (!before.investment && after.investment)
+    changes.push({
+      kind: "investment-purchase",
+      amount: after.investment.cost,
+      price: after.investment.purchasePrice,
+      shares: after.investment.shares,
+    });
+  if (before.investment && !after.investment)
+    changes.push({
+      kind: "investment-sale",
+      amount: evidence.cashAfter - evidence.cashBefore,
+      shares: before.investment.shares,
+    });
+  if (!before.stall && after.stall)
+    changes.push({
+      kind: "stall-purchase",
+      cost: after.stall.cost,
+      boughtDay: after.stall.boughtDay,
+    });
+  if (before.tool.status === "none" && after.tool.status !== "none")
+    changes.push({
+      kind: "tool-purchase",
+      cost: evidence.cashBefore - evidence.cashAfter,
+      quality: after.tool.status === "owned" ? after.tool.quality : "premium",
+      deliveryDay:
+        after.tool.status === "pending" ? after.tool.deliveryDay : null,
+    });
+  const count = after.items.filter((id) => !before.items.includes(id)).length;
+  if (count > 0) changes.push({ kind: "story-item", count });
+  return changes;
 }
 export interface ProfileReport {
   title: { label: string; reason: string; evidenceIds: string[] };
@@ -488,6 +547,8 @@ export function buildProfile(input: readonly Evidence[]): ProfileReport {
       cashBefore: e.cashBefore,
       cashAfter: e.cashAfter,
       assetsBefore: structuredClone(e.assetsBefore),
+      assetsAfter: structuredClone(e.assetsAfter),
+      assetChanges: deriveAssetChanges(e),
       options: e.options.map((o) => ({
         label: o.label,
         available: o.available,

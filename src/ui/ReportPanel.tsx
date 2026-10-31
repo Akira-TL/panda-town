@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { EvidenceCard, ProfileFact, ProfileReport } from "../game/profile";
 import { LOCATIONS } from "../game/content";
+import { TradeEvidence } from "./TradeEvidence";
 
 type OpenEvidence = (
   id: string,
@@ -201,6 +202,7 @@ function EvidenceDetail({
             </span>
           </p>
         </div>
+        <TradeEvidence evidence={evidence} />
         <footer className="evidence-pager">
           <button onClick={previous} disabled={index === 0}>
             ← 上一条

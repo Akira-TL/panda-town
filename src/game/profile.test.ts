@@ -12,7 +12,7 @@ import {
   LOCATION_IDS,
   type LocationId,
 } from "./content";
-import { buildProfile } from "./profile";
+import { buildProfile, deriveAssetChanges } from "./profile";
 
 function driver(initial = createGame("profile-test", "A")) {
   let state = initial;
@@ -245,4 +245,85 @@ test("画像构建不改变输入，重复同一证据编号不重复计算", ()
         f.evidenceIds.every((id) => report.evidence.some((e) => e.id === id)),
       ),
   );
+});
+
+test("未展开资料的真实投资仍用成交后快照保留报价份额", () => {
+  const d = driver(createGame("trade-receipt", "B"));
+  for (let day = 1; day < 4; day++) {
+    d.open("square");
+    d.act({ type: "choose", optionId: "work" });
+    d.end();
+  }
+  d.open("bank");
+  d.act({ type: "choose", optionId: "large" });
+  const evidence = d.state.evidence.at(-1)!;
+  assert.equal(evidence.knownMaterials.length, 0);
+  const change = deriveAssetChanges(evidence)[0];
+  assert.equal(change?.kind, "investment-purchase");
+  if (change?.kind !== "investment-purchase")
+    throw new Error("缺少真实买入明细");
+  assert.equal(change.price, 120);
+  assert.equal(change.amount, 400);
+  assert.ok(Math.abs(change.shares - 10 / 3) < 1e-10);
+  for (let day = 4; day < 8; day++) {
+    if (d.state.phase === "travel") {
+      d.open("square");
+      d.act({ type: "choose", optionId: "work" });
+    }
+    d.end();
+  }
+  const report = buildProfile(d.state.evidence);
+  const originalTrade = report.evidence.find((e) => e.id === evidence.id)!;
+  assert.equal(originalTrade.assetsAfter.investment?.purchasePrice, 120);
+  assert.equal(originalTrade.assetChanges[0]?.kind, "investment-purchase");
+});
+test("卖出证据显示实际到账与清仓，不反推精确单位报价", () => {
+  const d = driver(createGame("sale-receipt", "B"));
+  for (let day = 1; day < 4; day++) {
+    d.open("square");
+    d.act({ type: "choose", optionId: "work" });
+    d.end();
+  }
+  d.open("bank");
+  d.act({ type: "choose", optionId: "large" });
+  d.end();
+  while (d.state.day < 8) {
+    d.open("square");
+    d.act({ type: "choose", optionId: "work" });
+    d.end();
+  }
+  d.open("bank");
+  d.act({ type: "choose", optionId: "sell" });
+  const evidence = d.state.evidence.at(-1)!;
+  const changes = deriveAssetChanges(evidence);
+  assert.deepEqual(changes, [
+    { kind: "investment-sale", amount: 300, shares: 10 / 3 },
+  ]);
+  assert.equal(evidence.assetsAfter.investment, null);
+  assert.ok(!("price" in changes[0]!));
+});
+test("合购的实际付款与待交货不会显示成已经可用", () => {
+  const d = driver();
+  d.open("square");
+  d.act({ type: "choose", optionId: "work" });
+  d.end();
+  d.open("bridge");
+  d.act({ type: "choose", optionId: "cooperate" });
+  const evidence = d.state.evidence.at(-1)!;
+  assert.deepEqual(deriveAssetChanges(evidence), [
+    { kind: "tool-purchase", cost: 100, quality: "premium", deliveryDay: 3 },
+  ]);
+  d.end();
+  assert.equal(d.state.assets.tool.status, "owned");
+  assert.equal(evidence.assetsAfter.tool.status, "pending");
+});
+test("查看资料不伪造资产变更，画像快照可独立修改而不影响原始记录", () => {
+  const d = driver();
+  d.open("research");
+  d.act({ type: "inspect", materialId: "sales-record" });
+  assert.deepEqual(deriveAssetChanges(d.state.evidence[0]!), []);
+  const report = buildProfile(d.state.evidence);
+  report.evidence[0]!.assetsAfter.items.push("仅修改报告副本");
+  assert.deepEqual(d.state.evidence[0]!.assetsAfter.items, []);
+  assert.deepEqual(report.evidence[0]!.assetsBefore.items, []);
 });
