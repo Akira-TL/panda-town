@@ -5,7 +5,7 @@ test("模型请求失败明确提示开发预览，决策与收入仍可完成",
   await page.route("**/models/*.glb", (route) => route.abort("failed"));
   await begin(page);
   await expect(
-    page.getByText("开发预览 · 部分正式模型待接入", { exact: true }),
+    page.getByText("开发预览 · 部分模型或纹理未加载", { exact: true }),
   ).toBeVisible();
   await arrive(page, 1);
   await choose(page, "work");
