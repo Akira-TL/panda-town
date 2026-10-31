@@ -15,7 +15,7 @@ export const RIVER_CURVE = new THREE.CatmullRomCurve3([
 ]);
 const riverSamples = RIVER_CURVE.getPoints(110);
 const stoneColors = ["#a69d88", "#bcb09a", "#c9bca3", "#8e9180", "#d4c6a9"];
-const grassColors = ["#78904f", "#899d59", "#9aaa67", "#617c4d", "#acb773"];
+const grassColors = ["#65844e", "#77955a", "#8ca469", "#506f46", "#9db172"];
 function noise(seed: number): number {
   return THREE.MathUtils.euclideanModulo(
     Math.sin(seed * 127.1 + 311.7) * 43758.5453,
@@ -43,7 +43,7 @@ export function groundHeight(x: number, z: number): number {
   const river = nearest(riverSamples, x, z);
   let height =
     -0.25 + 3.8 * Math.exp(-((x + 6) ** 2 / 600 + (z + 27) ** 2 / 150));
-  height += 0.14 * Math.sin(x * 0.45) * Math.cos(z * 0.3);
+  height += 0.025 * Math.sin(x * 0.16) * Math.cos(z * 0.12);
   if (road.distance < 6)
     height = THREE.MathUtils.lerp(
       road.height - 0.13,
@@ -114,11 +114,7 @@ function terrain(): THREE.Mesh {
     const height = groundHeight(x, z);
     position.setY(i, height);
     const bank = nearest(riverSamples, x, z).distance < 3.1;
-    const color = new THREE.Color(
-      bank
-        ? "#8b9682"
-        : grassColors[Math.floor(noise(i * 0.003) * grassColors.length)]!,
-    );
+    const color = new THREE.Color(bank ? "#8b9682" : "#829a60");
     color.multiplyScalar(0.97 + noise(i) * 0.06);
     colors.push(color.r, color.g, color.b);
   }
@@ -334,7 +330,7 @@ function river(): {
   return { group, update };
 }
 
-function vegetation(): THREE.Group {
+function vegetation() {
   const group = new THREE.Group();
   const trees: Array<readonly [number, number, number]> = [];
   for (let i = 0; i < 200; i++) {
@@ -344,12 +340,12 @@ function vegetation(): THREE.Group {
       ([bx, , bz]) => Math.hypot(x - bx, z - bz) < 4.7,
     );
     if (
-      nearest(roadSamples, x, z).distance < 3.7 ||
+      nearest(roadSamples, x, z).distance < 5.0 ||
       nearest(riverSamples, x, z).distance < 3.5 ||
       nearBuilding
     )
       continue;
-    trees.push([x, z, 0.8 + noise(i * 13) * 0.65]);
+    trees.push([x, z, 0.5 + noise(i * 13) * 0.35]);
   }
   const trunks = instances(
     new THREE.CylinderGeometry(0.16, 0.3, 2.7, 7),
@@ -411,16 +407,44 @@ function vegetation(): THREE.Group {
       );
   }
   group.add(bushes, blossoms);
-  return group;
+  const trunkMatrices = trunks.instanceMatrix.array.slice();
+  const crownMatrices = crowns.instanceMatrix.array.slice();
+  const zero = new THREE.Matrix4().makeScale(0, 0, 0);
+  const treeHeights = trees.map(
+    ([x, z, scale]) => groundHeight(x, z) + 3 * scale,
+  );
+  const line = new THREE.Line3();
+  const center = new THREE.Vector3();
+  const closest = new THREE.Vector3();
+  return {
+    group,
+    updateView(camera: THREE.Vector3, target: THREE.Vector3) {
+      trunks.instanceMatrix.array.set(trunkMatrices);
+      crowns.instanceMatrix.array.set(crownMatrices);
+      line.set(camera, target);
+      trees.forEach(([x, z, scale], index) => {
+        center.set(x, treeHeights[index]!, z);
+        line.closestPointToPoint(center, true, closest);
+        if (center.distanceTo(closest) < 2.4 * scale) {
+          trunks.setMatrixAt(index, zero);
+          for (let j = 0; j < 5; j++) crowns.setMatrixAt(index * 5 + j, zero);
+        }
+      });
+      trunks.instanceMatrix.needsUpdate =
+        crowns.instanceMatrix.needsUpdate = true;
+    },
+  };
 }
 
 export function buildLandscape(): {
   group: THREE.Group;
   update: (time: number, reduced: boolean) => void;
+  updateView: (camera: THREE.Vector3, target: THREE.Vector3) => void;
 } {
   const group = new THREE.Group();
   const stream = river();
-  group.add(terrain(), stream.group, bridge(), cobbles(), vegetation());
+  const plants = vegetation();
+  group.add(terrain(), stream.group, bridge(), cobbles(), plants.group);
   // 后景山岩形成有高低起伏的天际线，避免圆形展示台边缘。
   const cliffs = instances(
     new THREE.DodecahedronGeometry(1, 1),
@@ -443,5 +467,5 @@ export function buildLandscape(): {
     );
   }
   group.add(cliffs);
-  return { group, update: stream.update };
+  return { group, update: stream.update, updateView: plants.updateView };
 }

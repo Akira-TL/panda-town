@@ -6,7 +6,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { LOCATIONS, type LocationId } from "../game/content";
 import { LOCATION_POSITIONS, ribbonGeometry, routeCurve } from "./geometry";
-import { buildLandscape } from "./landscape";
+import { buildLandscape, groundHeight } from "./landscape";
 import { createRendering } from "./rendering";
 import {
   buildLandmark,
@@ -185,6 +185,7 @@ export default function TownScene(props: TownSceneProps) {
       }
     const assetStatus: AssetStatus = { loaded: [], missing: [] };
     const publishAssetStatus = () => {
+      container.dataset.loadedModels = assetStatus.loaded.join(" ");
       if (!disposed)
         latest.current.onAssetStatus?.({
           loaded: [...assetStatus.loaded],
@@ -234,7 +235,7 @@ export default function TownScene(props: TownSceneProps) {
       targetHeight: number,
     ): void {
       loader.load(
-        `/models/${name}.glb`,
+        `/models/${name}${name === "panda" && window.innerWidth < 720 ? "-mobile" : ""}.glb`,
         (gltf) => {
           if (disposed) {
             disposeObject(gltf.scene);
@@ -270,6 +271,7 @@ export default function TownScene(props: TownSceneProps) {
           disposeObject(placeholder, false);
           parent.add(gltf.scene);
           assetStatus.loaded.push(name);
+          publishAssetStatus();
           latest.current.onAssetStatus?.({
             loaded: [...assetStatus.loaded],
             missing: [...assetStatus.missing],
@@ -301,13 +303,13 @@ export default function TownScene(props: TownSceneProps) {
       const anchor = new THREE.Group();
       const [x, y, z] = LOCATION_POSITIONS[id];
       const radial = new THREE.Vector3(x, 0, z).normalize();
-      anchor.position.set(x + radial.x * 3.7, y - 0.05, z + radial.z * 3.7);
+      anchor.position.set(x + radial.x * 2.8, y - 0.05, z + radial.z * 2.8);
       anchor.rotation.y = Math.atan2(-radial.x, -radial.z);
       const foundation = mesh(
-        new THREE.CylinderGeometry(3.4, 3.8, y + 0.35, 12),
-        "#a6aa87",
+        new THREE.BoxGeometry(5.1, 0.28, 4.8),
+        "#b3ab94",
         anchor.position.x,
-        (y - 0.35) / 2,
+        y - 0.21,
         anchor.position.z,
       );
       scene.add(foundation);
@@ -315,6 +317,34 @@ export default function TownScene(props: TownSceneProps) {
       anchor.add(preview);
       scene.add(anchor);
       loadModel(id, anchor, preview, 4.4 + (index % 3) * 0.5);
+    });
+    const infill: ReadonlyArray<readonly [number, number, number]> = [
+      [-10, -5, 0.5],
+      [-5, -8, -0.4],
+      [-4, -1, 0.3],
+      [-10, 2, 0.7],
+      [-3, 8, 0.1],
+      [0, -9, -0.2],
+      [-1, -21, 0.4],
+      [-22, 9, 0.9],
+      [21, 14, -1.2],
+      [-19, -18, 0.7],
+      [-7, -21, 0.2],
+      [19, -10, -0.8],
+      [19, 5, -1.3],
+      [-24, -1, 1.1],
+    ];
+    infill.forEach(([x, z, rotation], index) => {
+      const house = buildLandmark(
+        index % 2 ? "grocery" : "gifts",
+        index,
+        surfaces,
+      );
+      const scale = 0.7 + (index % 3) * 0.1;
+      house.scale.setScalar(scale);
+      house.position.set(x, groundHeight(x, z), z);
+      house.rotation.y = rotation;
+      scene.add(house);
     });
     const player = new THREE.Group();
     const panda = pandaPreview();
@@ -377,10 +407,6 @@ export default function TownScene(props: TownSceneProps) {
         const tangent = curve.getTangent(progress);
         player.rotation.y = Math.atan2(tangent.x, tangent.z);
       }
-      player.position.y +=
-        !current.reducedMotion && progress < 1
-          ? Math.sin(time * 0.018) * 0.012
-          : 0;
       stallFlag.visible = current.stallOwned;
       cafeGlow.intensity = current.cafeOpened ? 10 : 0;
       controls.enabled = current.cameraMode === "overview";
@@ -393,18 +419,18 @@ export default function TownScene(props: TownSceneProps) {
         previousMode = current.cameraMode;
       }
       if (current.cameraMode === "follow") {
-        const target = player.position
-          .clone()
-          .add(new THREE.Vector3(0, 1.3, 0));
-        const desired = player.position
-          .clone()
-          .add(new THREE.Vector3(-6, 5.5, 8));
+        const focus = current.cafeOpened
+          ? new THREE.Vector3(...LOCATION_POSITIONS.cafe)
+          : player.position;
+        const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
+        const desired = focus.clone().add(new THREE.Vector3(-5, 5, 7));
         camera.position.lerp(
           desired,
           current.reducedMotion ? 1 : 1 - Math.exp(-delta * 5),
         );
         controls.target.copy(target);
         camera.lookAt(target);
+        landscape.updateView(camera.position, target);
       } else controls.update();
       rendering.render(delta);
       frame = requestAnimationFrame(animate);

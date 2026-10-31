@@ -13,9 +13,9 @@ export function createRendering(
   const composer = new EffectComposer(renderer);
   const renderPass = new RenderPass(scene, camera);
   const occlusion = new SSAOPass(scene, camera, 512, 512, 12);
-  occlusion.kernelRadius = 2.4;
+  occlusion.kernelRadius = 0.65;
   occlusion.minDistance = 0.002;
-  occlusion.maxDistance = 0.16;
+  occlusion.maxDistance = 0.025;
   const output = new OutputPass();
   composer.addPass(renderPass);
   composer.addPass(occlusion);
