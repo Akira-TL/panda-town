@@ -233,17 +233,20 @@ export default function TownScene(props: TownSceneProps) {
     let idleAction: THREE.AnimationAction | null = null;
     let walkAction: THREE.AnimationAction | null = null;
     let wasWalking = false;
+    const infillSlots: Array<{
+      kind: string;
+      anchor: THREE.Group;
+      placeholder: THREE.Group;
+    }> = [];
     function loadModel(
       name: string,
       parent: THREE.Group,
       placeholder: THREE.Group,
       targetHeight: number,
     ): void {
-      const hasMobileModel = name === "panda" || name === "bakery";
-      const modelVariant =
-        hasMobileModel && window.innerWidth < 720 ? "-mobile" : "";
+      const modelVariant = window.innerWidth < 720 ? "-mobile" : "";
       const modelMotion = name === "panda" ? "-rigged" : "";
-      const modelUrl = `/models/${name}${modelVariant}${modelMotion}.glb`;
+      const modelUrl = `/models/${name}${modelVariant}${modelMotion}-v2.glb`;
       loader.load(
         modelUrl,
         (gltf) => {
@@ -280,6 +283,11 @@ export default function TownScene(props: TownSceneProps) {
           // 基础纹理由整镇共享，替换单体模型时保留其余建筑仍在使用的纹理。
           disposeObject(placeholder, false);
           parent.add(gltf.scene);
+          for (const slot of infillSlots.filter((item) => item.kind === name)) {
+            slot.anchor.remove(slot.placeholder);
+            disposeObject(slot.placeholder, false);
+            slot.anchor.add(gltf.scene.clone(true));
+          }
           if (name === "panda") {
             characterMixer = new THREE.AnimationMixer(gltf.scene);
             const idle = gltf.animations.find((clip) =>
@@ -290,7 +298,8 @@ export default function TownScene(props: TownSceneProps) {
             );
             idleAction = idle ? characterMixer.clipAction(idle) : null;
             walkAction = walk ? characterMixer.clipAction(walk) : null;
-            idleAction?.play();
+            // 文件可能在角色已开始移动后才就绪，按当前移动状态启动动作。
+            (wasWalking ? walkAction : idleAction)?.play();
             if (container)
               container.dataset.characterAnimations = gltf.animations
                 .map((clip) => clip.name)
@@ -315,7 +324,7 @@ export default function TownScene(props: TownSceneProps) {
         },
       );
     }
-    const buildingIds: LocationId[] = [
+    const buildingIds = [
       "bakery",
       "grocery",
       "market",
@@ -324,7 +333,17 @@ export default function TownScene(props: TownSceneProps) {
       "gifts",
       "rival",
       "cafe",
-    ];
+    ] as const satisfies readonly LocationId[];
+    const landmarkHeights: Record<(typeof buildingIds)[number], number> = {
+      bakery: 4.4,
+      grocery: 4.6,
+      market: 2.9,
+      research: 6.2,
+      bank: 5.2,
+      gifts: 4.4,
+      rival: 4.8,
+      cafe: 4.4,
+    };
     const cameraObstacles: THREE.Object3D[] = [];
     buildingIds.forEach((id, index) => {
       const anchor = new THREE.Group();
@@ -344,7 +363,7 @@ export default function TownScene(props: TownSceneProps) {
       anchor.add(preview);
       scene.add(anchor);
       cameraObstacles.push(anchor);
-      loadModel(id, anchor, preview, 4.4 + (index % 3) * 0.5);
+      loadModel(id, anchor, preview, landmarkHeights[id]);
     });
     const infill: ReadonlyArray<readonly [number, number, number]> = [
       [-10, -5, 0.5],
@@ -363,18 +382,37 @@ export default function TownScene(props: TownSceneProps) {
       [-24, -1, 1.1],
     ];
     infill.forEach(([x, z, rotation], index) => {
-      const house = buildLandmark(
-        index % 2 ? "grocery" : "gifts",
-        index,
-        surfaces,
-      );
+      const kind = index % 2 ? "grocery" : "gifts";
+      const placeholder = buildLandmark(kind, index, surfaces);
+      const house = new THREE.Group();
+      house.add(placeholder);
       const scale = 0.7 + (index % 3) * 0.1;
       house.scale.setScalar(scale);
       house.position.set(x, groundHeight(x, z), z);
       house.rotation.y = rotation;
       scene.add(house);
       cameraObstacles.push(house);
+      infillSlots.push({ kind, anchor: house, placeholder });
     });
+    loader.load(
+      `/models/tree${window.innerWidth < 720 ? "-mobile" : ""}-v2.glb`,
+      (gltf) => {
+        if (disposed) {
+          disposeObject(gltf.scene);
+          return;
+        }
+        landscape.replaceTrees(gltf.scene);
+        assetStatus.loaded.push("tree");
+        publishAssetStatus();
+      },
+      undefined,
+      () => {
+        if (!disposed) {
+          assetStatus.missing.push("tree");
+          publishAssetStatus();
+        }
+      },
+    );
     const player = new THREE.Group();
     const panda = pandaPreview();
     player.add(panda);
@@ -482,7 +520,10 @@ export default function TownScene(props: TownSceneProps) {
         controls.target.copy(target);
         camera.lookAt(target);
         landscape.updateView(camera.position, target);
-      } else controls.update();
+      } else {
+        controls.update();
+        landscape.updateView(camera.position, controls.target, false);
+      }
       rendering.render(delta);
       frame = requestAnimationFrame(animate);
     };

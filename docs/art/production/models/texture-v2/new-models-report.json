@@ -1,0 +1,290 @@
+[
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\tree.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\tree-v2.glb",
+    "source_bytes": 4030096,
+    "output_bytes": 1510620,
+    "converted_images": [
+      "stylized_tree_3d_model_basecolor",
+      "stylized_tree_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "stylized_tree_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\tree-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\tree-mobile-v2.glb",
+    "source_bytes": 1204032,
+    "output_bytes": 523196,
+    "converted_images": [
+      "stylized_tree_3d_model_basecolor",
+      "stylized_tree_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "stylized_tree_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\cafe.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\cafe-v2.glb",
+    "source_bytes": 4791660,
+    "output_bytes": 2352488,
+    "converted_images": [
+      "stone_cottage_cafe_3d_model_basecolor",
+      "stone_cottage_cafe_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "stone_cottage_cafe_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\cafe-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\cafe-mobile-v2.glb",
+    "source_bytes": 1510928,
+    "output_bytes": 842712,
+    "converted_images": [
+      "stone_cottage_cafe_3d_model_basecolor",
+      "stone_cottage_cafe_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "stone_cottage_cafe_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\research.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\research-v2.glb",
+    "source_bytes": 5222152,
+    "output_bytes": 2638024,
+    "converted_images": [
+      "fantasy_cottage_3d_model_basecolor",
+      "fantasy_cottage_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "fantasy_cottage_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\research-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\research-mobile-v2.glb",
+    "source_bytes": 1658840,
+    "output_bytes": 959380,
+    "converted_images": [
+      "fantasy_cottage_3d_model_basecolor",
+      "fantasy_cottage_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "fantasy_cottage_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\grocery.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\grocery-v2.glb",
+    "source_bytes": 5122148,
+    "output_bytes": 2581124,
+    "converted_images": [
+      "market_stall_3d_model_basecolor",
+      "market_stall_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "market_stall_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\grocery-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\grocery-mobile-v2.glb",
+    "source_bytes": 1639128,
+    "output_bytes": 950164,
+    "converted_images": [
+      "market_stall_3d_model_basecolor",
+      "market_stall_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "market_stall_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bank.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bank-v2.glb",
+    "source_bytes": 4800516,
+    "output_bytes": 2455836,
+    "converted_images": [
+      "storybook_cottage_3d_model_basecolor",
+      "storybook_cottage_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "storybook_cottage_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bank-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bank-mobile-v2.glb",
+    "source_bytes": 1514704,
+    "output_bytes": 862160,
+    "converted_images": [
+      "storybook_cottage_3d_model_basecolor",
+      "storybook_cottage_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "storybook_cottage_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\market.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\market-v2.glb",
+    "source_bytes": 4894952,
+    "output_bytes": 2387668,
+    "converted_images": [
+      "fruit_market_stall_3d_model_basecolor",
+      "fruit_market_stall_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "fruit_market_stall_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\market-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\market-mobile-v2.glb",
+    "source_bytes": 1568172,
+    "output_bytes": 879976,
+    "converted_images": [
+      "fruit_market_stall_3d_model_basecolor",
+      "fruit_market_stall_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "fruit_market_stall_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\gifts.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\gifts-v2.glb",
+    "source_bytes": 5003912,
+    "output_bytes": 2521804,
+    "converted_images": [
+      "cute_cottage_shop_3d_model_basecolor",
+      "cute_cottage_shop_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "cute_cottage_shop_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\gifts-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\gifts-mobile-v2.glb",
+    "source_bytes": 1591688,
+    "output_bytes": 909952,
+    "converted_images": [
+      "cute_cottage_shop_3d_model_basecolor",
+      "cute_cottage_shop_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "cute_cottage_shop_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\rival.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\rival-v2.glb",
+    "source_bytes": 5006328,
+    "output_bytes": 2482080,
+    "converted_images": [
+      "storybook_cottage_3d_model_basecolor",
+      "storybook_cottage_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "storybook_cottage_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\rival-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\rival-mobile-v2.glb",
+    "source_bytes": 1587220,
+    "output_bytes": 898416,
+    "converted_images": [
+      "storybook_cottage_3d_model_basecolor",
+      "storybook_cottage_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "storybook_cottage_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  }
+]

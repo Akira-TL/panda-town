@@ -407,8 +407,18 @@ function vegetation() {
       );
   }
   group.add(bushes, blossoms);
-  const trunkMatrices = trunks.instanceMatrix.array.slice();
-  const crownMatrices = crowns.instanceMatrix.array.slice();
+  let treeBatches = [
+    {
+      mesh: trunks,
+      perTree: 1,
+      matrices: Array.from(trunks.instanceMatrix.array),
+    },
+    {
+      mesh: crowns,
+      perTree: 5,
+      matrices: Array.from(crowns.instanceMatrix.array),
+    },
+  ];
   const zero = new THREE.Matrix4().makeScale(0, 0, 0);
   const treeHeights = trees.map(
     ([x, z, scale]) => groundHeight(x, z) + 3 * scale,
@@ -418,20 +428,64 @@ function vegetation() {
   const closest = new THREE.Vector3();
   return {
     group,
-    updateView(camera: THREE.Vector3, target: THREE.Vector3) {
-      trunks.instanceMatrix.array.set(trunkMatrices);
-      crowns.instanceMatrix.array.set(crownMatrices);
+    replaceTrees(source: THREE.Object3D) {
+      for (const batch of treeBatches) {
+        group.remove(batch.mesh);
+        batch.mesh.dispose();
+        batch.mesh.geometry.dispose();
+        const materials = Array.isArray(batch.mesh.material)
+          ? batch.mesh.material
+          : [batch.mesh.material];
+        materials.forEach((material) => material.dispose());
+      }
+      treeBatches = [];
+      source.updateMatrixWorld(true);
+      source.traverse((node) => {
+        if (!(node instanceof THREE.Mesh)) return;
+        const batch = new THREE.InstancedMesh(
+          node.geometry,
+          node.material,
+          trees.length,
+        );
+        batch.castShadow = batch.receiveShadow = true;
+        trees.forEach(([x, z, scale], index) => {
+          const transform = new THREE.Matrix4()
+            .compose(
+              new THREE.Vector3(x, groundHeight(x, z), z),
+              new THREE.Quaternion().setFromAxisAngle(
+                new THREE.Vector3(0, 1, 0),
+                index * 2.39996,
+              ),
+              new THREE.Vector3(scale, scale, scale),
+            )
+            .multiply(node.matrixWorld);
+          batch.setMatrixAt(index, transform);
+        });
+        group.add(batch);
+        treeBatches.push({
+          mesh: batch,
+          perTree: 1,
+          matrices: Array.from(batch.instanceMatrix.array),
+        });
+      });
+    },
+    updateView(camera: THREE.Vector3, target: THREE.Vector3, hide = true) {
+      treeBatches.forEach((batch) =>
+        batch.mesh.instanceMatrix.array.set(batch.matrices),
+      );
       line.set(camera, target);
       trees.forEach(([x, z, scale], index) => {
         center.set(x, treeHeights[index]!, z);
         line.closestPointToPoint(center, true, closest);
-        if (center.distanceTo(closest) < 2.4 * scale) {
-          trunks.setMatrixAt(index, zero);
-          for (let j = 0; j < 5; j++) crowns.setMatrixAt(index * 5 + j, zero);
+        if (hide && center.distanceTo(closest) < 2.4 * scale) {
+          for (const batch of treeBatches)
+            for (let j = 0; j < batch.perTree; j++)
+              batch.mesh.setMatrixAt(index * batch.perTree + j, zero);
         }
       });
-      trunks.instanceMatrix.needsUpdate =
-        crowns.instanceMatrix.needsUpdate = true;
+      treeBatches.forEach((batch) => {
+        batch.mesh.instanceMatrix.needsUpdate = true;
+      });
     },
   };
 }
@@ -439,7 +493,12 @@ function vegetation() {
 export function buildLandscape(): {
   group: THREE.Group;
   update: (time: number, reduced: boolean) => void;
-  updateView: (camera: THREE.Vector3, target: THREE.Vector3) => void;
+  updateView: (
+    camera: THREE.Vector3,
+    target: THREE.Vector3,
+    hide?: boolean,
+  ) => void;
+  replaceTrees: (source: THREE.Object3D) => void;
 } {
   const group = new THREE.Group();
   const stream = river();
@@ -467,5 +526,10 @@ export function buildLandscape(): {
     );
   }
   group.add(cliffs);
-  return { group, update: stream.update, updateView: plants.updateView };
+  return {
+    group,
+    update: stream.update,
+    updateView: plants.updateView,
+    replaceTrees: plants.replaceTrees,
+  };
 }
