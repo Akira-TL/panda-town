@@ -318,6 +318,10 @@ small {
   padding: 15px 18px;
   box-shadow: 0 8px 30px #263b2314;
 }
+.mobile-goal-status,
+.inventory-label-short {
+  display: none;
+}
 .goal-card .eyebrow {
   margin-bottom: 6px;
   font-size: 9px;
@@ -1873,44 +1877,52 @@ details {
   .goal-card {
     top: 84px;
     left: 12px;
-    width: 170px;
-    padding: 10px 13px;
+    right: 12px;
+    width: auto;
+    padding: 8px 12px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   }
   .goal-card .eyebrow {
-    font-size: 7px;
-    margin-bottom: 5px;
+    display: none;
   }
   .goal-card > strong {
-    font-size: 15px;
+    font-size: 12px;
   }
   .goal-card small {
-    font-size: 8px;
-    margin-top: 6px;
-    line-height: 1.6;
+    display: none;
+  }
+  .mobile-goal-status {
+    display: block;
+    font-size: 10px;
+    color: #a28037;
+    margin-left: auto;
+  }
+  .goal-card .progress-track {
+    flex-basis: 100%;
+    order: 3;
+    margin: 5px 0 1px;
   }
   .progress-track {
     margin: 8px 0;
     height: 4px;
   }
   .view-controls {
-    top: 84px;
+    top: 140px;
     right: 12px;
-    flex-direction: column;
+    flex-direction: row;
     padding: 2px;
     gap: 0;
   }
   .view-controls button {
-    font-size: 9px;
+    font-size: 10px;
     padding: 6px 9px;
-    min-height: 39px;
+    min-height: 44px;
   }
   .opponent-peek {
-    top: 204px;
-    right: 12px;
-    max-width: 147px;
-    padding: 7px 9px;
-    gap: 6px;
+    display: none;
   }
   .opponent-avatar {
     font-size: 22px;
@@ -2258,6 +2270,9 @@ details {
   .profile-fact {
     gap: 8px;
     padding: 12px 0;
+  }
+  .profile-empty {
+    min-height: 64px;
   }
   .profile-fact-copy > strong {
     font-size: 11px;
@@ -3060,10 +3075,16 @@ details {
 @media (max-width: 700px) {
   .inventory-trigger {
     left: 12px;
-    top: 292px;
+    top: 140px;
     font-size: 10px;
     padding: 7px 10px;
     min-height: 44px;
+  }
+  .inventory-label-full {
+    display: none;
+  }
+  .inventory-label-short {
+    display: inline;
   }
   .inventory-trigger img {
     width: 23px;
@@ -3111,6 +3132,22 @@ details {
   .journey-item p {
     font-size: 12px;
   }
+}
+.opponent-journal {
+  margin-top: 15px;
+  padding: 4px 12px;
+  border: 1px dashed #d3c497;
+  border-radius: 9px;
+  background: #f5ecd5;
+}
+.opponent-journal summary {
+  font-size: 11px;
+  color: #84905c;
+}
+.opponent-journal p {
+  font-size: 11px;
+  color: #9b8f69;
+  line-height: 1.8;
 }
 @media (prefers-reduced-motion: reduce) {
   *,

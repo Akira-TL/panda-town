@@ -302,21 +302,21 @@ export default function Home() {
             <h1 id="report-heading">用户画像</h1>
             <strong className="report-nickname">{report.title.label}</strong>
             <p>{report.title.reason}</p>
-            <div className="outcome">
-              <strong>
-                {game.result?.opened ? "咖啡馆开张了！" : "咖啡馆筹备中"}
-              </strong>
-              <div className="outcome-amount">
-                <img src="/art/icon-cash.png" alt="金币" />
-                <b>{money(game.result?.cashBeforeOpening ?? game.cash)}</b>
-              </div>
-              <small>结算可用现金</small>
-              <span>
-                {game.result?.opened
-                  ? `开店后余额 ${money(game.cash)}`
-                  : `还差 ${money(game.result?.gap ?? 0)}`}
-              </span>
+          </div>
+          <div className="outcome">
+            <strong>
+              {game.result?.opened ? "咖啡馆开张了！" : "咖啡馆筹备中"}
+            </strong>
+            <div className="outcome-amount">
+              <img src="/art/icon-cash.png" alt="金币" />
+              <b>{money(game.result?.cashBeforeOpening ?? game.cash)}</b>
             </div>
+            <small>结算可用现金</small>
+            <span>
+              {game.result?.opened
+                ? `开店后余额 ${money(game.cash)}`
+                : `还差 ${money(game.result?.gap ?? 0)}`}
+            </span>
           </div>
         </section>
         <FinalAssetNote game={game} />
@@ -396,6 +396,13 @@ export default function Home() {
       <aside className="goal-card">
         <span className="eyebrow">唯一目标 · 开张咖啡馆</span>
         <strong>筹齐 3000 金币</strong>
+        <span className="mobile-goal-status">
+          {game.result?.opened
+            ? "目标达成"
+            : goalCash >= 3000
+              ? "资金已够"
+              : `还差 ${money(3000 - goalCash)}`}
+        </span>
         <div className="progress-track">
           <span style={{ width: `${Math.min(100, goalCash / 30)}%` }} />
         </div>

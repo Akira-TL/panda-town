@@ -64,11 +64,13 @@ export function InventoryPanel({ game }: { game: GameState }) {
     <>
       <button
         className="inventory-trigger"
+        aria-label="资产与旅程手记"
         ref={trigger}
         onClick={() => setOpen(true)}
       >
         <img src="/art/icon-assets.png" alt="" />
-        <span>资产与旅程手记</span>
+        <span className="inventory-label-full">资产与旅程手记</span>
+        <span className="inventory-label-short">手记</span>
         <b>↗</b>
       </button>
       {open && (
@@ -118,6 +120,16 @@ export function InventoryPanel({ game }: { game: GameState }) {
                 当前现金<strong>{game.cash.toLocaleString("zh-CN")}</strong>
               </span>
             </div>
+            <details className="opponent-journal">
+              <summary>隔壁店长的进度</summary>
+              <p>
+                当前现金 {game.opponent.cash.toLocaleString("zh-CN")}，
+                {game.opponent.stallBoughtDay
+                  ? `第 ${game.opponent.stallBoughtDay} 天起接手摊位。`
+                  : "尚未接手摊位。"}
+              </p>
+              <p>他会按自己的节奏经营，先筹齐资金也不会结束你的八天旅程。</p>
+            </details>
             <h3 className="inventory-category">经营与投资</h3>
             {!game.assets.stall && !game.assets.investment && (
               <p className="inventory-empty">
