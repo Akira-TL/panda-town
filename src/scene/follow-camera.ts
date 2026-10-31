@@ -7,19 +7,44 @@ export function planFollowCamera(
   forward: THREE.Vector3,
 ) {
   const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
-  const inward = new THREE.Vector3(-forward.x, 0, -forward.z).normalize();
-  if (inward.lengthSq() < 0.1) inward.set(0, 0, 1);
+  const behind = new THREE.Vector3(-forward.x, 0, -forward.z).normalize();
+  if (behind.lengthSq() < 0.1) behind.set(0, 0, 1);
   const boxes = obstacles.map((obstacle) =>
     new THREE.Box3().setFromObject(obstacle),
   );
   const ray = new THREE.Ray();
+  const preciseRay = new THREE.Raycaster();
   const hit = new THREE.Vector3();
   function intersections(position: THREE.Vector3): number {
     const direction = position.clone().sub(target);
     const distance = direction.length();
     ray.set(target, direction.normalize());
-    return boxes.filter((box) => {
-      if (box.containsPoint(target)) return false;
+    return boxes.filter((box, index) => {
+      if (box.containsPoint(position)) return true;
+      if (box.containsPoint(target)) {
+        const obstacle = obstacles[index]!;
+        const sides = new Map<THREE.Material, THREE.Side>();
+        obstacle.traverse((node) => {
+          if (!(node instanceof THREE.Mesh)) return;
+          const materials = Array.isArray(node.material)
+            ? node.material
+            : [node.material];
+          materials.forEach((material) => {
+            if (!sides.has(material)) sides.set(material, material.side);
+            material.side = THREE.DoubleSide;
+          });
+        });
+        preciseRay.set(position, target.clone().sub(position).normalize());
+        preciseRay.near = 0.03;
+        preciseRay.far = distance - 0.1;
+        try {
+          return preciseRay.intersectObject(obstacle, true).length > 0;
+        } finally {
+          sides.forEach((side, material) => {
+            material.side = side;
+          });
+        }
+      }
       return (
         ray.intersectBox(box, hit) !== null &&
         hit.distanceTo(target) < distance + 0.2
@@ -28,16 +53,29 @@ export function planFollowCamera(
   }
   let best = focus.clone().add(new THREE.Vector3(0, 7, 8));
   let bestScore = Infinity;
-  for (const height of [4.8, 7.5]) {
-    for (const angle of [0, -0.6, 0.6, -1.2, 1.2, Math.PI]) {
-      const offset = inward
+  for (const height of [4.8, 7.5, 3.6]) {
+    for (const angle of [
+      0,
+      -0.6,
+      0.6,
+      -1.2,
+      1.2,
+      -1.8,
+      1.8,
+      -2.4,
+      2.4,
+      Math.PI,
+    ]) {
+      const offset = behind
         .clone()
         .applyAxisAngle(new THREE.Vector3(0, 1, 0), angle)
         .multiplyScalar(8);
       offset.y = height;
       const position = focus.clone().add(offset);
       const score =
-        intersections(position) * 100 + Math.abs(angle) + (height - 4.8) * 0.4;
+        intersections(position) * 100 +
+        Math.abs(angle) +
+        Math.abs(height - 4.8) * 0.4;
       if (score < bestScore) {
         bestScore = score;
         best = position;

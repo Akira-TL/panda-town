@@ -497,6 +497,8 @@ export default function TownScene(props: TownSceneProps) {
     let lastTime = performance.now();
     let lastCameraPlan = -Infinity;
     let followPlan: ReturnType<typeof planFollowCamera> | null = null;
+    let plannedFocus = new THREE.Vector3(Infinity, Infinity, Infinity);
+    let plannedAssetCount = -1;
     if (previousMode === "overview") {
       camera.position.set(33, 36, 42);
       controls.target.set(0, 0, -2);
@@ -550,6 +552,8 @@ export default function TownScene(props: TownSceneProps) {
         if (current.cameraMode === "overview") {
           camera.position.set(33, 36, 42);
           controls.target.set(0, 1, -2);
+        } else {
+          plannedAssetCount = -1;
         }
         previousMode = current.cameraMode;
       }
@@ -558,7 +562,13 @@ export default function TownScene(props: TownSceneProps) {
           ? new THREE.Vector3(...LOCATION_POSITIONS.cafe)
           : player.position;
         const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
-        if (!followPlan || time - lastCameraPlan > 200) {
+        const shouldPlan =
+          !followPlan ||
+          plannedAssetCount !== assetStatus.loaded.length ||
+          (plannedFocus.distanceToSquared(focus) > 0.01 &&
+            time - lastCameraPlan > 120);
+        let collision = false;
+        if (shouldPlan) {
           const viewLocation = current.cafeOpened
             ? "cafe"
             : current.playerLocation;
@@ -570,15 +580,16 @@ export default function TownScene(props: TownSceneProps) {
               ? curve.getTangent(progress)
               : routeCurve(viewLocation, nextLocation).getTangent(0);
           followPlan = planFollowCamera(focus, cameraObstacles, forward);
+          collision = followPlan.intersects(camera.position) > 0;
+          plannedFocus.copy(focus);
+          plannedAssetCount = assetStatus.loaded.length;
           lastCameraPlan = time;
         }
-        const desired = followPlan.position;
-        container.dataset.cameraObstructed = String(followPlan.blocked);
+        const desired = followPlan!.position;
+        container.dataset.cameraObstructed = String(followPlan!.blocked);
         camera.position.lerp(
           desired,
-          current.reducedMotion || followPlan.intersects(camera.position) > 0
-            ? 1
-            : 1 - Math.exp(-delta * 5),
+          current.reducedMotion || collision ? 1 : 1 - Math.exp(-delta * 5),
         );
         controls.target.copy(target);
         camera.lookAt(target);
