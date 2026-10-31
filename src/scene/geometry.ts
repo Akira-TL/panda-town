@@ -20,7 +20,7 @@ export const LOCATION_POSITIONS: Record<
   repair: [-22, 2.5, -10],
   garden: [-14, 4.2, -20],
   music: [20, 0.7, -5],
-  dock: [23, 0.3, 5],
+  dock: [8.3, 0.3, 7.2],
 };
 export function routeCurve(
   from: LocationId,
