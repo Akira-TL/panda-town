@@ -1,20 +1,15 @@
 import { expect, test, type Page } from "@playwright/test";
-import type { GameState } from "../../src/game/engine";
+import {
+  saved,
+  begin,
+  arrive,
+  choose,
+  advance,
+  finish,
+  key,
+  resetSession,
+} from "./helpers";
 
-interface SavedSession {
-  game: GameState;
-  position: string;
-  branch: boolean;
-  remaining: number;
-  die: number;
-  rolled: boolean;
-}
-declare global {
-  interface Window {
-    __pandaOriginalRandom: () => number;
-  }
-}
-const key = "panda-town.current.v1";
 const networkFailures = new WeakMap<Page, string[]>();
 
 test.beforeEach(async ({ page }) => {
@@ -34,74 +29,6 @@ test.afterEach(async ({ page }, info) => {
       contentType: "text/plain",
     });
 });
-
-async function saved(page: Page): Promise<SavedSession | null> {
-  return page.evaluate((storageKey) => {
-    const value = sessionStorage.getItem(storageKey);
-    return value ? (JSON.parse(value) as SavedSession) : null;
-  }, key);
-}
-async function begin(page: Page) {
-  await page.goto("/");
-  await page.getByRole("button", { name: /出发去小镇/ }).click();
-  await page.getByRole("button", { name: /明白了，开始第一天/ }).click();
-}
-async function arrive(page: Page, die: number, branch = 0) {
-  await page.evaluate((value) => {
-    window.__pandaOriginalRandom = Math.random;
-    Math.random = () => (value - 0.5) / 6;
-  }, die);
-  await page.getByRole("button", { name: /掷骰出发/ }).click();
-  await page.evaluate(() => {
-    Math.random = window.__pandaOriginalRandom;
-  });
-  for (let step = 0; step < 8; step++) {
-    await page.waitForFunction((storageKey) => {
-      const raw = sessionStorage.getItem(storageKey);
-      const value = raw ? (JSON.parse(raw) as SavedSession) : null;
-      return value?.branch || value?.game.phase === "decision";
-    }, key);
-    const state = await saved(page);
-    if (state?.game.phase === "decision") return state;
-    await page
-      .getByRole("region", { name: "选择岔路" })
-      .getByRole("button")
-      .nth(branch)
-      .click();
-  }
-  throw new Error("合法六面骰移动未能在有限分支后到达事件");
-}
-async function choose(page: Page, optionId: string) {
-  const state = await saved(page);
-  const option = state?.game.event?.options.find(
-    (entry) => entry.id === optionId,
-  );
-  if (!option) throw new Error(`当前事件没有选项 ${optionId}`);
-  await page
-    .getByRole("button")
-    .filter({ has: page.getByText(option.label, { exact: true }) })
-    .click();
-  await expect
-    .poll(async () => (await saved(page))?.game.phase)
-    .toBe("feedback");
-}
-async function advance(page: Page) {
-  await page
-    .getByRole("button", { name: /收好今天的收入，继续|结算第八天，准备开张/ })
-    .click();
-  await expect
-    .poll(async () => (await saved(page))?.game.phase)
-    .toMatch(/travel|settlement/);
-}
-async function finish(page: Page, sell = false) {
-  if (sell) await page.getByRole("checkbox").first().check();
-  await page.getByRole("button", { name: /确认结算/ }).click();
-  await expect(page.getByRole("region", { name: "咖啡馆结局" })).toBeVisible();
-  await page.getByRole("button", { name: /看看本局的选择与画像/ }).click();
-  await expect(
-    page.getByRole("button", { name: "清除记录", exact: true }),
-  ).toBeVisible();
-}
 
 test("八次真实工作完成开店，刷新、证据、重开与清除不串局", async ({ page }) => {
   const outgoing: string[] = [];
@@ -142,7 +69,7 @@ test("八次真实工作完成开店，刷新、证据、重开与清除不串�
   await page.getByRole("button", { name: /证据/ }).first().click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.getByRole("button", { name: "关闭证据", exact: true }).click();
-  await page.getByRole("button", { name: /重开一局/ }).click();
+  await resetSession(page, "restart");
   await page.getByRole("button", { name: /明白了，开始第一天/ }).click();
   expect((await saved(page))!.game.sessionId).not.toBe(id);
   expect((await saved(page))!.game.evidence).toHaveLength(0);
@@ -152,7 +79,7 @@ test("八次真实工作完成开店，刷新、证据、重开与清除不串�
     await advance(page);
   }
   await finish(page);
-  await page.getByRole("button", { name: "清除记录", exact: true }).click();
+  await resetSession(page, "clear");
   await expect(page.getByRole("button", { name: /出发去小镇/ })).toBeVisible();
   expect(await saved(page)).toBeNull();
   await page.reload();
@@ -252,7 +179,7 @@ test("三条八回合路线覆盖16落点、两处分支和11类基础事件", a
       await advance(page);
     }
     await finish(page);
-    await page.getByRole("button", { name: "清除记录", exact: true }).click();
+    await resetSession(page, "clear");
   }
   expect([...places].sort()).toEqual(
     [
@@ -292,18 +219,25 @@ test("三条八回合路线覆盖16落点、两处分支和11类基础事件", a
 test("资料比较、客观题及持仓更新补齐第12类事件", async ({ page }) => {
   await begin(page);
   await arrive(page, 3);
-  await page.getByRole("button", { name: /查看资料 · 营业记录/ }).click();
-  await page.getByRole("button", { name: /查看资料 · 商家访谈/ }).click();
-  await page.getByRole("button", { name: /比较两份来源/ }).click();
+  await page.getByRole("button", { name: /先看看资料/ }).click();
   await page
-    .getByText("可选理解题 · 不影响金币，可直接跳过", { exact: true })
+    .getByRole("button", { name: /展开这份资料/ })
+    .first()
     .click();
+  await page
+    .getByRole("button", { name: /展开这份资料/ })
+    .first()
+    .click();
+  await page.getByRole("button", { name: "比较两份来源", exact: true }).click();
+  await page.screenshot({ path: "logs/validation-study.png" });
+  await page.getByRole("button", { name: /理解题 · 可跳过/ }).click();
   await page.getByRole("button", { name: "20", exact: true }).click();
   expect(
     (await saved(page))!.game.evidence.some(
       (entry) => entry.action === "answer" && entry.correct,
     ),
   ).toBe(true);
+  await page.getByRole("button", { name: "关闭资料", exact: true }).click();
   await choose(page, "skip");
   await advance(page);
   await arrive(page, 4);

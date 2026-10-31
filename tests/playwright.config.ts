@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test";
+import { resolve } from "node:path";
 
 export default defineConfig({
   testDir: "./browser",
@@ -10,10 +11,13 @@ export default defineConfig({
   outputDir: "../logs/playwright-artifacts",
   reporter: [
     ["list"],
-    ["json", { outputFile: "logs/playwright-results.json" }],
+    [
+      "json",
+      { outputFile: resolve(process.cwd(), "logs/playwright-results.json") },
+    ],
   ],
   use: {
-    baseURL: process.env.PANDA_TEST_URL ?? "http://127.0.0.1:3017",
+    baseURL: process.env.PANDA_TEST_URL ?? "http://127.0.0.1:3018",
     channel: "msedge",
     headless: true,
     viewport: { width: 1440, height: 900 },
