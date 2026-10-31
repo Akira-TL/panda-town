@@ -1,0 +1,80 @@
+[
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\panda-rigged.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\panda-rigged-v2.glb",
+    "source_bytes": 16917596,
+    "output_bytes": 9331276,
+    "converted_images": [
+      "panda_character_3d_model_basecolor",
+      "panda_character_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "panda_character_3d_model_normal"
+    ],
+    "joints": 10,
+    "animations": [
+      "Idle",
+      "Walk"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\panda-mobile-rigged.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\panda-mobile-rigged-v2.glb",
+    "source_bytes": 4769712,
+    "output_bytes": 2588548,
+    "converted_images": [
+      "panda_character_3d_model_basecolor",
+      "panda_character_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "panda_character_3d_model_normal"
+    ],
+    "joints": 10,
+    "animations": [
+      "Idle",
+      "Walk"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bakery.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bakery-v2.glb",
+    "source_bytes": 5147384,
+    "output_bytes": 2594692,
+    "converted_images": [
+      "bakery_shop_3d_model_basecolor",
+      "bakery_shop_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "bakery_shop_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bakery-mobile.glb",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\bakery-mobile-v2.glb",
+    "source_bytes": 1626492,
+    "output_bytes": 938628,
+    "converted_images": [
+      "bakery_shop_3d_model_basecolor",
+      "bakery_shop_3d_model_rm"
+    ],
+    "preserved_normal_images": [
+      "bakery_shop_3d_model_normal"
+    ],
+    "joints": 0,
+    "animations": [],
+    "uv_layers": [
+      "UVMap"
+    ]
+  }
+]
