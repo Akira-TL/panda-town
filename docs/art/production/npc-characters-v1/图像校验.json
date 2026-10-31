@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-01",
+  "count": 15,
+  "generator": "built-in image_gen",
+  "previewOnly": "角色总览.png",
+  "images": [
+    {
+      "file": "01_bakery_rabbit.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2614929,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "sha256": "6ecb7d2c9421646e358cfbaeef1ab6df73a5b3d09b3d6d5c9448f97cde7e63a3"
+    },
+    {
+      "file": "02_grocery_beaver.png",
+      "width": 1295,
+      "height": 1214,
+      "bytes": 1776510,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "613b804ce37f3b8674b8f446cace16dde8fb68b89bf0d4e6bae513f47da787e5"
+    },
+    {
+      "file": "03_market_squirrel.png",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1453540,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "bc1936330ddd41ca91e5d317958b7154efb121c34fd4853367a3c656c1af697c"
+    },
+    {
+      "file": "04_research_fox.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2159130,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "sha256": "c92d29107d1c6d7e834a073f9dfe1f5504bb2a34d13c660af59954c6b2532751"
+    },
+    {
+      "file": "05_bank_owl.png",
+      "width": 1145,
+      "height": 1374,
+      "bytes": 1697820,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "6d591d7dc59d165f7788b4a00a3739586e1834d06d7e4cf040a05c40bbb50338"
+    },
+    {
+      "file": "06_gifts_sheep.png",
+      "width": 1145,
+      "height": 1374,
+      "bytes": 1439797,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "15fcaf6f18bf73ff23c81eb176d2822ba074fc7240bf993bb15d1af2362a367d"
+    },
+    {
+      "file": "07_rival_otter.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2292005,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "sha256": "bc4aa1adf1e134f46e61c6e5e39b0dbc2fa018452fc80c87ded668ced09ab441"
+    },
+    {
+      "file": "08_cafe_cat.png",
+      "width": 1145,
+      "height": 1374,
+      "bytes": 1920915,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "045295b8318385787ce674cf29795ba965f09871756842677fe0239e2ab3a7c0"
+    },
+    {
+      "file": "09_notice_hedgehog.png",
+      "width": 1282,
+      "height": 1227,
+      "bytes": 1713008,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "541eecfe2bae0ecfc9bcb490aa985347f7544276ead05073658556728285ff90"
+    },
+    {
+      "file": "10_repair_automaton.png",
+      "width": 1145,
+      "height": 1374,
+      "bytes": 1465961,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "a03c7861efb0f0881050956d6e151a2a0558c47ac632da7c61c471a73a0d9e6e"
+    },
+    {
+      "file": "11_garden_deer.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2030434,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "sha256": "f04024fb4fecbe0c98521c5304f06778abb982fd31859f9b302960746e87a809"
+    },
+    {
+      "file": "12_music_frog.png",
+      "width": 1145,
+      "height": 1374,
+      "bytes": 1638232,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "e497f9d14ad6881b85d2f03983c0a159b8f6ef1eb492a6dade80b0735395ace3"
+    },
+    {
+      "file": "13_dock_turtle.png",
+      "width": 1146,
+      "height": 1372,
+      "bytes": 1728339,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "d5eb11beaecc947cdd78dcec1baee22575db9d5848b54a13fa30af4222e5e552"
+    },
+    {
+      "file": "14_riverside_mouse.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2453989,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "sha256": "8156a7a35f00db6bfa82a27cbbc50095a3e7c85c59a04b9e135d7a20c9b54268"
+    },
+    {
+      "file": "15_square_dog.png",
+      "width": 1199,
+      "height": 1312,
+      "bytes": 1490034,
+      "transparent": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "2fd2fc34f9508a50c21f30c4320750d94043d45ad85401c3269b3f7438cd649c"
+    }
+  ],
+  "目视检查": "已逐张检查15个完整角色，并在浅色总览检查背景、轮廓与职业对应。"
+}
