@@ -110,6 +110,7 @@ export function createScenery(heightAt: (x: number, z: number) => number) {
   plazaGeometry.setIndex(indices);
   plazaGeometry.computeVertexNormals();
   const plaza = new THREE.Mesh(plazaGeometry, stone("#c8c0a8"));
+  plaza.name = "Plaza";
   plaza.receiveShadow = true;
   group.add(plaza);
   const pavers = new THREE.InstancedMesh(
@@ -125,6 +126,7 @@ export function createScenery(heightAt: (x: number, z: number) => number) {
         z = -7 + row * 0.46;
       if (((x + 6) / 7) ** 2 + ((z - 1) / 5.5) ** 2 > 1 || count >= 420)
         continue;
+      if (((x + 6) / 7) ** 2 + ((z - 1) / 5.5) ** 2 < 0.85) continue;
       transform.position.set(x, heightAt(x, z) + 0.04, z);
       transform.rotation.y = Math.sin(row * 11 + column) * 0.07;
       transform.updateMatrix();

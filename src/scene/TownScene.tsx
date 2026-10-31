@@ -10,6 +10,7 @@ import { buildLandscape, groundHeight } from "./landscape";
 import { createRendering, createSkyTexture } from "./rendering";
 import { planFollowCamera } from "./follow-camera";
 import { createLandmarkPlacement } from "./landmark-placement";
+import { createGroundSurfaces } from "./ground-surfaces";
 import { createResidents } from "./residents";
 import {
   createInventoryProps,
@@ -190,6 +191,7 @@ export default function TownScene(props: TownSceneProps) {
           }),
         );
         road.receiveShadow = true;
+        road.name = "Road";
         scene.add(road);
       }
     const assetStatus: AssetStatus = { loaded: [], missing: [] };
@@ -236,6 +238,17 @@ export default function TownScene(props: TownSceneProps) {
       roof: surface("roof"),
       canvas: surface("canvas"),
     };
+    const groundSurfaces = createGroundSurfaces(
+      textureLoader,
+      renderer.capabilities.getMaxAnisotropy(),
+      (name, loaded) => {
+        (loaded ? assetStatus.loaded : assetStatus.missing).push(
+          `material-${name}`,
+        );
+        publishAssetStatus();
+      },
+    );
+    groundSurfaces.applyGroup(scene);
     const loader = new GLTFLoader();
     const inventory = createInventoryProps(surfaces);
     inventory.update(latest.current);
@@ -399,7 +412,11 @@ export default function TownScene(props: TownSceneProps) {
       anchor.add(preview);
       scene.add(anchor);
       cameraObstacles.push(anchor);
-      loadModel(id, anchor, preview, landmarkHeights[id], placement.fit);
+      groundSurfaces.applyGroup(placement.group);
+      loadModel(id, anchor, preview, landmarkHeights[id], (bounds) => {
+        placement.fit(bounds);
+        groundSurfaces.applyGroup(placement.group);
+      });
     });
     const infill: ReadonlyArray<readonly [number, number, number]> = [
       [-10, -5, 0.5],
@@ -607,6 +624,7 @@ export default function TownScene(props: TownSceneProps) {
       rendering.dispose();
       disposeObject(scene);
       sky.dispose();
+      groundSurfaces.dispose();
       Object.values(surfaces).forEach((texture) => texture.dispose());
       renderer.dispose();
       renderer.domElement.remove();

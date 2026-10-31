@@ -115,8 +115,8 @@ function terrain(): THREE.Mesh {
     const height = groundHeight(x, z);
     position.setY(i, height);
     const bank = nearest(riverSamples, x, z).distance < 3.1;
-    const color = new THREE.Color(bank ? "#8b9682" : "#829a60");
-    color.multiplyScalar(0.97 + noise(i) * 0.06);
+    const color = new THREE.Color(bank ? "#dde5e3" : "#ffffff");
+    color.multiplyScalar(0.96 + 0.04 * Math.sin(x * 0.11) * Math.cos(z * 0.09));
     colors.push(color.r, color.g, color.b);
   }
   geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
@@ -126,6 +126,7 @@ function terrain(): THREE.Mesh {
     new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1 }),
   );
   ground.receiveShadow = true;
+  ground.name = "Terrain";
   return ground;
 }
 
@@ -194,6 +195,9 @@ function bridge(): THREE.Group {
   );
   group.position.set(11, 0, -5);
   group.rotation.y = -Math.atan2(0.8, 0.6);
+  group.traverse((node) => {
+    if (node instanceof THREE.Mesh) node.name = "BridgeStone";
+  });
   return group;
 }
 
@@ -213,8 +217,8 @@ function cobbles(): THREE.Group {
           center = curve.getPoint(t),
           tangent = curve.getTangent(t);
         const side = new THREE.Vector3(-tangent.z, 0, tangent.x).normalize();
-        for (let lane = -2; lane <= 2; lane++) {
-          const offset = lane * 0.45 + (i % 2) * 0.1;
+        for (const lane of [-1, 1]) {
+          const offset = lane * 1.2 + (noise(seed++) - 0.5) * 0.08;
           const point = center.clone().addScaledVector(side, offset);
           // 桥头保留铺石，拱桥范围使用自身桥面。
           if (Math.hypot(point.x - 11, point.z + 5) < 3.4) continue;
@@ -222,8 +226,8 @@ function cobbles(): THREE.Group {
             point.x,
             center.y - 0.025,
             point.z,
-            0.41 + noise(seed++) * 0.08,
-            0.45 + noise(seed++) * 0.09,
+            0.24 + noise(seed++) * 0.06,
+            0.3 + noise(seed++) * 0.07,
             Math.atan2(tangent.x, tangent.z) + (noise(seed++) - 0.5) * 0.13,
           ]);
         }
