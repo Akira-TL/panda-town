@@ -1,8 +1,21 @@
 # Panda Town
 
-面向 PandaAI 赛道的三维童话小镇游戏规划：玩家掷骰子沿弯曲街道自动行走，在岔路、商店与角色事件中选择，经营生活与资产，并查看带行为证据的消费偏好与一般人格特征反馈。
+面向 PandaAI 赛道的三维童话小镇游戏：玩家掷骰子沿弯曲街道自动行走，在岔路、商店与角色事件中选择，经营生活与资产，并查看带行为证据的消费偏好与一般人格特征反馈。
 
 **用户已授权完成24项任务，当前进入资产生产与实现阶段；可运行状态以实际验收证据为准。**
+
+## 本机项目位置与运行入口
+
+Windows 的“文档”目录可能因 OneDrive 设置而迁移。使用系统返回的实际目录定位项目，不固定使用旧 OneDrive 路径。在 PowerShell 中执行：
+
+```powershell
+$documentsPath = [Environment]::GetFolderPath('MyDocuments')
+Set-Location -LiteralPath (Join-Path $documentsPath 'ChatGPT\大富翁')
+```
+
+本次迁移后，“文档”目录为 `%USERPROFILE%\Documents`。源码、Git 历史、模型和未提交修改均已在新位置核实。应用启停仍使用项目 `scripts/` 中的脚本，步骤见[本地运行说明](docs/validation/local-validation.md)；完整进度见[任务验收矩阵](docs/validation/task-status.md)。三维画面与模型仍在制作，不能仅凭八回合可运行就认定全部视觉任务完成。
+
+## 规格与实现范围
 
 - [首版完整规格草案](docs/specs/panda-town.md)
 - [24 项任务草案与并行依赖](docs/plans/task-breakdown.md)
