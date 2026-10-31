@@ -277,15 +277,25 @@ test("手机竖屏无横向溢出且真实流程可继续", async ({ page }) => 
   ).toBe(true);
 });
 
-test("损坏版本不能恢复为合法游戏", async ({ page }) => {
-  await page.addInitScript(
-    (storageKey) =>
-      sessionStorage.setItem(storageKey, '{"game":{"rulesVersion":-1}}'),
-    key,
-  );
-  await page.goto("/");
-  await expect(
-    page.getByText("记录版本不兼容或内容损坏，请重新开始。", { exact: true }),
-  ).toBeVisible();
-  await expect(page.getByRole("button", { name: /出发去小镇/ })).toBeVisible();
-});
+for (const example of [
+  { name: "旧版本与无效结构", raw: '{"game":{"rulesVersion":-1}}' },
+  { name: "无法解析的JSON", raw: "{" },
+]) {
+  test(`损坏记录明确提示重新开始：${example.name}`, async ({ page }) => {
+    await page.addInitScript(
+      ({ storageKey, raw }) => {
+        sessionStorage.setItem(storageKey, raw);
+      },
+      { storageKey: key, raw: example.raw },
+    );
+    await page.goto("/");
+    await expect(
+      page.getByText("记录版本不兼容或内容损坏，请重新开始。", { exact: true }),
+    ).toBeVisible();
+    await page.getByRole("button", { name: /出发去小镇/ }).click();
+    await page.getByRole("button", { name: /明白了，开始第一天/ }).click();
+    expect((await saved(page))!.game.rulesVersion).toBe(2);
+    expect((await saved(page))!.game.cash).toBe(1000);
+    expect((await saved(page))!.game.evidence).toHaveLength(0);
+  });
+}
