@@ -11,6 +11,7 @@ import { createRendering, createSkyTexture } from "./rendering";
 import { planFollowCamera } from "./follow-camera";
 import { createLandmarkPlacement } from "./landmark-placement";
 import { createGroundSurfaces } from "./ground-surfaces";
+import { createOutdoors } from "./outdoors";
 import { createResidents } from "./residents";
 import {
   createInventoryProps,
@@ -400,6 +401,10 @@ export default function TownScene(props: TownSceneProps) {
       cafe: 4.4,
     };
     const cameraObstacles: THREE.Object3D[] = [];
+    const outdoors = createOutdoors(surfaces, groundHeight);
+    scene.add(outdoors.group);
+    cameraObstacles.push(...outdoors.obstacles);
+    container.dataset.outdoorLocations = outdoors.locations.join(" ");
     buildingIds.forEach((id, index) => {
       const anchor = new THREE.Group();
       const preview = buildLandmark(id, index, surfaces);
@@ -621,6 +626,8 @@ export default function TownScene(props: TownSceneProps) {
       controls.dispose();
       characterMixer?.stopAllAction();
       residents?.dispose();
+      scene.remove(outdoors.group);
+      outdoors.dispose();
       rendering.dispose();
       disposeObject(scene);
       sky.dispose();
