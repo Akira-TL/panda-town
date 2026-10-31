@@ -1,0 +1,129 @@
+{
+  "source": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-source.glb",
+  "blender_version": "5.2.3 LTS",
+  "normalized_blend": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-normalized.blend",
+  "height_metres": 2.1,
+  "source_model": {
+    "objects": 1,
+    "triangles": 1979761,
+    "vertices": 1030280,
+    "materials": [
+      "tripo_material_d2fb3775-a4fb-4476-8048-9629f4ef54df"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "animations": [],
+    "textures": [
+      {
+        "name": "panda_character_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "panda_character_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "panda_character_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096
+      }
+    ],
+    "dimensions": [
+      0.85406,
+      0.65967,
+      0.97849
+    ]
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\public\\models\\panda.glb",
+    "bytes": 15152172,
+    "target_triangles": 120000,
+    "texture_limit": 2048,
+    "model": {
+      "objects": 1,
+      "triangles": 119999,
+      "vertices": 87079,
+      "materials": [
+        "tripo_material_d2fb3775-a4fb-4476-8048-9629f4ef54df"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "panda_character_3d_model_basecolor.jpg",
+          "width": 2048,
+          "height": 2048
+        },
+        {
+          "name": "panda_character_3d_model_rm.jpg",
+          "width": 2048,
+          "height": 2048
+        },
+        {
+          "name": "panda_character_3d_model_normal.png",
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "dimensions": [
+        1.83332,
+        1.41611,
+        2.10066
+      ]
+    }
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\public\\models\\panda-mobile.glb",
+    "bytes": 4260332,
+    "target_triangles": 30000,
+    "texture_limit": 1024,
+    "model": {
+      "objects": 1,
+      "triangles": 29999,
+      "vertices": 24659,
+      "materials": [
+        "tripo_material_d2fb3775-a4fb-4476-8048-9629f4ef54df"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "panda_character_3d_model_basecolor.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "panda_character_3d_model_rm.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "panda_character_3d_model_normal.png",
+          "width": 1024,
+          "height": 1024
+        }
+      ],
+      "dimensions": [
+        1.83308,
+        1.41557,
+        2.10128
+      ]
+    }
+  },
+  "previews": [
+    "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-front.png",
+    "C:\\Users\\Akira\\OneDrive\\文档\\ChatGPT\\大富翁\\docs\\art\\production\\models\\panda-back.png"
+  ],
+  "limitations": [
+    "自动降面和纹理缩放不等于视觉验收，需检查眼睛、耳朵、背包、接缝与轮廓。",
+    "不自动生成骨骼或动画；源文件没有动画时需另行制作。",
+    "许可依据来源账号计划与Tripo页面记录，不自动改为MIT。"
+  ]
+}
