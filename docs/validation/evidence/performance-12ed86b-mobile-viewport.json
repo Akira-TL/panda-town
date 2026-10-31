@@ -1,0 +1,240 @@
+{
+  "durationMs": 60005.4,
+  "frames": 8582,
+  "medianMs": 6.900000000001455,
+  "p95Ms": 7.099999999998545,
+  "budgetFrameMs": 33.333333333333336,
+  "totalEncodedBytes": 12105430,
+  "firstSessionBudgetBytes": 40000000,
+  "withinFirstSessionBudget": true,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "156.0.4314.50",
+  "host": {
+    "platform": "win32",
+    "cpu": "Intel(R) Core(TM) i7-10875H CPU @ 2.30GHz",
+    "logicalCpus": 16,
+    "totalMemoryBytes": 34258481152
+  },
+  "graphics": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2060 (0x00001F15) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)"
+  },
+  "loadedModels": "texture-wood texture-plaster texture-roof texture-canvas grocery bakery market research bank rival cafe gifts tree panda",
+  "resources": [
+    {
+      "path": "/_next/static/css/c044cd0fb3e3e8f0.css",
+      "encodedBytes": 12340,
+      "decodedBytes": 51039,
+      "transferBytes": 12640,
+      "durationMs": 18.40000000037253
+    },
+    {
+      "path": "/_next/static/chunks/webpack-28a7229f4b571c18.js",
+      "encodedBytes": 1870,
+      "decodedBytes": 3615,
+      "transferBytes": 2170,
+      "durationMs": 18.5
+    },
+    {
+      "path": "/_next/static/chunks/964-9e7fd12428968086.js",
+      "encodedBytes": 43870,
+      "decodedBytes": 166404,
+      "transferBytes": 44170,
+      "durationMs": 31.5
+    },
+    {
+      "path": "/_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "encodedBytes": 54249,
+      "decodedBytes": 172729,
+      "transferBytes": 54549,
+      "durationMs": 31.700000001117587
+    },
+    {
+      "path": "/_next/static/chunks/main-app-6c67cc9a8d31cca8.js",
+      "encodedBytes": 557,
+      "decodedBytes": 557,
+      "transferBytes": 857,
+      "durationMs": 22.59999999962747
+    },
+    {
+      "path": "/_next/static/chunks/app/page-eb50f6a2a5822868.js",
+      "encodedBytes": 28259,
+      "decodedBytes": 88254,
+      "transferBytes": 28559,
+      "durationMs": 26.799999998882413
+    },
+    {
+      "path": "/art/town-overview.webp",
+      "encodedBytes": 432944,
+      "decodedBytes": 432944,
+      "transferBytes": 433244,
+      "durationMs": 4.100000001490116
+    },
+    {
+      "path": "/_next/static/chunks/b536a0f1.12c0ffcd7ec6025f.js",
+      "encodedBytes": 84349,
+      "decodedBytes": 357041,
+      "transferBytes": 84649,
+      "durationMs": 20.800000000745058
+    },
+    {
+      "path": "/_next/static/chunks/bd904a5c.73b3e63b7e7a3a1c.js",
+      "encodedBytes": 74560,
+      "decodedBytes": 280865,
+      "transferBytes": 74860,
+      "durationMs": 19
+    },
+    {
+      "path": "/_next/static/chunks/239.1c85aa0171e13717.js",
+      "encodedBytes": 24515,
+      "decodedBytes": 92469,
+      "transferBytes": 24815,
+      "durationMs": 9.300000000745058
+    },
+    {
+      "path": "/_next/static/chunks/390.84c023937a8de8c7.js",
+      "encodedBytes": 9266,
+      "decodedBytes": 22346,
+      "transferBytes": 9566,
+      "durationMs": 6.5
+    },
+    {
+      "path": "/art/icon-cash.webp",
+      "encodedBytes": 6788,
+      "decodedBytes": 6788,
+      "transferBytes": 7088,
+      "durationMs": 4.599999999627471
+    },
+    {
+      "path": "/art/icon-assets.webp",
+      "encodedBytes": 20466,
+      "decodedBytes": 20466,
+      "transferBytes": 20766,
+      "durationMs": 4.800000000745058
+    },
+    {
+      "path": "/models/bakery-mobile-v2.glb",
+      "encodedBytes": 858078,
+      "decodedBytes": 938628,
+      "transferBytes": 858378,
+      "durationMs": 74.40000000037253
+    },
+    {
+      "path": "/models/grocery-mobile-v2.glb",
+      "encodedBytes": 865113,
+      "decodedBytes": 950164,
+      "transferBytes": 865413,
+      "durationMs": 79.80000000074506
+    },
+    {
+      "path": "/models/market-mobile-v2.glb",
+      "encodedBytes": 820385,
+      "decodedBytes": 879976,
+      "transferBytes": 820685,
+      "durationMs": 79.70000000111759
+    },
+    {
+      "path": "/models/research-mobile-v2.glb",
+      "encodedBytes": 885695,
+      "decodedBytes": 959380,
+      "transferBytes": 885995,
+      "durationMs": 95.69999999925494
+    },
+    {
+      "path": "/models/bank-mobile-v2.glb",
+      "encodedBytes": 802230,
+      "decodedBytes": 862160,
+      "transferBytes": 802530,
+      "durationMs": 96.70000000111759
+    },
+    {
+      "path": "/models/gifts-mobile-v2.glb",
+      "encodedBytes": 834133,
+      "decodedBytes": 909952,
+      "transferBytes": 834433,
+      "durationMs": 102.79999999888241
+    },
+    {
+      "path": "/models/rival-mobile-v2.glb",
+      "encodedBytes": 833320,
+      "decodedBytes": 898416,
+      "transferBytes": 833620,
+      "durationMs": 103.10000000149012
+    },
+    {
+      "path": "/models/cafe-mobile-v2.glb",
+      "encodedBytes": 794573,
+      "decodedBytes": 842712,
+      "transferBytes": 794873,
+      "durationMs": 97
+    },
+    {
+      "path": "/models/tree-mobile-v2.glb",
+      "encodedBytes": 508843,
+      "decodedBytes": 523196,
+      "transferBytes": 509143,
+      "durationMs": 38.5
+    },
+    {
+      "path": "/models/panda-mobile-rigged-v2.glb",
+      "encodedBytes": 2088642,
+      "decodedBytes": 2588548,
+      "transferBytes": 2088942,
+      "durationMs": 1563.5
+    },
+    {
+      "path": "/art/texture-wood.webp",
+      "encodedBytes": 100112,
+      "decodedBytes": 100112,
+      "transferBytes": 100412,
+      "durationMs": 5.799999998882413
+    },
+    {
+      "path": "/art/texture-plaster.webp",
+      "encodedBytes": 187344,
+      "decodedBytes": 187344,
+      "transferBytes": 187644,
+      "durationMs": 7.900000000372529
+    },
+    {
+      "path": "/art/texture-roof.webp",
+      "encodedBytes": 84190,
+      "decodedBytes": 84190,
+      "transferBytes": 84490,
+      "durationMs": 12.200000001117587
+    },
+    {
+      "path": "/art/texture-canvas.webp",
+      "encodedBytes": 365708,
+      "decodedBytes": 365708,
+      "transferBytes": 366008,
+      "durationMs": 14.400000000372529
+    },
+    {
+      "path": "/art/panda-tripo-source.webp",
+      "encodedBytes": 17158,
+      "decodedBytes": 17158,
+      "transferBytes": 17458,
+      "durationMs": 6.900000000372529
+    },
+    {
+      "path": "/art/dialogue-frame.png",
+      "encodedBytes": 900165,
+      "decodedBytes": 900165,
+      "transferBytes": 900465,
+      "durationMs": 10.300000000745058
+    },
+    {
+      "path": "/art/texture-canvas.webp",
+      "encodedBytes": 365708,
+      "decodedBytes": 365708,
+      "transferBytes": 300,
+      "durationMs": 7.400000000372529
+    }
+  ],
+  "errors": [],
+  "caveat": "本机隔离的headless Edge；390像素仅模拟视口，并非实体手机。资源体积为本页资源计时所见的编码响应正文之和，不等同冷缓存首屏压缩传输或整局所有延迟资源。"
+}
