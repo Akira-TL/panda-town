@@ -1,4 +1,4 @@
-export const RULES_VERSION = 1;
+export const RULES_VERSION = 2;
 export type Scenario = "A" | "B";
 export type Effect =
   | { kind: "work" | "observe" | "buy-stall" | "cooperate" | "sell-investment" }
@@ -61,6 +61,7 @@ export interface Evidence {
   cashBefore: number;
   cashAfter: number;
   assetsBefore: Assets;
+  assetsAfter: Assets;
   options: PresentedOption[];
   knownMaterials: Material[];
   correct: boolean | null;
@@ -210,6 +211,7 @@ function record(
     cashBefore: before.cash,
     cashAfter: state.cash,
     assetsBefore: structuredClone(before.assets),
+    assetsAfter: structuredClone(state.assets),
     options: structuredClone(event.options),
     knownMaterials: (event.materials ?? []).filter((m) => state.inspected.includes(m.id)),
     correct,

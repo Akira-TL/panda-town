@@ -140,6 +140,7 @@ function evidenceValid(x: unknown): x is Evidence {
     finite(e.cashBefore) &&
     finite(e.cashAfter) &&
     assetsValid(e.assetsBefore) &&
+    assetsValid(e.assetsAfter) &&
     Array.isArray(e.options) &&
     e.options.every(optionValid) &&
     materialsValid(e.knownMaterials) &&

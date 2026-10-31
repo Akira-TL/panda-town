@@ -23,6 +23,23 @@ function turn(state: GameState, effect: Effect): GameState {
 function finish(state: GameState, sellStall = false, sellInvestment = false): GameState {
   return dispatch(state, { id: "finish", day: 8, type: "finish", sellStall, sellInvestment });
 }
+
+test("未展开资料的成交仍记录真实份额，且前后资产快照独立", () => {
+  const original = createGame("trade-receipt", "A");
+  const purchased = choose(original, { kind: "invest", amount: 400 });
+  const receipt = purchased.evidence.at(-1);
+  assert.ok(receipt);
+  assert.equal(receipt.cashBefore, 1000);
+  assert.equal(receipt.cashAfter, 600);
+  assert.equal(receipt.assetsBefore.investment, null);
+  assert.deepEqual(receipt.assetsAfter.investment, { cost: 400, shares: 4, purchasePrice: 100 });
+  assert.deepEqual(receipt.knownMaterials, []);
+  assert.equal(purchased.evidence.some((e) => e.action === "inspect"), false);
+  assert.equal(original.assets.investment, null);
+  assert.notEqual(receipt.assetsAfter, purchased.assets);
+  purchased.assets.investment = null;
+  assert.equal(receipt.assetsAfter.investment?.shares, 4);
+});
 test("四次工作与四次观察：3200，开店后200；八次工作4200", () => {
   let state = createGame("one", "A");
   for (let d = 1; d <= 8; d++) state = turn(state, { kind: d <= 4 ? "work" : "observe" });
