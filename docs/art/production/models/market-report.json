@@ -1,0 +1,129 @@
+{
+  "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\market-source.glb",
+  "blender_version": "5.2.3 LTS",
+  "normalized_blend": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\market-normalized.blend",
+  "height_metres": 2.9,
+  "source_model": {
+    "objects": 1,
+    "triangles": 1901730,
+    "vertices": 1055260,
+    "materials": [
+      "tripo_material_9abd3d9b-ffe7-4be6-a7dd-1f0863c8ea92"
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "animations": [],
+    "textures": [
+      {
+        "name": "fruit_market_stall_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "fruit_market_stall_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096
+      },
+      {
+        "name": "fruit_market_stall_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096
+      }
+    ],
+    "dimensions": [
+      0.97986,
+      0.57162,
+      0.7435
+    ]
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\market.glb",
+    "bytes": 4894952,
+    "target_triangles": 30000,
+    "texture_limit": 1024,
+    "model": {
+      "objects": 1,
+      "triangles": 30000,
+      "vertices": 37665,
+      "materials": [
+        "tripo_material_9abd3d9b-ffe7-4be6-a7dd-1f0863c8ea92"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "fruit_market_stall_3d_model_basecolor.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "fruit_market_stall_3d_model_rm.jpg",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "fruit_market_stall_3d_model_normal.png",
+          "width": 1024,
+          "height": 1024
+        }
+      ],
+      "dimensions": [
+        3.82473,
+        2.23301,
+        2.89987
+      ]
+    }
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\market-mobile.glb",
+    "bytes": 1568172,
+    "target_triangles": 10000,
+    "texture_limit": 512,
+    "model": {
+      "objects": 1,
+      "triangles": 10000,
+      "vertices": 20179,
+      "materials": [
+        "tripo_material_9abd3d9b-ffe7-4be6-a7dd-1f0863c8ea92"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "animations": [],
+      "textures": [
+        {
+          "name": "fruit_market_stall_3d_model_basecolor.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "fruit_market_stall_3d_model_rm.jpg",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "name": "fruit_market_stall_3d_model_normal.png",
+          "width": 512,
+          "height": 512
+        }
+      ],
+      "dimensions": [
+        3.81875,
+        2.23327,
+        2.91289
+      ]
+    }
+  },
+  "previews": [
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\market-front.png",
+    "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\market-back.png"
+  ],
+  "limitations": [
+    "自动降面和纹理缩放不等于视觉验收，需检查眼睛、耳朵、背包、接缝与轮廓。",
+    "不自动生成骨骼或动画；源文件没有动画时需另行制作。",
+    "许可依据来源账号计划与Tripo页面记录，不自动改为MIT。"
+  ]
+}
