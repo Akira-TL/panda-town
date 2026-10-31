@@ -17,7 +17,7 @@ export function FinalAssetNote({ game }: { game: GameState }) {
   const visible = visibleGame(game);
   return (
     <aside className="retained-assets-note">
-      <img src="/art/icon-assets.png" alt="" />
+      <img src="/art/icon-assets.webp" alt="" />
       <div>
         <strong>结算后保留的资产</strong>
         {!game.assets.stall && !game.assets.investment ? (
@@ -77,7 +77,7 @@ export function InventoryPanel({
         ref={trigger}
         onClick={() => setOpen(true)}
       >
-        <img src="/art/icon-assets.png" alt="" />
+        <img src="/art/icon-assets.webp" alt="" />
         <span className="inventory-label-full">资产与旅程手记</span>
         <span className="inventory-label-short">手记</span>
         <b>↗</b>
@@ -125,7 +125,7 @@ export function InventoryPanel({
             </header>
             <SessionActions onRestart={onRestart} onClear={onClear} />
             <div className="inventory-cash">
-              <img src="/art/icon-cash.png" alt="" />
+              <img src="/art/icon-cash.webp" alt="" />
               <span>
                 当前现金<strong>{game.cash.toLocaleString("zh-CN")}</strong>
               </span>

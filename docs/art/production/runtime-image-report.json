@@ -1,0 +1,83 @@
+[
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-wood.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-wood.webp",
+    "original_bytes": 1956865,
+    "compressed_bytes": 100112,
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-plaster.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-plaster.webp",
+    "original_bytes": 3142529,
+    "compressed_bytes": 187344,
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-roof.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-roof.webp",
+    "original_bytes": 2060841,
+    "compressed_bytes": 84190,
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-canvas.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\texture-canvas.webp",
+    "original_bytes": 3556810,
+    "compressed_bytes": 365708,
+    "width": 1024,
+    "height": 1024,
+    "alpha": false
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\icon-cash.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\icon-cash.webp",
+    "original_bytes": 1318296,
+    "compressed_bytes": 6788,
+    "width": 256,
+    "height": 171,
+    "alpha": true
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\icon-assets.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\icon-assets.webp",
+    "original_bytes": 1532585,
+    "compressed_bytes": 20466,
+    "width": 256,
+    "height": 215,
+    "alpha": true
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\icon-information.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\icon-information.webp",
+    "original_bytes": 1528974,
+    "compressed_bytes": 8664,
+    "width": 256,
+    "height": 171,
+    "alpha": true
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\panda-tripo-source.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\panda-tripo-source.webp",
+    "original_bytes": 1798319,
+    "compressed_bytes": 17158,
+    "width": 512,
+    "height": 468,
+    "alpha": false
+  },
+  {
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\town-overview.png",
+    "output": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\art\\town-overview.webp",
+    "original_bytes": 3746877,
+    "compressed_bytes": 432944,
+    "width": 1600,
+    "height": 640,
+    "alpha": false
+  }
+]

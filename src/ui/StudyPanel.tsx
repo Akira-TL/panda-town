@@ -49,7 +49,7 @@ export function StudyPanel({
     <>
       <div className="study-entry">
         <button ref={entryRef} onClick={() => setOpen(true)}>
-          <img src="/art/icon-information.png" alt="" />
+          <img src="/art/icon-information.webp" alt="" />
           <span>
             先看看资料
             <small>

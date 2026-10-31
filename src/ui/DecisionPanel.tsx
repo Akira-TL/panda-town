@@ -30,7 +30,7 @@ export function DecisionPanel({
           delta >= 0 ? "positive" : "negative",
         ].join(" ")}
       >
-        <img src="/art/icon-cash.png" alt="" />
+        <img src="/art/icon-cash.webp" alt="" />
         <strong>
           {delta >= 0 ? "+" : ""}
           {delta}

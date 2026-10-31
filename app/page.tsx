@@ -305,7 +305,7 @@ export default function Home() {
           tabIndex={-1}
           ref={dialogRef}
         >
-          <img src="/art/panda-tripo-source.png" alt="背着绿色背包的熊猫" />
+          <img src="/art/panda-tripo-source.webp" alt="背着绿色背包的熊猫" />
           <div className="report-heading-copy">
             <span className="eyebrow">本局选择与行为证据</span>
             <h1 id="report-heading">用户画像</h1>
@@ -317,7 +317,7 @@ export default function Home() {
               {game.result?.opened ? "咖啡馆开张了！" : "咖啡馆筹备中"}
             </strong>
             <div className="outcome-amount">
-              <img src="/art/icon-cash.png" alt="金币" />
+              <img src="/art/icon-cash.webp" alt="金币" />
               <b>{money(game.result?.cashBeforeOpening ?? game.cash)}</b>
             </div>
             <small>结算可用现金</small>
@@ -392,7 +392,7 @@ export default function Home() {
         <div className="cash">
           <small>手头现金</small>
           <strong>
-            <img src="/art/icon-cash.png" alt="" />
+            <img src="/art/icon-cash.webp" alt="" />
             {money(game.cash)}
           </strong>
         </div>
@@ -589,7 +589,7 @@ export default function Home() {
         >
           <div className="dialogue-heading">
             <div className="speaker-portrait">
-              <img src="/art/panda-tripo-source.png" alt="小镇居民" />
+              <img src="/art/panda-tripo-source.webp" alt="小镇居民" />
             </div>
             <div>
               <span className="eyebrow">
@@ -634,7 +634,7 @@ export default function Home() {
                     : o.cost > 0
                       ? `−${o.cost}`
                       : "0"}
-                  <img src="/art/icon-cash.png" alt="金币" />
+                  <img src="/art/icon-cash.webp" alt="金币" />
                 </span>
                 <small>{choiceDescription(o)}</small>
               </button>

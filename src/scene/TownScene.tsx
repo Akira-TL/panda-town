@@ -196,7 +196,7 @@ export default function TownScene(props: TownSceneProps) {
     const textureLoader = new THREE.TextureLoader();
     function surface(name: SurfaceName): THREE.Texture {
       const texture = textureLoader.load(
-        `/art/texture-${name}.png`,
+        `/art/texture-${name}.webp`,
         () => {
           if (disposed) {
             texture.dispose();

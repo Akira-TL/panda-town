@@ -132,7 +132,7 @@ small {
   inset: 0;
 }
 .welcome-art {
-  background: url("/art/town-overview.png") center/cover;
+  background: url("/art/town-overview.webp") center/cover;
 }
 .welcome-shade {
   background: linear-gradient(90deg, #173025c7, #19342366 52%, #18332500);
@@ -541,7 +541,7 @@ small {
   border-radius: 20px;
   background:
     linear-gradient(110deg, #fff9e9f7, #f3e5c8f7),
-    url("/art/texture-canvas.png") repeat;
+    url("/art/texture-canvas.webp") repeat;
   border: 1px solid #ba974f;
   border-image-source: url("/art/dialogue-frame.png");
   border-image-slice: 350;
@@ -993,7 +993,7 @@ small {
   border-radius: 28px;
   background:
     linear-gradient(120deg, #fff8e7ef, #f2e4c9ed),
-    url("/art/texture-canvas.png") repeat;
+    url("/art/texture-canvas.webp") repeat;
   box-shadow: 0 10px 80px #5f4b1823;
   outline: 1px solid #fff9e4;
   outline-offset: -8px;
@@ -1117,7 +1117,7 @@ small {
 body:has(.report-page) {
   background:
     linear-gradient(#e0e5cbbf, #cbd6b5aa),
-    url("/art/town-overview.png") center/cover fixed;
+    url("/art/town-overview.webp") center/cover fixed;
 }
 .outcome-amount {
   display: flex;

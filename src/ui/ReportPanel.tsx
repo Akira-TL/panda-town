@@ -242,7 +242,7 @@ export function ReportPanel({ report }: { report: ProfileReport }) {
       <div className="profile-grid">
         <section className="profile-card">
           <h2>
-            <img src="/art/icon-cash.png" alt="" />
+            <img src="/art/icon-cash.webp" alt="" />
             消费与经营<small>花在哪里，如何筹备</small>
           </h2>
           <Facts
@@ -252,7 +252,7 @@ export function ReportPanel({ report }: { report: ProfileReport }) {
         </section>
         <section className="profile-card">
           <h2>
-            <img src="/art/icon-information.png" alt="" />
+            <img src="/art/icon-information.webp" alt="" />
             信息使用习惯<small>选择前，你看了什么</small>
           </h2>
           <Facts facts={report.information} open={open} />
