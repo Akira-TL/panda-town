@@ -1,0 +1,186 @@
+{
+  "viewport": {
+    "id": "desktop",
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "156.0.4314.50",
+  "welcomeBytes": 596834,
+  "loadedSceneBytes": 30411459,
+  "firstSessionBytes": 31704284,
+  "welcomeBudgetBytes": 15000000,
+  "firstSessionBudgetBytes": 40000000,
+  "resources": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 2533
+    },
+    {
+      "path": "/_next/static/css/580e8889ca39405d.css",
+      "status": 200,
+      "bytes": 12768
+    },
+    {
+      "path": "/_next/static/chunks/webpack-4fe98f87ba02b76c.js",
+      "status": 200,
+      "bytes": 2265
+    },
+    {
+      "path": "/_next/static/chunks/main-app-6c67cc9a8d31cca8.js",
+      "status": 200,
+      "bytes": 904
+    },
+    {
+      "path": "/_next/static/chunks/app/page-89e7d768480daf99.js",
+      "status": 200,
+      "bytes": 28718
+    },
+    {
+      "path": "/_next/static/chunks/964-9e7fd12428968086.js",
+      "status": 200,
+      "bytes": 44292
+    },
+    {
+      "path": "/_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "status": 200,
+      "bytes": 54686
+    },
+    {
+      "path": "/art/panda-tripo-source.webp",
+      "status": 200,
+      "bytes": 17440
+    },
+    {
+      "path": "/art/town-overview.webp",
+      "status": 200,
+      "bytes": 433228
+    },
+    {
+      "path": "/_next/static/chunks/150.43dede419fbd3d86.js",
+      "status": 200,
+      "bytes": 12863
+    },
+    {
+      "path": "/_next/static/chunks/678.235a672bf302c1e6.js",
+      "status": 200,
+      "bytes": 25710
+    },
+    {
+      "path": "/_next/static/chunks/b536a0f1.12c0ffcd7ec6025f.js",
+      "status": 200,
+      "bytes": 84809
+    },
+    {
+      "path": "/_next/static/chunks/bd904a5c.b80c4c0cb39c6974.js",
+      "status": 200,
+      "bytes": 76450
+    },
+    {
+      "path": "/art/icon-cash.webp",
+      "status": 200,
+      "bytes": 7069
+    },
+    {
+      "path": "/art/icon-assets.webp",
+      "status": 200,
+      "bytes": 20748
+    },
+    {
+      "path": "/models/bakery-v2.glb",
+      "status": 200,
+      "bytes": 2391531
+    },
+    {
+      "path": "/models/grocery-v2.glb",
+      "status": 200,
+      "bytes": 2379255
+    },
+    {
+      "path": "/models/market-v2.glb",
+      "status": 200,
+      "bytes": 2237422
+    },
+    {
+      "path": "/models/research-v2.glb",
+      "status": 200,
+      "bytes": 2456425
+    },
+    {
+      "path": "/models/bank-v2.glb",
+      "status": 200,
+      "bytes": 2301435
+    },
+    {
+      "path": "/models/gifts-v2.glb",
+      "status": 200,
+      "bytes": 2332347
+    },
+    {
+      "path": "/models/rival-v2.glb",
+      "status": 200,
+      "bytes": 2318019
+    },
+    {
+      "path": "/models/cafe-v2.glb",
+      "status": 200,
+      "bytes": 2225374
+    },
+    {
+      "path": "/models/tree-v2.glb",
+      "status": 200,
+      "bytes": 1476337
+    },
+    {
+      "path": "/models/panda-rigged-v2.glb",
+      "status": 200,
+      "bytes": 6640044
+    },
+    {
+      "path": "/art/texture-wood.webp",
+      "status": 200,
+      "bytes": 100396
+    },
+    {
+      "path": "/art/texture-plaster.webp",
+      "status": 200,
+      "bytes": 187628
+    },
+    {
+      "path": "/art/texture-roof.webp",
+      "status": 200,
+      "bytes": 84473
+    },
+    {
+      "path": "/art/texture-canvas.webp",
+      "status": 200,
+      "bytes": 365992
+    },
+    {
+      "path": "/models/panda-mobile-rigged-v2.glb",
+      "status": 200,
+      "bytes": 2090298
+    },
+    {
+      "path": "/art/panda-tripo-source.webp",
+      "status": 200,
+      "bytes": 17440
+    },
+    {
+      "path": "/art/dialogue-frame.png",
+      "status": 200,
+      "bytes": 900448
+    },
+    {
+      "path": "/art/texture-canvas.webp",
+      "status": 200,
+      "bytes": 365992
+    },
+    {
+      "path": "/art/icon-information.webp",
+      "status": 200,
+      "bytes": 8945
+    }
+  ],
+  "caveat": "CDP禁用HTTP缓存的实际编码传输量，含欢迎页、十模型/七居民及八天工作到报告路径。未枚举所有不同事件的延迟资源；390像素使用同一电脑，并非实体手机网络。"
+}
