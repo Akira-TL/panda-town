@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { ribbonGeometry } from "./geometry";
+import { createDistantMountains } from "./distant-mountains";
 
 function stone(color: string) {
   return new THREE.MeshStandardMaterial({ color, roughness: 0.95 });
@@ -21,54 +22,7 @@ function mesh(
 /** 几何远山、跌水及公共铺地区，不代替已导入的地标模型。 */
 export function createScenery(heightAt: (x: number, z: number) => number) {
   const group = new THREE.Group();
-  for (let layer = 0; layer < 2; layer++)
-    for (let index = 0; index < 8; index++) {
-      const seed = index * 1.7 + layer * 3.3;
-      const geometry = new THREE.ConeGeometry(1, 1, 7, 5);
-      const position = geometry.getAttribute("position");
-      const colors: number[] = [];
-      const width = 7 + (index % 3) * 2.2;
-      const height = (layer === 0 ? 20 : 11) + (index % 4) * 2.4;
-      for (let vertex = 0; vertex < position.count; vertex++) {
-        const x = position.getX(vertex),
-          z = position.getZ(vertex),
-          y = position.getY(vertex) + 0.5;
-        const irregular =
-          1 + 0.2 * Math.sin(x * 7.1 + z * 4.3 + y * 5.2 + seed);
-        position.setXYZ(
-          vertex,
-          x * width * irregular,
-          y * height,
-          z * width * 0.8 * irregular,
-        );
-        const color = new THREE.Color(layer === 0 ? "#7795a6" : "#697e66");
-        color.lerp(
-          new THREE.Color(layer === 0 ? "#b8cbd2" : "#a9b0a6"),
-          Math.min(1, y * 0.9),
-        );
-        color.multiplyScalar(0.93 + 0.07 * Math.sin(y * 25 + seed));
-        colors.push(color.r, color.g, color.b);
-      }
-      geometry.setAttribute(
-        "color",
-        new THREE.Float32BufferAttribute(colors, 3),
-      );
-      geometry.computeVertexNormals();
-      const mountain = new THREE.Mesh(
-        geometry,
-        new THREE.MeshStandardMaterial({
-          vertexColors: true,
-          roughness: 1,
-          flatShading: true,
-        }),
-      );
-      mountain.position.set(
-        -50 + index * 14 + (layer ? 4 : 0),
-        -3,
-        layer === 0 ? -53 : -39,
-      );
-      group.add(mountain);
-    }
+  group.add(createDistantMountains());
   const fallCurve = new THREE.CatmullRomCurve3([
     new THREE.Vector3(3, 9.5, -40),
     new THREE.Vector3(3.5, 9.45, -37.4),
