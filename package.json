@@ -12,7 +12,9 @@
     "stop": "bash scripts/stop.sh",
     "build": "next build",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test src/game/*.test.ts"
+    "test": "node --import tsx --test src/game/*.test.ts",
+    "test:browser": "playwright test --config tests/playwright.config.ts",
+    "test:paths": "node --import tsx --test tests/gameplay-paths.test.ts"
   },
   "dependencies": {
     "next": "15.4.11",
@@ -21,6 +23,7 @@
     "three": "0.187.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
