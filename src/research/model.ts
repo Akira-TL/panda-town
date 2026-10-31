@@ -116,6 +116,9 @@ export interface ResearchEvidence {
   runIds: string[];
   rule: StrategyRule | null;
   allocation: Allocation;
+  config: SimulationConfig | null;
+  strategyVersion: number;
+  datasetVersion: string;
   validation: ValidationStatus;
   outcome: string;
 }
