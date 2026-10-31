@@ -543,16 +543,18 @@ small {
     linear-gradient(110deg, #fff9e9f7, #f3e5c8f7),
     url("/art/texture-canvas.png") repeat;
   border: 1px solid #ba974f;
-  outline: 1px solid #fff6d9;
-  outline-offset: -6px;
-  box-shadow:
-    0 0 0 4px #e2c792aa,
-    0 18px 60px #1734213d;
+  border-image-source: url("/art/dialogue-frame.png");
+  border-image-slice: 350;
+  border-image-width: 44px;
+  border-image-outset: 8px;
+  border-image-repeat: stretch;
+  outline: none;
+  box-shadow: 0 18px 60px #1734213d;
   scrollbar-color: #b6ad85 transparent;
   outline-color: #fff4d8;
 }
 .dialogue:before {
-  content: "❧";
+  content: none;
   position: absolute;
   right: 20px;
   top: 7px;
@@ -562,7 +564,7 @@ small {
   pointer-events: none;
 }
 .dialogue:focus {
-  outline-color: #fff4d8;
+  outline: none;
 }
 .dialogue-heading {
   display: flex;
@@ -1974,10 +1976,9 @@ details {
     max-height: 56dvh;
     padding: 18px 19px 20px;
     border-radius: 16px;
-    outline-offset: -5px;
-    box-shadow:
-      0 0 0 2px #e2c792aa,
-      0 15px 45px #1734213d;
+    border-image-width: 26px;
+    border-image-outset: 7px;
+    box-shadow: 0 15px 45px #1734213d;
   }
   .dialogue:before {
     font-size: 31px;
