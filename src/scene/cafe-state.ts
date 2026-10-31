@@ -52,6 +52,7 @@ export function createCafeState(surfaces: SurfaceTextures) {
     box(group, [0.13, 1.4, 0.13], [side * 1.18, 0.7, 0], trim);
     box(group, [0.2, 0.1, 0.2], [side * 1.18, 1.43, 0], brass);
     const pivot = new THREE.Group();
+    pivot.name = side < 0 ? "CafeGateLeft" : "CafeGateRight";
     pivot.position.set(side * 1.09, 0.1, 0);
     for (let index = 0; index < 6; index++)
       box(pivot, [0.13, 0.9, 0.065], [-side * (0.08 + index * 0.18), 0.55, 0]);
@@ -88,6 +89,7 @@ export function createCafeState(surfaces: SurfaceTextures) {
     side: THREE.DoubleSide,
   });
   const sign = new THREE.Mesh(signGeometry, signMaterial);
+  sign.name = "CafeBusinessSign";
   sign.position.set(0, 1.8, 0.061);
   signPost.add(sign);
   group.add(signPost);
@@ -120,6 +122,9 @@ export function createCafeState(surfaces: SurfaceTextures) {
   let disposed = false;
   return {
     group,
+    getOpening() {
+      return opening;
+    },
     /** bounds为归一化模型、尚未挂anchor前的局部包围盒。 */
     setEntrance(bounds: THREE.Box3) {
       group.position.set(0, Math.max(0, bounds.min.y), bounds.max.z + 0.25);

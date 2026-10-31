@@ -13,6 +13,8 @@ import { createLandmarkPlacement } from "./landmark-placement";
 import { createGroundSurfaces } from "./ground-surfaces";
 import { createOutdoors } from "./outdoors";
 import { createOutdoorResidents } from "./outdoor-residents";
+import { createCafeState } from "./cafe-state";
+import { createCafeWelcome } from "./cafe-welcome";
 import { createResidents } from "./residents";
 import {
   createInventoryProps,
@@ -258,6 +260,10 @@ export default function TownScene(props: TownSceneProps) {
     let residents: ReturnType<typeof createResidents> | null = null;
     let outdoorResidents: ReturnType<typeof createOutdoorResidents> | null =
       null;
+    const cafeEntrance = createCafeState(surfaces);
+    const cafeAnchor = new THREE.Group();
+    const cafeBounds = new THREE.Box3();
+    let cafeWelcome: ReturnType<typeof createCafeWelcome> | null = null;
     let characterMixer: THREE.AnimationMixer | null = null;
     let idleAction: THREE.AnimationAction | null = null;
     let walkAction: THREE.AnimationAction | null = null;
@@ -334,6 +340,9 @@ export default function TownScene(props: TownSceneProps) {
                 groundHeight,
               );
               scene.add(outdoorResidents.group);
+              cafeWelcome = createCafeWelcome(source, clips);
+              cafeWelcome.fit(cafeBounds);
+              cafeAnchor.add(cafeWelcome.group);
               if (container) {
                 container.dataset.outdoorResidentLocations =
                   outdoorResidents.locations.join(" ");
@@ -422,13 +431,18 @@ export default function TownScene(props: TownSceneProps) {
     cameraObstacles.push(...outdoors.obstacles);
     container.dataset.outdoorLocations = outdoors.locations.join(" ");
     buildingIds.forEach((id, index) => {
-      const anchor = new THREE.Group();
+      const anchor = id === "cafe" ? cafeAnchor : new THREE.Group();
       const preview = buildLandmark(id, index, surfaces);
       const placement = createLandmarkPlacement(
         anchor,
         id,
         new THREE.Box3().setFromObject(preview),
       );
+      if (id === "cafe") {
+        cafeBounds.setFromObject(preview);
+        cafeEntrance.setEntrance(cafeBounds);
+        anchor.add(cafeEntrance.group);
+      }
       scene.add(placement.group);
       anchor.add(preview);
       scene.add(anchor);
@@ -437,6 +451,11 @@ export default function TownScene(props: TownSceneProps) {
       loadModel(id, anchor, preview, landmarkHeights[id], (bounds) => {
         placement.fit(bounds);
         groundSurfaces.applyGroup(placement.group);
+        if (id === "cafe") {
+          cafeBounds.copy(bounds);
+          cafeEntrance.setEntrance(bounds);
+          cafeWelcome?.fit(bounds);
+        }
       });
     });
     const infill: ReadonlyArray<readonly [number, number, number]> = [
@@ -503,8 +522,8 @@ export default function TownScene(props: TownSceneProps) {
     );
     scene.add(stallFlag);
     const cafeGlow = new THREE.PointLight("#ffc964", 0, 12);
-    cafeGlow.position.set(-6, 3, 16);
-    scene.add(cafeGlow);
+    cafeGlow.position.set(0, 2, 0.6);
+    cafeEntrance.group.add(cafeGlow);
     const rendering = createRendering(renderer, scene, camera);
     const resize = () => {
       const width = Math.max(1, container.clientWidth);
@@ -530,6 +549,7 @@ export default function TownScene(props: TownSceneProps) {
     let followPlan: ReturnType<typeof planFollowCamera> | null = null;
     let plannedFocus = new THREE.Vector3(Infinity, Infinity, Infinity);
     let plannedAssetCount = -1;
+    let plannedCafeOpened: boolean | null = null;
     if (previousMode === "overview") {
       camera.position.set(33, 36, 42);
       controls.target.set(0, 0, -2);
@@ -542,6 +562,12 @@ export default function TownScene(props: TownSceneProps) {
       const visibleInventory = inventory.update(current);
       residents?.update(delta, current);
       outdoorResidents?.update(delta, current);
+      cafeEntrance.update(current.cafeOpened, delta, current.reducedMotion);
+      cafeWelcome?.update(current.cafeOpened, delta, current.reducedMotion);
+      container.dataset.cafeOpening = cafeEntrance.getOpening().toFixed(3);
+      container.dataset.cafeWelcome = String(
+        cafeWelcome?.group.visible ?? false,
+      );
       const sceneItems = visibleInventory.items.join(" ");
       if (container.dataset.sceneItems !== sceneItems)
         container.dataset.sceneItems = sceneItems;
@@ -596,6 +622,7 @@ export default function TownScene(props: TownSceneProps) {
         const target = focus.clone().add(new THREE.Vector3(0, 1.3, 0));
         const shouldPlan =
           !followPlan ||
+          plannedCafeOpened !== current.cafeOpened ||
           plannedAssetCount !== assetStatus.loaded.length ||
           (plannedFocus.distanceToSquared(focus) > 0.01 &&
             time - lastCameraPlan > 120);
@@ -615,6 +642,7 @@ export default function TownScene(props: TownSceneProps) {
           collision = followPlan.intersects(camera.position) > 0;
           plannedFocus.copy(focus);
           plannedAssetCount = assetStatus.loaded.length;
+          plannedCafeOpened = current.cafeOpened;
           lastCameraPlan = time;
         }
         const desired = followPlan!.position;
@@ -644,6 +672,9 @@ export default function TownScene(props: TownSceneProps) {
       characterMixer?.stopAllAction();
       residents?.dispose();
       outdoorResidents?.dispose();
+      cafeWelcome?.dispose();
+      cafeEntrance.group.removeFromParent();
+      cafeEntrance.dispose();
       scene.remove(outdoors.group);
       outdoors.dispose();
       rendering.dispose();
