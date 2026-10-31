@@ -16,6 +16,21 @@ bash scripts/stop.sh
 
 ## 检查
 
+### 隔离的生产预览
+
+展会与浏览器回归优先使用独立生产构建，避免开发热更新和大体积开发脚本干扰。该模式仅在本机运行，不是发布或部署。
+
+```sh
+PANDA_MODE=production npm run build
+PANDA_MODE=production bash scripts/start.sh
+PANDA_TEST_URL=http://127.0.0.1:3018 npm run test:browser
+PANDA_MODE=production bash scripts/stop.sh
+```
+
+生产构建目录为 .next-production，开发目录仍为 .next；两者的进程编号和日志分别使用 logs/production.* 与 logs/dev.*。生产服务默认3018，可通过 PORT 更改，仍仅监听本机。生产构建不删除开发缓存；生产启动前检查 BUILD_ID，缺少构建时拒绝启动。两个模式的停止脚本只处理相应进程记录。
+
+本机已实际验证生产模式构建、3018启动、HTTP200及停止：停止后production.pid为空、3018不再响应。生产构建首载脚本约121 kB，对应当前阶段页面，完整模型体积另行核验。
+
 ```sh
 npm run typecheck
 npm test

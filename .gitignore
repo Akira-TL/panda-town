@@ -5,6 +5,7 @@
 .scratch/
 node_modules/
 .next/
+/.next-production/
 out/
 dist/
 coverage/

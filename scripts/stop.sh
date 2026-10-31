@@ -2,7 +2,9 @@
 set -euo pipefail
 PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "$PROJECT_ROOT"
-if [[ ! -s logs/dev.pid ]]; then
+export PANDA_MODE="${PANDA_MODE:-dev}"
+case "$PANDA_MODE" in dev|production) ;; *) echo "PANDA_MODE 无效。" >&2; exit 1 ;; esac
+if [[ ! -s "logs/$PANDA_MODE.pid" ]]; then
   echo "没有本项目的运行记录。"
   exit 0
 fi
@@ -11,7 +13,7 @@ if [[ "${OSTYPE:-}" == msys* || "${OSTYPE:-}" == cygwin* ]]; then
   powershell.exe -NoProfile -NonInteractive -Command '
     $ErrorActionPreference = "Stop"
     $root = $env:PANDA_PROJECT_ROOT
-    $pidFile = Join-Path $root "logs\dev.pid"
+    $pidFile = Join-Path $root ("logs\" + $env:PANDA_MODE + ".pid")
     $serviceId = 0
     if (-not [int]::TryParse((Get-Content -LiteralPath $pidFile -Raw).Trim(), [ref]$serviceId)) {
       throw "运行记录不是有效进程编号。"
@@ -24,10 +26,10 @@ if [[ "${OSTYPE:-}" == msys* || "${OSTYPE:-}" == cygwin* ]]; then
       if ($LASTEXITCODE -ne 0) { throw "停止开发服务失败。" }
     }
     Set-Content -LiteralPath $pidFile -Value ""
-    Write-Output "本项目开发服务已停止。"
+    Write-Output "本项目所选模式的服务已停止。"
   '
 else
-  service_pid="$(cat logs/dev.pid)"
+  service_pid="$(cat "logs/$PANDA_MODE.pid")"
   if [[ ! "$service_pid" =~ ^[0-9]+$ ]]; then
     echo "无效的进程编号。" >&2
     exit 1
@@ -40,5 +42,5 @@ else
     fi
     kill "$service_pid"
   fi
-  : >logs/dev.pid
+  : >"logs/$PANDA_MODE.pid"
 fi
