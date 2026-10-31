@@ -476,7 +476,9 @@ export default function Home() {
       <div className="scene-status">
         <span>演示数据</span>
         {assetStatus?.missing.length ? (
-          <span>开发预览 · 部分正式模型待接入</span>
+          <span title={`未加载资源：${assetStatus.missing.join("、")}`}>
+            开发预览 · 部分模型或纹理未加载
+          </span>
         ) : null}
       </div>
       {notice && (
