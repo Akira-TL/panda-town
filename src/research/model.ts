@@ -49,6 +49,17 @@ export interface Trade {
   fee: number;
   cashAfter: number;
 }
+export interface SimulationOrder {
+  id: string;
+  signalDate: string;
+  date: string;
+  asset: AssetId;
+  side: "buy" | "sell";
+  requestedQuantity: number;
+  filledQuantity: number;
+  status: "filled" | "partial" | "rejected";
+  reason: string;
+}
 export interface SimulationMetrics {
   finalEquity: number;
   netProfit: number;
@@ -65,6 +76,7 @@ export interface SimulationResult {
   startDate: string;
   endDate: string;
   points: EquityPoint[];
+  orders: SimulationOrder[];
   trades: Trade[];
   metrics: SimulationMetrics;
   warnings: string[];
