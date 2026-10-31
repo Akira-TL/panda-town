@@ -1,0 +1,22 @@
+{
+  "source": "public/models/panda-rigged-v2.glb",
+  "source_sha256": "e8d26b401437579af20d498f5e54df8d82aa52c9dc79d0f094070dc98882e23c",
+  "output": "docs/art/production/panda-portrait.png",
+  "blender_version": "5.2.3 LTS",
+  "engine": "CYCLES",
+  "samples": 32,
+  "frame": 1,
+  "resolution": 1024,
+  "transparent": true,
+  "camera_location": [
+    2.7905514240264893,
+    -8.371654510498047,
+    1.8017135858535767
+  ],
+  "camera_target": [
+    0.0,
+    0.0,
+    1.5536645650863647
+  ],
+  "orthographic_scale": 1.3022572994232178
+}

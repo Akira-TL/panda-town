@@ -1,0 +1,18 @@
+{
+  "source_width": 1024,
+  "source_height": 1024,
+  "source_bytes": 1145379,
+  "runtime_width": 512,
+  "runtime_height": 512,
+  "runtime_bytes": 36448,
+  "alpha_min": 0,
+  "alpha_max": 255,
+  "transparent_pixels": 85097,
+  "partially_transparent_pixels": 4871,
+  "corner_alpha": [
+    0,
+    0,
+    255,
+    255
+  ]
+}
