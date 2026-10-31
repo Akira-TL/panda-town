@@ -305,7 +305,7 @@ export default function Home() {
           tabIndex={-1}
           ref={dialogRef}
         >
-          <img src="/art/panda-tripo-source.webp" alt="背着绿色背包的熊猫" />
+          <img src="/art/panda-portrait.webp" alt="戴着金色围巾的熊猫" />
           <div className="report-heading-copy">
             <span className="eyebrow">本局选择与行为证据</span>
             <h1 id="report-heading">用户画像</h1>
@@ -599,7 +599,7 @@ export default function Home() {
         >
           <div className="dialogue-heading">
             <div className="speaker-portrait">
-              <img src="/art/panda-tripo-source.webp" alt="小镇居民" />
+              <img src="/art/panda-portrait.webp" alt="小镇居民" />
             </div>
             <div>
               <span className="eyebrow">
