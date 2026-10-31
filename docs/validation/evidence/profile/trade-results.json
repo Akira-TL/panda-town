@@ -1,0 +1,160 @@
+{
+  "config": {
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/playwright.config.ts",
+      "tests/browser/trade-evidence.spec.ts",
+      "--output",
+      "logs/playwright-trade-evidence",
+      "--max-failures=1"
+    ],
+    "configFile": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\tests\\playwright.config.ts",
+    "rootDir": "C:/Users/Akira/Documents/ChatGPT/大富翁/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Akira/Documents/ChatGPT/大富翁/logs/playwright-trade-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/Akira/Documents/ChatGPT/大富翁/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\logs\\playwright-trade-evidence",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\tests\\browser",
+        "snapshotDir": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\tests\\browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3018",
+          "channel": "msedge",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "reducedMotion": "reduce",
+          "actionTimeout": 20000,
+          "navigationTimeout": 30000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\logs\\playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "trade-evidence.spec.ts",
+      "file": "trade-evidence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "真实投资报告按投入时现金显示比例并可核对成交份额",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20823,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T10:09:15.485Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc5cd07adbfeb4a14b07-dc81e0709ef2e438ed1d",
+          "file": "trade-evidence.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T10:09:14.405Z",
+    "duration": 24339.037,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
