@@ -9,6 +9,7 @@ import { LOCATION_POSITIONS, ribbonGeometry, routeCurve } from "./geometry";
 import { buildLandscape, groundHeight } from "./landscape";
 import { createRendering, createSkyTexture } from "./rendering";
 import { planFollowCamera } from "./follow-camera";
+import { createLandmarkPlacement } from "./landmark-placement";
 import { createResidents } from "./residents";
 import {
   createInventoryProps,
@@ -254,6 +255,7 @@ export default function TownScene(props: TownSceneProps) {
       parent: THREE.Group,
       placeholder: THREE.Group,
       targetHeight: number,
+      onNormalized?: (bounds: THREE.Box3) => void,
     ): void {
       const modelVariant = window.innerWidth < 720 ? "-mobile" : "";
       const modelMotion = name === "panda" ? "-rigged" : "";
@@ -290,6 +292,7 @@ export default function TownScene(props: TownSceneProps) {
               node.receiveShadow = true;
             }
           });
+          onNormalized?.(new THREE.Box3().setFromObject(gltf.scene));
           parent.remove(placeholder);
           // 基础纹理由整镇共享，替换单体模型时保留其余建筑仍在使用的纹理。
           disposeObject(placeholder, false);
@@ -386,27 +389,17 @@ export default function TownScene(props: TownSceneProps) {
     const cameraObstacles: THREE.Object3D[] = [];
     buildingIds.forEach((id, index) => {
       const anchor = new THREE.Group();
-      const [x, y, z] = LOCATION_POSITIONS[id];
-      const radial = new THREE.Vector3(x, 0, z).normalize();
-      anchor.position.set(x + radial.x * 2.8, y - 0.05, z + radial.z * 2.8);
-      anchor.rotation.y = Math.atan2(-radial.x, -radial.z);
-      const terraceHeight = Math.max(
-        0.28,
-        y - 0.05 - groundHeight(anchor.position.x, anchor.position.z),
-      );
-      const foundation = mesh(
-        new THREE.BoxGeometry(5.1, terraceHeight, 4.8),
-        "#b3ab94",
-        anchor.position.x,
-        y - 0.05 - terraceHeight / 2,
-        anchor.position.z,
-      );
-      scene.add(foundation);
       const preview = buildLandmark(id, index, surfaces);
+      const placement = createLandmarkPlacement(
+        anchor,
+        id,
+        new THREE.Box3().setFromObject(preview),
+      );
+      scene.add(placement.group);
       anchor.add(preview);
       scene.add(anchor);
       cameraObstacles.push(anchor);
-      loadModel(id, anchor, preview, landmarkHeights[id]);
+      loadModel(id, anchor, preview, landmarkHeights[id], placement.fit);
     });
     const infill: ReadonlyArray<readonly [number, number, number]> = [
       [-10, -5, 0.5],
