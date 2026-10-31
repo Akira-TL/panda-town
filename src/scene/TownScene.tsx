@@ -12,6 +12,7 @@ import { planFollowCamera } from "./follow-camera";
 import { createLandmarkPlacement } from "./landmark-placement";
 import { createGroundSurfaces } from "./ground-surfaces";
 import { createOutdoors } from "./outdoors";
+import { createOutdoorResidents } from "./outdoor-residents";
 import { createResidents } from "./residents";
 import {
   createInventoryProps,
@@ -255,6 +256,8 @@ export default function TownScene(props: TownSceneProps) {
     inventory.update(latest.current);
     scene.add(inventory.workshop, inventory.opponentStall);
     let residents: ReturnType<typeof createResidents> | null = null;
+    let outdoorResidents: ReturnType<typeof createOutdoorResidents> | null =
+      null;
     let characterMixer: THREE.AnimationMixer | null = null;
     let idleAction: THREE.AnimationAction | null = null;
     let walkAction: THREE.AnimationAction | null = null;
@@ -325,6 +328,19 @@ export default function TownScene(props: TownSceneProps) {
               if (disposed) return;
               residents = createResidents(source, clips);
               scene.add(residents.group);
+              outdoorResidents = createOutdoorResidents(
+                source,
+                clips,
+                groundHeight,
+              );
+              scene.add(outdoorResidents.group);
+              if (container) {
+                container.dataset.outdoorResidentLocations =
+                  outdoorResidents.locations.join(" ");
+                container.dataset.outdoorResidentCount = String(
+                  outdoorResidents.group.children.length,
+                );
+              }
               if (container)
                 container.dataset.residentCount = String(
                   residents.group.children.length,
@@ -525,6 +541,7 @@ export default function TownScene(props: TownSceneProps) {
       const current = latest.current;
       const visibleInventory = inventory.update(current);
       residents?.update(delta, current);
+      outdoorResidents?.update(delta, current);
       const sceneItems = visibleInventory.items.join(" ");
       if (container.dataset.sceneItems !== sceneItems)
         container.dataset.sceneItems = sceneItems;
@@ -626,6 +643,7 @@ export default function TownScene(props: TownSceneProps) {
       controls.dispose();
       characterMixer?.stopAllAction();
       residents?.dispose();
+      outdoorResidents?.dispose();
       scene.remove(outdoors.group);
       outdoors.dispose();
       rendering.dispose();
