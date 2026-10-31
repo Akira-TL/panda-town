@@ -1,0 +1,47 @@
+[
+  {
+    "name": "stone-wall",
+    "source_width": 1254,
+    "source_height": 1254,
+    "source_mode": "RGB",
+    "source_bytes": 3634926,
+    "runtime_width": 1024,
+    "runtime_height": 1024,
+    "runtime_bytes": 419690,
+    "footprint_metres": 2.0,
+    "left_right_difference": 13.324,
+    "top_bottom_difference": 13.09,
+    "adjacent_x_difference": 9.514,
+    "adjacent_y_difference": 11.056
+  },
+  {
+    "name": "cobblestone-path",
+    "source_width": 1254,
+    "source_height": 1254,
+    "source_mode": "RGB",
+    "source_bytes": 4043365,
+    "runtime_width": 1024,
+    "runtime_height": 1024,
+    "runtime_bytes": 468216,
+    "footprint_metres": 1.5,
+    "left_right_difference": 15.145,
+    "top_bottom_difference": 22.875,
+    "adjacent_x_difference": 13.631,
+    "adjacent_y_difference": 14.981
+  },
+  {
+    "name": "grass-earth",
+    "source_width": 1254,
+    "source_height": 1254,
+    "source_mode": "RGB",
+    "source_bytes": 4220676,
+    "runtime_width": 1024,
+    "runtime_height": 1024,
+    "runtime_bytes": 549402,
+    "footprint_metres": 2.0,
+    "left_right_difference": 22.11,
+    "top_bottom_difference": 21.624,
+    "adjacent_x_difference": 17.405,
+    "adjacent_y_difference": 17.715
+  }
+]
