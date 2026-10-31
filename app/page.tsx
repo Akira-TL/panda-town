@@ -25,6 +25,7 @@ import { StudyPanel } from "../src/ui/StudyPanel";
 import { InventoryPanel, FinalAssetNote } from "../src/ui/InventoryPanel";
 import { DecisionPanel } from "../src/ui/DecisionPanel";
 import { DiceFace } from "../src/ui/GameDetails";
+import { SessionActions } from "../src/ui/SessionActions";
 import type { AssetStatus } from "../src/scene/TownScene";
 import "./globals.css";
 
@@ -95,14 +96,19 @@ export default function Home() {
     try {
       const raw = sessionStorage.getItem(STORAGE_KEY);
       if (raw) {
-        const restored = restoreSession(raw);
+        let restored: Session | null = null;
+        try {
+          restored = restoreSession(raw);
+        } catch {
+          /* 损坏记录与旧规则均不恢复。 */
+        }
         if (restored) {
           setSession(restored);
           setViewReport(restored.game.phase === "report");
           setNotice("已恢复本标签页的当前一局。");
         } else {
-          sessionStorage.removeItem(STORAGE_KEY);
           setNotice("记录版本不兼容或内容损坏，请重新开始。");
+          sessionStorage.removeItem(STORAGE_KEY);
         }
       }
     } catch {
@@ -114,12 +120,11 @@ export default function Home() {
     setHydrated(true);
   }, []);
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || !session) return;
     try {
-      if (session) sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-      else sessionStorage.removeItem(STORAGE_KEY);
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     } catch {
-      setNotice("记录无法保存，刷新将丢失当前进度。");
+      setNotice("进度无法保存，本局仍可继续；刷新可能丢失进度或恢复较早记录。");
     }
   }, [session, hydrated]);
   const game = session?.game;
@@ -210,14 +215,18 @@ export default function Home() {
     setViewReport(false);
   }
   function clear() {
+    let message = "本局记录与画像已清除。";
     try {
       sessionStorage.removeItem(STORAGE_KEY);
     } catch {
-      /* 内存仍会清除。 */
+      message =
+        "界面已清空，但浏览器拒绝删除旧记录。换人前请在浏览器设置中清除此站点数据。";
     }
     setSession(null);
-    setNotice("本局记录与画像已清除。");
+    setNotice(message);
     setAssetStatus(null);
+    setSceneError("");
+    setShowIntroduction(false);
     setViewReport(false);
   }
   function roll() {
@@ -322,12 +331,7 @@ export default function Home() {
         <FinalAssetNote game={game} />
         <ReportPanel report={report} />
         <footer className="report-actions">
-          <button className="primary" onClick={begin}>
-            重开一局 ↗
-          </button>
-          <button className="secondary" onClick={clear}>
-            清除记录
-          </button>
+          <SessionActions onRestart={begin} onClear={clear} />
           <span>演示数据 · 无自动上传</span>
         </footer>
       </main>
@@ -431,7 +435,12 @@ export default function Home() {
           <small>工具待交货 · 第 {game.assets.tool.deliveryDay} 天到货</small>
         )}
       </aside>
-      <InventoryPanel game={game} />
+      <InventoryPanel
+        key={game.sessionId}
+        game={game}
+        onRestart={begin}
+        onClear={clear}
+      />
       <nav className="view-controls" aria-label="视角和动画">
         <button
           className={cameraMode === "follow" ? "selected" : ""}

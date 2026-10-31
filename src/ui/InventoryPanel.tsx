@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { visibleGame, type GameState } from "../game/engine";
+import { SessionActions } from "./SessionActions";
 
 const items: Record<string, { name: string; text: string }> = {
   bread: { name: "普通面包", text: "面包店为你包好的熟悉口味。" },
@@ -34,7 +35,15 @@ export function FinalAssetNote({ game }: { game: GameState }) {
     </aside>
   );
 }
-export function InventoryPanel({ game }: { game: GameState }) {
+export function InventoryPanel({
+  game,
+  onRestart,
+  onClear,
+}: {
+  game: GameState;
+  onRestart: () => void;
+  onClear: () => void;
+}) {
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null),
     closeButton = useRef<HTMLButtonElement>(null);
@@ -114,6 +123,7 @@ export function InventoryPanel({ game }: { game: GameState }) {
               <h2 id="inventory-heading">钱、资产，还有小镇的心意。</h2>
               <p>开店只看可用现金，保留资产不会自动变现。</p>
             </header>
+            <SessionActions onRestart={onRestart} onClear={onClear} />
             <div className="inventory-cash">
               <img src="/art/icon-cash.png" alt="" />
               <span>

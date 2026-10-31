@@ -2889,6 +2889,42 @@ details {
   background: #f1e4bf;
   border-radius: 12px;
 }
+.session-actions {
+  min-width: 0;
+}
+.inventory-sheet > .session-actions {
+  margin: 0 0 16px;
+}
+.session-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.session-action-buttons[hidden] {
+  display: none;
+}
+.session-action-buttons button {
+  flex: 1;
+  min-height: 44px;
+}
+.session-confirmation {
+  max-width: 540px;
+  padding: 16px;
+  background: #f7edcf;
+  border: 1px solid #cdb789;
+  border-radius: 12px;
+}
+.session-confirmation h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #344d35;
+}
+.session-confirmation p {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #736746;
+}
 .inventory-cash img {
   width: 47px;
   height: 47px;
