@@ -1,0 +1,50 @@
+[
+  {
+    "mapping": {
+      "name": "tree",
+      "filename": "stylized tree 3d model.glb",
+      "height": 4.5,
+      "evidence": "不规则树干和分簇叶片，预览00"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\stylized tree 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\tree-source.glb",
+    "bytes": 68261908,
+    "sha256": "4CB9C087947F8C99E8EE6AC44F18F5F90E18DF5C76CEA49DBF09C447B239ECFC"
+  },
+  {
+    "mapping": {
+      "name": "cafe",
+      "filename": "stone cottage cafe 3d model.glb",
+      "height": 4.4,
+      "evidence": "侧面露台与杯形招牌，预览01"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\stone cottage cafe 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\cafe-source.glb",
+    "bytes": 66028496,
+    "sha256": "4091956EA92B04F4E87B6BD4ADEC825FB2770BD5E3DEC612F38C3FA0BF09E363"
+  },
+  {
+    "mapping": {
+      "name": "research",
+      "filename": "fantasy cottage 3d model.glb",
+      "height": 6.2,
+      "evidence": "绿色玻璃穹顶和望远镜，预览02"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\fantasy cottage 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\research-source.glb",
+    "bytes": 68988996,
+    "sha256": "BA9D31545D9C3898F4B706263F6200FCCD86104354C27E360B72445BF7F288A9"
+  },
+  {
+    "mapping": {
+      "name": "grocery",
+      "filename": "market stall 3d model.glb",
+      "height": 4.6,
+      "evidence": "整栋绿白布篷杂货店，预览03"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\market stall 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\grocery-source.glb",
+    "bytes": 65321800,
+    "sha256": "B72CB371A4C190A90046D22EA375C710864CB8BACEAA591C229708FD99CFBE55"
+  }
+]

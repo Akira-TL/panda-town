@@ -4,3 +4,7 @@ panda-rigged.blend
 panda-mobile-rigged.blend
 bakery-source.glb
 bakery-normalized.blend
+*-source.glb
+*-normalized.blend
+intermediate/
+texture-v2/*.jpg

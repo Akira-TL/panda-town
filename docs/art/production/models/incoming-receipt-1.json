@@ -1,0 +1,50 @@
+[
+  {
+    "mapping": {
+      "name": "bank",
+      "filename": "storybook cottage 3d model.glb",
+      "height": 5.2,
+      "evidence": "门上金币圆形浮雕与圆塔，预览04"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\storybook cottage 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\bank-source.glb",
+    "bytes": 66585836,
+    "sha256": "98B9AD8C38E7F5EFFB8F2BD5306213FCD922BD5087F8B48D7CE3D313CA1F12C4"
+  },
+  {
+    "mapping": {
+      "name": "market",
+      "filename": "fruit market stall 3d model.glb",
+      "height": 2.9,
+      "evidence": "独立四柱布篷水果摊，预览05"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\fruit market stall 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\market-source.glb",
+    "bytes": 65283132,
+    "sha256": "706474D4AC92F2ADB40BF9E15E452E34494E77F50ECF363C2733D15CCA64D233"
+  },
+  {
+    "mapping": {
+      "name": "gifts",
+      "filename": "cute cottage shop 3d model.glb",
+      "height": 4.4,
+      "evidence": "粉色条纹布篷和礼物招牌，预览06"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\cute cottage shop 3d model.glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\gifts-source.glb",
+    "bytes": 64983688,
+    "sha256": "A88F44690CB5EF96ED209ADCA44DD421823A69ECDDBD75DE9D6919E3CE3BA12B"
+  },
+  {
+    "mapping": {
+      "name": "rival",
+      "filename": "storybook cottage 3d model (1).glb",
+      "height": 4.8,
+      "evidence": "二楼阳台和叶片招牌，预览07"
+    },
+    "original": "C:\\Users\\Akira\\Downloads\\storybook cottage 3d model (1).glb",
+    "source": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\models\\rival-source.glb",
+    "bytes": 66427672,
+    "sha256": "5D52D9453453E7B072114B608186FA5CDC77151EE26D18148469E7460CFED91D"
+  }
+]
