@@ -1,0 +1,35 @@
+# 主要建筑独立建模输入
+
+日期：2026-10-31。负责人：资产与设计 Agent。以下七图均通过内置 imagegen 单独生成，参考图为 `town-overview.png`，参考作用仅为美术风格。背景均不透明，无人物、场景及可读文字；已目视检查单体完整、低基座和轮廓。它们是 Tripo 输入，尚未生成并接入对应 GLB，不能视为建筑完成。既有面包店输入为 `bakery-tripo-source.png`，共覆盖八处主要建筑。
+
+## 杂货店：grocery-tripo-source.png
+
+Use case: stylized-concept. Single isolated 3D reconstruction input for Panda Town grocery shop. Match reference art style: richly crafted warm fairy tale timber-and-cream-plaster cottage, terracotta pitched roof, moss green and ivory canvas awning, open front counter with clearly attached wooden vegetable crates, small arched timber door, golden window light, simple flower boxes. ONE complete self-contained building viewed front three-quarter, full roof chimney walls and flat base all visible with margin. Neutral even studio illumination, clean pale warm gray background, no scenery, no surrounding trees, no characters, no text, no signs with letters, no watermark, no detached loose objects, no cast shadow. Roof/back volume suitable for image-to-3D, strong readable silhouette. Reference image is aesthetic reference only, do not generate whole town.
+
+## 研究站：research-tripo-source.png
+
+Use case: stylized-concept. Single isolated image-to-3D source for Panda Town research station. Match reference art style. ONE self-contained compact whimsical cream plaster and timber research observatory with an attached round tower capped by a pale jade green ribbed glass dome, small brass telescope securely attached under dome, terracotta roof on lower entrance wing, tall arched amber windows, rounded wooden front door, a blank dark green hanging sign with an hourglass pictogram only, simple attached flower boxes. Building fully visible front three-quarter, complete roof walls low stone foundation with generous margin. Clean warm pale gray backdrop, neutral even studio lighting. No landscape, no characters, no surrounding trees, no text, no letters, no watermark, no heavy cast shadow. A complete coherent separable single building suitable for 3D reconstruction. Keep dome shapes simple and thick enough to reconstruct.
+
+## 集市：market-tripo-source.png
+
+Use case: stylized-concept. ONE isolated complete market stall structure for image-to-3D reconstruction in Panda Town, matching warm handmade fairy tale reference. A charming sturdy honey-brown timber market stall, four thick carved posts joined to a gently curved pale ivory and sage striped canvas canopy, attached wooden counter with three produce crates, amber lanterns attached to corner posts, a small blank wooden hanging sign and simple attached flower planters. Low stone footing joins everything into one coherent standalone asset. Clear front three-quarter view with all canopy corners, posts and footing visible, generous margin. Neutral even studio illumination and clean pale warm gray backdrop. No characters, no other buildings, no landscape, no trees, no letters or text, no watermark, no dramatic shadows. Thick simple forms suitable for 3D reconstruction.
+
+## 银行：bank-tripo-source.png
+
+Use case: stylized-concept. ONE isolated self-contained fairy tale town bank building as image-to-3D source, matching warm handmade Panda Town reference. Compact two-storey cream stone and timber bank, dignified but friendly, terracotta pitched roof and small rounded turret, arched entrance with two short stone columns, round golden coin relief above door with only concentric circles and no currency symbol, warm amber arched windows, simple attached flower boxes. Full roof, chimney, walls, and shallow stone foundation visible in front three-quarter view with generous margin. Neutral even studio lighting, clean pale warm gray background. No people, no landscape or trees, no other buildings, no readable text or letters, no watermark, no disconnected decorative objects or heavy shadows. Strong recognizable compact silhouette, not a castle or tall plinth.
+
+## 礼品店：gifts-tripo-source.png
+
+Use case: stylized-concept. ONE isolated complete gift shop building for image-to-3D in Panda Town matching reference. Charming compact cream plaster and carved honey timber cottage, asymmetric terracotta roof with a small dormer, dusty rose and ivory canvas awning, amber glowing arched display windows with simple gift boxes visible inside, attached hanging sign shaped as a wrapped pink present with gold ribbon and no letters, attached flower boxes, wooden arched door and shallow stone step. Full building visible in front three-quarter view with margin, no cropping of roof or sign. Neutral even studio illumination, clean pale warm gray background. No people, no scenery or trees, no second building, no readable text or letters, no watermark, no detached loose gifts, no heavy cast shadows. Thick connected forms suitable for 3D reconstruction.
+
+## 对手小店：rival-tripo-source.png
+
+Use case: stylized-concept. ONE isolated complete neighboring rival merchant shop for image-to-3D in Panda Town, warm friendly fairy tale style from reference. Compact slightly narrow two-storey timber-and-cream-plaster cottage, layered terracotta gables, rust red and ivory striped canvas awning, rounded wooden entrance, amber windows, attached wooden counter with a few sacks and small supply crates, attached blank ochre hanging sign with a simple leaf pictogram. A small balcony with connected flower boxes distinguishes it from bakery and grocery. Entire roof walls chimney and low stone foundation visible, front three-quarter view with generous margin. Neutral even studio lighting, plain pale warm gray backdrop. No characters, no landscape or surrounding trees, no other buildings, no readable text or letters, no logos, no watermark or dramatic cast shadows. Complete connected single asset for reconstruction.
+
+## 咖啡馆：cafe-tripo-source.png
+
+Use case: stylized-concept. ONE isolated complete Panda Town player cafe building for image-to-3D source, matching warm richly handcrafted fairy tale reference. Cozy cream plaster and honey timber cottage, asymmetric terracotta gable roof with small chimney, round wooden arched doorway, amber glowing large cafe window, pale ivory canvas awning and attached hanging sign showing a simple cream coffee cup pictogram only. Small connected low stone terrace with wooden railing, one simple round wooden table and two chairs permanently attached to the terrace base, flower boxes and one thick ivory patio umbrella. Entire roof, terrace, umbrella and low base visible in front three-quarter view with generous margin. Neutral even studio lighting and clean pale warm gray background. No people, no landscape or trees, no neighboring buildings, no readable letters or text, no watermark, no dramatic cast shadows. Single coherent asset with thick robust connected elements for reconstruction. Modest welcoming cafe, not an elaborate palace.
+
+## 后续生产与来源边界
+
+原始文件均保留于本目录，游戏不直接加载这些完整建筑图。需要经 Tripo 模型生成、面数与纹理加工、双镜头检查后进入 `public/models/`。独立树输入由主 Agent 制作，见 `tree-tripo-source.png`；独立店主图被服务拒绝，不能计为生成成功，可按已授权熊猫模型的派生服饰制作居民并记录来源。许可沿用各生成服务实际条款和账号计划，不自动标为 MIT。
