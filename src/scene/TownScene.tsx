@@ -7,7 +7,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { LOCATIONS, type LocationId } from "../game/content";
 import { LOCATION_POSITIONS, ribbonGeometry, routeCurve } from "./geometry";
 import { buildLandscape, groundHeight } from "./landscape";
-import { createRendering } from "./rendering";
+import { createRendering, createSkyTexture } from "./rendering";
 import { planFollowCamera } from "./follow-camera";
 import { createResidents } from "./residents";
 import {
@@ -134,8 +134,9 @@ export default function TownScene(props: TownSceneProps) {
     let disposed = false;
     let frame = 0;
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color("#dce5dc");
-    scene.fog = new THREE.Fog("#dce5dc", 65, 145);
+    const sky = createSkyTexture();
+    scene.background = sky;
+    scene.fog = new THREE.Fog("#bdd3dd", 75, 170);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -150,7 +151,7 @@ export default function TownScene(props: TownSceneProps) {
     controls.maxPolarAngle = Math.PI * 0.46;
     controls.minDistance = 10;
     controls.maxDistance = 72;
-    scene.add(new THREE.HemisphereLight("#e7efe8", "#606e49", 1.5));
+    scene.add(new THREE.HemisphereLight("#dceafa", "#7b8252", 1.8));
     const sun = new THREE.DirectionalLight("#ffe0a8", 3.4);
     sun.position.set(-28, 38, 18);
     sun.castShadow = true;
@@ -389,11 +390,15 @@ export default function TownScene(props: TownSceneProps) {
       const radial = new THREE.Vector3(x, 0, z).normalize();
       anchor.position.set(x + radial.x * 2.8, y - 0.05, z + radial.z * 2.8);
       anchor.rotation.y = Math.atan2(-radial.x, -radial.z);
+      const terraceHeight = Math.max(
+        0.28,
+        y - 0.05 - groundHeight(anchor.position.x, anchor.position.z),
+      );
       const foundation = mesh(
-        new THREE.BoxGeometry(5.1, 0.28, 4.8),
+        new THREE.BoxGeometry(5.1, terraceHeight, 4.8),
         "#b3ab94",
         anchor.position.x,
-        y - 0.21,
+        y - 0.05 - terraceHeight / 2,
         anchor.position.z,
       );
       scene.add(foundation);
@@ -597,6 +602,7 @@ export default function TownScene(props: TownSceneProps) {
       residents?.dispose();
       rendering.dispose();
       disposeObject(scene);
+      sky.dispose();
       Object.values(surfaces).forEach((texture) => texture.dispose());
       renderer.dispose();
       renderer.domElement.remove();

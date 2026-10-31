@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { LOCATIONS } from "../game/content";
 import { LOCATION_POSITIONS, routeCurve } from "./geometry";
+import { createScenery } from "./scenery";
 
 const roadSamples = LOCATIONS.flatMap((location) =>
   location.next.flatMap((next) => routeCurve(location.id, next).getPoints(28)),
@@ -392,7 +393,7 @@ function vegetation() {
     const x = point.x + Math.cos(angle) * 2.15,
       z = point.z + Math.sin(angle) * 2.15;
     const y = groundHeight(x, z);
-    const size = 0.2 + noise(i * 3) * 0.32;
+    const size = 0.12 + noise(i * 3) * 0.22;
     place(bushes, i, x, y + size * 0.45, z, size * 1.5, size, size);
     for (let j = 0; j < 3; j++)
       place(
@@ -504,28 +505,7 @@ export function buildLandscape(): {
   const stream = river();
   const plants = vegetation();
   group.add(terrain(), stream.group, bridge(), cobbles(), plants.group);
-  // 后景山岩形成有高低起伏的天际线，避免圆形展示台边缘。
-  const cliffs = instances(
-    new THREE.DodecahedronGeometry(1, 1),
-    ["#9caa9e", "#aeb6a4", "#bec3af"],
-    35,
-  );
-  for (let i = 0; i < 35; i++) {
-    const x = -42 + i * 2.5,
-      z = -34 - noise(i) * 7;
-    place(
-      cliffs,
-      i,
-      x,
-      -0.5 + noise(i * 5) * 2,
-      z,
-      3 + noise(i * 4) * 2,
-      4 + noise(i * 8) * 6,
-      3,
-      noise(i) * 6,
-    );
-  }
-  group.add(cliffs);
+  group.add(createScenery(groundHeight));
   return {
     group,
     update: stream.update,

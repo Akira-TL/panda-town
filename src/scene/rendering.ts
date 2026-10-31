@@ -4,6 +4,23 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { SSAOPass } from "three/examples/jsm/postprocessing/SSAOPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 
+export function createSkyTexture(): THREE.CanvasTexture {
+  const canvas = document.createElement("canvas");
+  canvas.width = 8;
+  canvas.height = 512;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("无法绘制天空渐变");
+  const gradient = context.createLinearGradient(0, 0, 0, 512);
+  gradient.addColorStop(0, "#73add8");
+  gradient.addColorStop(0.6, "#bbd9e7");
+  gradient.addColorStop(1, "#e7ead8");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 8, 512);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
 /** 复用现有 Three.js 附带后处理；小屏直接渲染，保留场景而降低采样成本。 */
 export function createRendering(
   renderer: THREE.WebGLRenderer,
