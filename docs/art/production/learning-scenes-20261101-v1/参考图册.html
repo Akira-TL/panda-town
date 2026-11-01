@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Panda Town｜十张场景与量化研究参考</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f4f0e3;
+        color: #284b38;
+        font-family: "Microsoft YaHei", sans-serif;
+        line-height: 1.6;
+      }
+      header,
+      main,
+      footer {
+        max-width: 1500px;
+        margin: auto;
+        padding: 24px;
+      }
+      h1 {
+        margin: 0 0 10px;
+      }
+      nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      a {
+        color: inherit;
+      }
+      nav a {
+        background: #fffdf2;
+        border: 1px solid #d4bd89;
+        border-radius: 14px;
+        padding: 10px 16px;
+        text-decoration: none;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+      figure {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid #d5c195;
+        border-radius: 22px;
+        background: #fffcf2;
+        box-shadow: 0 8px 28px #234d3610;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      figcaption {
+        padding: 16px;
+      }
+      figcaption strong {
+        display: block;
+        font-size: 18px;
+      }
+      .note {
+        padding: 14px;
+        background: #fff9e9;
+        border: 1px solid #dfcc9f;
+        border-radius: 14px;
+      }
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        header,
+        main,
+        footer {
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Panda Town｜十张场景与量化研究参考</h1>
+      <p>
+        八家店、结算引导与可切换的指标研究视图。依据用户两张UI风格图及项目实际截图生成。
+      </p>
+      <p class="note">
+        这是制作参考，不是已实现的游戏截图。运行时的图表、金额、互动和指标需由真实数据及代码准确绘制。量化知识内容是开发必读依据。
+      </p>
+      <nav>
+        <a href="开发执行提示词.md">开发执行提示词</a
+        ><a href="量化知识与游戏映射.md">量化知识与游戏映射</a
+        ><a href="场景说明.md">场景说明</a
+        ><a href="校对与交付说明.md">校对说明</a
+        ><a href="generation-prompts.json">完整生成提示词</a>
+      </nav>
+    </header>
+    <main class="grid">
+      <figure>
+        <a href="01-bakery-kline.png" target="_blank" rel="noopener"
+          ><img
+            src="01-bakery-kline.png"
+            alt="面包店：看懂K线与第一次买入"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>面包店：看懂K线与第一次买入</strong>
+          <p>K线与首笔买入</p>
+          <a href="01-bakery-kline.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="02-timber-ma-rule.png" target="_blank" rel="noopener"
+          ><img
+            src="02-timber-ma-rule.png"
+            alt="木材铺：均线与自己的规则"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>木材铺：均线与自己的规则</strong>
+          <p>均线与自选规则</p>
+          <a href="02-timber-ma-rule.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="03-fruit-volume.png" target="_blank" rel="noopener"
+          ><img
+            src="03-fruit-volume.png"
+            alt="水果集市：价格与成交量一起看"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>水果集市：价格与成交量一起看</strong>
+          <p>价格与成交量</p>
+          <a href="03-fruit-volume.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="04-chips-breakout-pullback.png" target="_blank" rel="noopener"
+          ><img
+            src="04-chips-breakout-pullback.png"
+            alt="芯片商店：突破回落与浮动盈亏"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>芯片商店：突破回落与浮动盈亏</strong>
+          <p>突破回落与浮动盈亏</p>
+          <a
+            href="04-chips-breakout-pullback.png"
+            target="_blank"
+            rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="05-bank-position.png" target="_blank" rel="noopener"
+          ><img
+            src="05-bank-position.png"
+            alt="金券银行：仓位与现金取舍"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>金券银行：仓位与现金取舍</strong>
+          <p>现金、仓位与买后预览</p>
+          <a href="05-bank-position.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="06-flowers-fees.png" target="_blank" rel="noopener"
+          ><img
+            src="06-flowers-fees.png"
+            alt="花束礼品店：等待与交易费用"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>花束礼品店：等待与交易费用</strong>
+          <p>交易费用与等待</p>
+          <a href="06-flowers-fees.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="07-coffee-rule-comparison.png" target="_blank" rel="noopener"
+          ><img
+            src="07-coffee-rule-comparison.png"
+            alt="咖啡豆店：与按规则行动的电脑商人比较"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>咖啡豆店：与按规则行动的电脑商人比较</strong>
+          <p>与固定规则商人对照</p>
+          <a href="07-coffee-rule-comparison.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="08-tea-learning-check.png" target="_blank" rel="noopener"
+          ><img
+            src="08-tea-learning-check.png"
+            alt="小镇茶馆：把规则用到新情境"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>小镇茶馆：把规则用到新情境</strong>
+          <p>新情境中判断规则</p>
+          <a href="08-tea-learning-check.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="09-result-pandaai.png" target="_blank" rel="noopener"
+          ><img
+            src="09-result-pandaai.png"
+            alt="随时结算：交易画像与PandaAI研究入口"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>随时结算：交易画像与PandaAI研究入口</strong>
+          <p>交易画像与PandaAI网页入口</p>
+          <a href="09-result-pandaai.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="10-indicator-research.png" target="_blank" rel="noopener"
+          ><img
+            src="10-indicator-research.png"
+            alt="指标研究视图：MACD与可切换指标"
+            loading="lazy"
+        /></a>
+        <figcaption>
+          <strong>指标研究视图：MACD与可切换指标</strong>
+          <p>MACD等指标的真实研究视图</p>
+          <a href="10-indicator-research.png" target="_blank" rel="noopener"
+            >打开原图</a
+          >
+        </figcaption>
+      </figure>
+    </main>
+    <footer>
+      2026-11-01｜实际截图副本在input/，尺寸和校验值见asset-manifest.json。
+    </footer>
+  </body>
+</html>

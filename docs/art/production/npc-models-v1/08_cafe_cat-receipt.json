@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\orange tabby cat 3d model.glb",
+  "bytes": 67214000,
+  "sha256": "C5A77C1FA990DA066A921FC0468600927B561454B3199916F614DDE36D073BFC",
+  "modified_utc": "2026-10-31T17:44:03.791265+00:00",
+  "inspected_utc": "2026-10-31T18:16:34.605732+00:00",
+  "model": {
+    "triangles": 1985902,
+    "vertices": 1029030,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.74915,
+      0.6944,
+      0.97745
+    ],
+    "minimum": [
+      -0.374573,
+      -0.347198,
+      0.0
+    ],
+    "maximum": [
+      0.374573,
+      0.347198,
+      0.977448
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_3ef0cd3f-0fb7-48de-886a-6b0929b12983"
+    ],
+    "textures": [
+      {
+        "name": "orange_tabby_cat_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "orange_tabby_cat_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "orange_tabby_cat_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

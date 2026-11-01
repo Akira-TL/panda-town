@@ -10,12 +10,12 @@ Panda Town 是面向 PandaAI 赛道的三维童话小镇游戏。正式文档使
 
 - 工程入口为 `ask-akira`；当前比赛任务使用其竞赛流程。
 - 用户于 2026-10-31 明确授权发布并完成前述 24 项任务，当前进入实现阶段。任务与依赖见 `docs/plans/task-breakdown.md`；完整执行提示见 `docs/plans/execution-prompt.md`。
-- 编写或执行任务前先读 `docs/specs/panda-town.md`，共享规则以该规格及其确认后关联的 GitHub 规格 Issue 为准；规划任务不等于授权实施。
+- 编写或执行任务前先读 `docs/specs/shop-trading.md` 与 `docs/specs/learning-experience.md`；`docs/specs/panda-town.md` 仅作索引，共享规则以该规格及其确认后关联的 GitHub 规格 Issue 为准；规划任务不等于授权实施。
 - 涉及场景、角色、物品、对话或画像界面的视觉任务，必须读取 `docs/design/visual-production.md`：先用 imagegen 生成效果图，再生成并使用元素图，最后对照效果图完成真实三维场景与界面。
 - 使用 Next.js 15.4、React 19、TypeScript、ESM、Tailwind CSS 4；三维实现选型单独记录。
 - 不使用 `any` 或未定义结构的数据对象；接口和事件需有明确类型。
 - 启停通过 `scripts/*.sh`，日志写入 `logs/`。Windows 使用 Git Bash 执行脚本。
-- 一次明确修改目的形成一个提交，仅暂存当前工作的文件。
+- 用户已要求快速开发，以可试玩的一批改动整合提交；仅暂存归属明确的当前工作，保留必要计算和完整流程检查。
 - 提交使用 `uv run ~/.agents/skills/akira/scripts/guard.py commit -m '<TYPE>: (<SCOPE>) <DETAIL>'`。
 - 普通推送不触发云端持续集成；发布流程在另行授权后配置。
 - `.agents/skills/` 是 Skiloom 本地受管目录，不提交、不手工修改其投影。
@@ -23,9 +23,12 @@ Panda Town 是面向 PandaAI 赛道的三维童话小镇游戏。正式文档使
 - 凭据、原始个人行为和未经许可的数据不得进入公开仓库。
 - 未接入 Panda Data 前，演示数据必须明确标注；不得声称已经接入。
 - 人格维度的游戏内推断不能标成经过验证的心理测验结果。
-- 游戏结束直接进入用户画像面板，不增加推荐任务、额外研究练习或外部跳转。行为数据默认仅保存在当前设备，不自动上传。
+- 游戏结束进入精简画像，保留按需证据、重开和清除。用户已新增“打开 PandaAI”按钮：仅主动点击打开 `https://www.pandaaiquant.com/agent_quant/`，可主动复制本局研究问题，不自动跳转或携带画像数据；不增加推荐任务或额外练习。行为默认仅保存在当前设备。
 
 ## Agent skills
+
+游戏剧情、关卡和界面任务先用项目级 `router` 选择游戏开发技能，内容审核与修正见
+`docs/validation/gamedev-content-review.md`。安装来源与固定版本见 `docs/agents/skills-setup.md`。
 
 ### Issue tracker
 
@@ -38,4 +41,7 @@ Panda Town 是面向 PandaAI 赛道的三维童话小镇游戏。正式文档使
 ### Domain docs
 
 采用单一领域上下文，根目录 `CONTEXT.md` 与 `docs/adr/` 记录概念和决策。见 `docs/agents/domain.md`。
+
+
+
 

@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\anthropomorphic fox 3d model.glb",
+  "bytes": 63670940,
+  "sha256": "8EC2470544A51FC56C1EC2A98997C4708E6AA3B4D3F9920743C0BB23DAFB9DBE",
+  "modified_utc": "2026-10-31T17:39:38.819383+00:00",
+  "inspected_utc": "2026-10-31T18:11:03.828151+00:00",
+  "model": {
+    "triangles": 1915003,
+    "vertices": 990178,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.55441,
+      0.44916,
+      0.97986
+    ],
+    "minimum": [
+      -0.277206,
+      -0.224579,
+      0.0
+    ],
+    "maximum": [
+      0.277206,
+      0.224579,
+      0.979858
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_22260037-9d33-4e5d-b6cd-e0024e1d0ed3"
+    ],
+    "textures": [
+      {
+        "name": "anthropomorphic_fox_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "anthropomorphic_fox_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "anthropomorphic_fox_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\steampunk robot 3d model.glb",
+  "bytes": 68491276,
+  "sha256": "D8B16E7001EADFDE5CFA275183E111838505D5C46A1D63CD7B24906EDE7E8AA3",
+  "modified_utc": "2026-10-31T17:49:43.319417+00:00",
+  "inspected_utc": "2026-10-31T18:19:13.796166+00:00",
+  "model": {
+    "triangles": 1919088,
+    "vertices": 993817,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.6004,
+      0.35413,
+      0.97968
+    ],
+    "minimum": [
+      -0.300201,
+      -0.177063,
+      0.0
+    ],
+    "maximum": [
+      0.300201,
+      0.177063,
+      0.979675
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_d6e2c028-f961-4647-9352-67cb23a5088f"
+    ],
+    "textures": [
+      {
+        "name": "steampunk_robot_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "steampunk_robot_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "steampunk_robot_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

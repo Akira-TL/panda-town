@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 14,
+    "stem": "14_riverside_mouse",
+    "label": "河岸灰鼠",
+    "filename": "mouse character 3d model.glb",
+    "height": 1.45
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\mouse character 3d model.glb",
+    "bytes": 68712344,
+    "sha256": "7A4F4F4E2057E976A6465B8949E4F7A284738244A9F8B3B2230D4FD7C80CEF6B",
+    "modified_utc": "2026-10-31T17:54:15.208831+00:00",
+    "inspected_utc": "2026-10-31T18:24:50.797442+00:00",
+    "model": {
+      "triangles": 1974385,
+      "vertices": 1022260,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.58319,
+        0.76447,
+        0.97989
+      ],
+      "minimum": [
+        -0.291595,
+        -0.382233,
+        0.0
+      ],
+      "maximum": [
+        0.291595,
+        0.382233,
+        0.979889
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_564d035a-f7a9-4add-a758-f0a61d32a5b9"
+      ],
+      "textures": [
+        {
+          "name": "mouse_character_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "mouse_character_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "mouse_character_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\14_riverside_mouse-v1.glb",
+    "bytes": 1497660,
+    "sha256": "E04F9A38677863A9F99865F9BEA22990CBBE38EC16F5BAA82EACD607C4F3477F",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19886,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.86287,
+        1.13195,
+        1.44988
+      ],
+      "minimum": [
+        -0.431204,
+        -0.56667,
+        -0.000359
+      ],
+      "maximum": [
+        0.431662,
+        0.565284,
+        1.44952
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_564d035a-f7a9-4add-a758-f0a61d32a5b9"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\14_riverside_mouse-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\14_riverside_mouse-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\14_riverside_mouse-mobile-v1.glb",
+    "bytes": 506096,
+    "sha256": "811F382C89FE6D65E63DC58C19EC2B8E3161F86A477C6DB1F7BA9C2B8EA66A74",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 7999,
+      "vertices": 7501,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.86224,
+        1.13015,
+        1.45129
+      ],
+      "minimum": [
+        -0.432327,
+        -0.566347,
+        -6.1e-05
+      ],
+      "maximum": [
+        0.429916,
+        0.563804,
+        1.451228
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_564d035a-f7a9-4add-a758-f0a61d32a5b9"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\14_riverside_mouse-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 13,
+    "stem": "13_dock_turtle",
+    "label": "码头乌龟",
+    "filename": "turtle character 3d model.glb",
+    "height": 1.65
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\turtle character 3d model.glb",
+    "bytes": 67248168,
+    "sha256": "E48767E6C531C1DB5B3BD67A8F0E957C5F3570AD89FB8F66B49FF0DD3B3AAD9C",
+    "modified_utc": "2026-10-31T17:54:09.565807+00:00",
+    "inspected_utc": "2026-10-31T18:31:04.386767+00:00",
+    "model": {
+      "triangles": 1908257,
+      "vertices": 988424,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.89731,
+        0.69418,
+        0.9791
+      ],
+      "minimum": [
+        -0.448654,
+        -0.347092,
+        0.0
+      ],
+      "maximum": [
+        0.448654,
+        0.347092,
+        0.979095
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_406ba946-6628-4f65-abc5-4551b3bb417b"
+      ],
+      "textures": [
+        {
+          "name": "turtle_character_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "turtle_character_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "turtle_character_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\13_dock_turtle-v1.glb",
+    "bytes": 1484272,
+    "sha256": "C17E8F5F48A4FD0255DB88E670354DB7143DC88BAD0B5BD062659A7229BF0D5C",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 23999,
+      "vertices": 19227,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.51155,
+        1.16851,
+        1.65
+      ],
+      "minimum": [
+        -0.755777,
+        -0.584255,
+        0.0
+      ],
+      "maximum": [
+        0.755777,
+        0.584255,
+        1.65
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_406ba946-6628-4f65-abc5-4551b3bb417b"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\13_dock_turtle-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\13_dock_turtle-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\13_dock_turtle-mobile-v1.glb",
+    "bytes": 507380,
+    "sha256": "31175AB1B135A1E9902698B7544F932383EF193CD003ADF5249CB4D206E646F1",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 7190,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.51299,
+        1.16533,
+        1.65
+      ],
+      "minimum": [
+        -0.756497,
+        -0.582789,
+        0.0
+      ],
+      "maximum": [
+        0.756497,
+        0.582543,
+        1.65
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_406ba946-6628-4f65-abc5-4551b3bb417b"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\13_dock_turtle-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

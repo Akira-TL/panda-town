@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 12,
+    "stem": "12_music_frog",
+    "label": "乐手蛙",
+    "filename": "frog character 3d model.glb",
+    "height": 1.65
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\frog character 3d model.glb",
+    "bytes": 66682688,
+    "sha256": "990FD215716867418AB2CDC262383249723E6FDA315B506790AF24D36DB862C8",
+    "modified_utc": "2026-10-31T17:49:54.470062+00:00",
+    "inspected_utc": "2026-10-31T18:21:59.031571+00:00",
+    "model": {
+      "triangles": 1945006,
+      "vertices": 1004501,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.7876,
+        0.37173,
+        0.97961
+      ],
+      "minimum": [
+        -0.393799,
+        -0.185867,
+        0.0
+      ],
+      "maximum": [
+        0.393799,
+        0.185867,
+        0.979614
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_c1541f2a-e109-4d2b-af29-219d49d8d12a"
+      ],
+      "textures": [
+        {
+          "name": "frog_character_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "frog_character_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "frog_character_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\12_music_frog-v1.glb",
+    "bytes": 1408304,
+    "sha256": "C5BA09F9D2CE12521860D59D8F1D75A756585287AB38D7F309AF36997E44F023",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19287,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.3277,
+        0.62583,
+        1.64952
+      ],
+      "minimum": [
+        -0.664696,
+        -0.312749,
+        0.001008
+      ],
+      "maximum": [
+        0.663006,
+        0.31308,
+        1.650533
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_c1541f2a-e109-4d2b-af29-219d49d8d12a"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\12_music_frog-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\12_music_frog-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\12_music_frog-mobile-v1.glb",
+    "bytes": 476176,
+    "sha256": "6AB95083B138573FFBE1AFAD4DED35E74043AEC706DB1ADBA0200F9C5F3380FD",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 7999,
+      "vertices": 7137,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.32571,
+        0.62451,
+        1.64878
+      ],
+      "minimum": [
+        -0.663568,
+        -0.312749,
+        -0.000122
+      ],
+      "maximum": [
+        0.662139,
+        0.311764,
+        1.648659
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_c1541f2a-e109-4d2b-af29-219d49d8d12a"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\12_music_frog-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

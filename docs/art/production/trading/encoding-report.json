@@ -1,0 +1,162 @@
+[
+  {
+    "product": "bread",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 13200
+  },
+  {
+    "product": "timber",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 15124
+  },
+  {
+    "product": "fruit",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 18118
+  },
+  {
+    "product": "chips",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 17406
+  },
+  {
+    "product": "gold",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 13534
+  },
+  {
+    "product": "flowers",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 19024
+  },
+  {
+    "product": "coffee",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 19438
+  },
+  {
+    "product": "tea",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_alpha": [
+      0,
+      255
+    ],
+    "runtime_size": [
+      192,
+      192
+    ],
+    "runtime_alpha": [
+      0,
+      255
+    ],
+    "bytes": 19042
+  }
+]

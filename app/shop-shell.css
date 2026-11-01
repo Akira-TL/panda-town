@@ -1,0 +1,243 @@
+.shop-game .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fffdf2f2;
+  color: #234e40;
+  border: 1px solid #ddcca9;
+  box-shadow: 0 4px 15px #1b453313;
+  font-size: 20px;
+}
+.shop-game .wordmark > img {
+  width: 34px;
+  height: 40px;
+  object-fit: contain;
+}
+.shop-game .wordmark span {
+  display: block;
+  font:
+    700 9px/1.3 "Microsoft YaHei",
+    sans-serif;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+.shop-game .trading-wallet {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  min-width: 0;
+}
+.wallet-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fffdf2f5;
+  border: 1px solid #ddcca9;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px #1b453313;
+  padding: 9px 16px;
+  min-width: 145px;
+}
+.wallet-card > img {
+  width: 33px;
+  height: 34px;
+  object-fit: contain;
+}
+.wallet-card span {
+  display: block;
+  color: #637363;
+  font-size: 11px;
+}
+.wallet-card b {
+  display: block;
+  color: #194e42;
+  font:
+    700 24px/1.2 "Microsoft YaHei",
+    sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.shop-game .view-controls {
+  background: #fffdf2f5;
+  border: 1px solid #ddcca9;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px #1b453313;
+  padding: 4px;
+}
+.shop-game .view-controls button {
+  min-height: 44px;
+  min-width: 54px;
+  border-radius: 13px;
+  color: #365a42;
+}
+.shop-game .view-controls button.selected {
+  background: #477b47;
+  color: #fffef6;
+  box-shadow: inset 0 1px 2px #d4e8ba80;
+}
+.shop-game.has-dialogue .view-controls {
+  top: 104px;
+}
+.shop-game .primary,
+.game-dialog .primary,
+.welcome .primary {
+  background: #4e8548;
+  color: #fffdf3;
+  border-color: #3e6b37;
+  box-shadow:
+    inset 0 2px 2px #c6dfa859,
+    0 3px 8px #25482a25;
+}
+.shop-game .primary:hover,
+.game-dialog .primary:hover,
+.welcome .primary:hover {
+  background: #3d7139;
+}
+.shop-game .primary:focus-visible,
+.game-dialog .primary:focus-visible,
+.welcome .primary:focus-visible {
+  outline: 3px solid #b89b4f;
+  outline-offset: 3px;
+}
+.shop-game button,
+.game-dialog button {
+  touch-action: manipulation;
+}
+.shop-game .scene canvas {
+  cursor: grab;
+  touch-action: none;
+}
+.shop-game .scene canvas:active {
+  cursor: grabbing;
+}
+.shop-settings-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.shop-setting-note {
+  font-size: 13px;
+  color: #756b51;
+  margin: 14px 0;
+}
+.shop-portfolio-list article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #dfd0ae;
+  flex-wrap: wrap;
+}
+.shop-portfolio-list article span:last-child {
+  margin-left: auto;
+  text-align: right;
+}
+.shop-portfolio-list small {
+  display: block;
+}
+.shop-game .choice > img {
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.shop-game .choice > div {
+  display: grid;
+  text-align: left;
+  gap: 3px;
+}
+.shop-game .choice small {
+  font-size: 11px;
+  font-weight: 400;
+}
+@media (max-width: 700px) {
+  .shop-game .wordmark {
+    padding: 7px 9px;
+    font-size: 14px;
+    gap: 5px;
+  }
+  .shop-game .wordmark > img {
+    width: 26px;
+    height: 33px;
+  }
+  .shop-game .wordmark span {
+    font-size: 7px;
+    letter-spacing: 0.6px;
+  }
+  .shop-game .trading-wallet {
+    gap: 5px;
+  }
+  .wallet-card {
+    padding: 7px 8px;
+    min-width: 74px;
+    gap: 3px;
+    border-radius: 15px;
+  }
+  .wallet-card > img {
+    width: 19px;
+    height: 22px;
+  }
+  .wallet-card span {
+    font-size: 9px;
+  }
+  .wallet-card b {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .shop-game.has-dialogue .view-controls {
+    top: 82px;
+  }
+  .shop-game .view-controls button {
+    min-width: 44px;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .shop-game .dialogue.compact .choices {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 370px) {
+  .wallet-card > img {
+    display: none;
+  }
+  .wallet-card {
+    min-width: 69px;
+  }
+  .shop-game .wordmark {
+    padding: 7px;
+  }
+  .shop-game .day-counter {
+    min-width: 37px;
+    padding: 7px;
+  }
+  .shop-game .hud {
+    gap: 5px;
+  }
+}
+.shop-game .shop-panel h2,
+.shop-game .shop-panel .shop-price-readout strong,
+.shop-game .shop-panel .shop-account dd,
+.shop-game .shop-report.learning-report h1,
+.shop-game .shop-report.learning-report .learning-report-metrics dd,
+.game-dialog h2,
+.game-dialog h3 {
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+.welcome-card::before {
+  content: none;
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .shop-game .view-controls,
+  .shop-game.has-dialogue .view-controls {
+    top: auto;
+    bottom: 10px;
+    left: 12px;
+    right: auto;
+    z-index: 25;
+  }
+  .shop-game .scene-status {
+    top: 92px;
+    left: 12px;
+  }
+}

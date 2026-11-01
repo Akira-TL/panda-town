@@ -1,44 +1,72 @@
 # Panda Town
 
-面向 PandaAI 赛道的三维童话小镇游戏：玩家掷骰子沿弯曲街道自动行走，在岔路、商店与角色事件中选择，经营生活与资产，并查看带行为证据的消费偏好与一般人格特征反馈。
+面向 PandaAI 赛道的三维童话小镇交易与学习游戏。玩家掷骰沿弯曲街道自动前进，在八家店观察各自真实历史行情的游戏映射，买入、加仓、持有或卖出商品。现金、持仓、含费成本和盈亏跨轮保留，右上角设置可随时结算。
 
-**用户已授权完成24项任务，当前进入资产生产与实现阶段；可运行状态以实际验收证据为准。**
+当前依据为[游玩学习规格](docs/specs/learning-experience.md)与[连续商店交易合同](docs/specs/shop-trading.md)。没有固定八天终局，也不要求开店解锁。旧开店及固定八章记录仅供历史追踪，不能证明当前版本通过。
 
-## 本机项目位置与运行入口
+## 试玩与运行
 
-Windows 的“文档”目录可能因 OneDrive 设置而迁移。使用系统返回的实际目录定位项目，不固定使用旧 OneDrive 路径。在 PowerShell 中执行：
+本机预览：[打开 Panda Town](http://127.0.0.1:3018/)。完整环境要求、启动与停止步骤见[运行说明](docs/运行说明.md)。
 
-```powershell
-$documentsPath = [Environment]::GetFolderPath('MyDocuments')
-Set-Location -LiteralPath (Join-Path $documentsPath 'ChatGPT\大富翁')
+克隆仓库并进入项目根目录：
+
+```sh
+git clone https://github.com/Akira-TL/panda-town.git
+cd panda-town
 ```
 
-本次迁移后，“文档”目录为 `%USERPROFILE%\Documents`。源码、Git 历史、模型和未提交修改均已在新位置核实。应用启停仍使用项目 `scripts/` 中的脚本，步骤见[本地运行说明](docs/validation/local-validation.md)；完整进度见[任务验收矩阵](docs/validation/task-status.md)。三维画面与模型仍在制作，不能仅凭八回合可运行就认定全部视觉任务完成。
+在项目根目录的 Git Bash 中安装、构建、启动：
 
-## 规格与实现范围
+```sh
+npm ci
+PANDA_MODE=production npm run build
+PANDA_MODE=production PORT=3018 bash scripts/start.sh
+```
 
-- [首版完整规格草案](docs/specs/panda-town.md)
-- [24 项任务草案与并行依赖](docs/plans/task-breakdown.md)
-- [十二类事件与十六处场景](docs/design/event-catalog.md)
-- [视觉生产：效果图 → 元素资产 → 三维实现 → 对照验收](docs/design/visual-production.md)
+停止同一生产服务：
 
-- [已确认的产品方向](docs/product-brief.md)
-- [领域概念](CONTEXT.md)
-- [画像研究的候选依据](docs/research/profile-foundations.md)
-- [成熟玩法研究](docs/research/gameplay-cases.md)
-- [玩法与三维场景方案](docs/gameplay-direction.md)
-- [用户画像面板内容方案](docs/profile-panel.md)
-- [GitHub 决策与问题](https://github.com/Akira-TL/panda-town/issues)
-- [项目技能安装记录](docs/agents/skills-setup.md)
+```sh
+PANDA_MODE=production bash scripts/stop.sh
+```
 
-## 已选择的美术方向
+运行脚本使用 `.next-production` 隔离生产构建，日志写入 `logs/production.log` 与 `logs/production-error.log`。已有运行负责人时先协调，避免重复启动。以下为检查命令，浏览器用例应在同一冻结构建上串行执行：
 
-![童话小镇：第三人称与全局俯瞰概念图](docs/art/fairytale-town-reference.png)
+```sh
+npm run typecheck
+npm test
+PANDA_TEST_URL=http://127.0.0.1:3018 npm run test:browser:learning
+PANDA_TEST_URL=http://127.0.0.1:3018 npm run test:browser:trading
+```
 
-此图由 OpenAI imagegen 生成，用于美术讨论；不是游戏运行截图，也不是已经完成的三维模型。
+`npm test` 检查当前交易、行情、指标、学习和镜头模块；`test:paths` 是旧玩法路径，不作为当前验收入口。已确认与待补证据见[本地验证](docs/validation/local-validation.md)和[24项任务矩阵](docs/validation/task-status.md)。
 
-## 开源与数据
+## 当前玩法与学习
 
-源码采用 [MIT 许可证](LICENSE)。图像和其他材料的来源见 [素材记录](docs/art/README.md)。
-首版使用明确标注的演示数据，Panda Data 权限尚未开通。赛事资料包和账号凭据不纳入公开仓库。
+- 面包、木材、水果、芯片、金券、花束、咖啡豆、茶叶分别映射八份独立历史日线，保留真实开高低收和成交量；只展示截至当前日期的已知数据。
+- 每轮到站共同推进一天行情，只做一次主要交易。当前店可买入；已有商品可从背包跨店卖出。费用为成交金额的0.1%，受现金、持仓和当日数量限制。
+- K线与收盘折线、成交量、此前均价、真实成交点和当前含费成本相互对应。成交前可看支出、余款与持仓预览，成交后看到真实数量和现金变化。
+- 玩家可保存“什么时候买、投入多少、什么时候退出”，规则仍需手动确认交易。挂价牌辨认与新情境规则判断均可跳过，不耗交易机会；查看资料与盈利都不算掌握知识。
+- 六项指标研究包含指数移动平均线（Exponential Moving Average, EMA）、指数平滑异同移动平均线（Moving Average Convergence Divergence, MACD）、相对强弱指数（Relative Strength Index, RSI）、随机指标（KDJ）、布林带及平均真实波幅（Average True Range, ATR）。历史不足明确留空，公式与阈值见[指标依据](docs/research/trading-indicators.md)。
+- 电脑商人使用公开固定规则、同一起点、同轮落点、同样费用与成交约束，不读取未来择优行动。结算区分总资产、盈亏、费用和从已观察账户估值计算的最大回撤。
+- 当前含200日历史，初始公开20期，最多推进180轮；没有八轮限制。历史末尾停止推进，仍可结算。结算按当前市值计价，不假造自动卖出。
 
+## PandaAI 衔接与本机记录
+
+结果页的“去 PandaAI 验证 ↗”主动打开 [PandaAI智能体量化页面](https://www.pandaaiquant.com/agent_quant/)，无附加参数。“复制我的问题”由玩家主动复制本局规则、交易与客观学习事实，再自行粘贴；成功和失败分别提示，不声称已经发送。
+
+交易与学习分别使用 `panda-town.trading.v1`、`panda-town.learning.v1`，保存在当前标签页的 `sessionStorage`，按同一局标识关联。刷新恢复、重开和清除均需同时处理两类记录；设备拒绝读写或删除时保留准确提示。没有自动上传玩家记录。零交易或未答题保留未观察，不生成固定人格或能力结论。
+
+## 规格与制作资料
+
+- [规则索引](docs/specs/panda-town.md)、[24项任务与依赖](docs/plans/task-breakdown.md)
+- [知识—操作—反馈—证据映射](docs/validation/learning-knowledge-map.md)、[行情来源与许可](docs/design/shop-market-data-source.md)
+- [视觉生产流程](docs/design/visual-production.md)、[学习版用户制作输入](docs/art/production/learning-scenes-20261101-v1/开发执行提示词.md)
+- [产品方向](docs/product-brief.md)、[领域概念](CONTEXT.md)、[GitHub任务](https://github.com/Akira-TL/panda-town/issues)
+
+## 美术与开源
+
+![用户选定的童话小镇概念图](docs/art/fairytale-town-reference.png)
+
+概念图由 OpenAI imagegen 生成，是制作参照；十五名新增居民与实际三维世界仍需按同一运行版本对照，模型加载不能替代画面对照。建议5–8分钟体验和实体手机表现待现场验证，不以自动化耗时或模拟视口代替。
+
+源码采用[MIT许可证](LICENSE)，自生成图像和模型来源见[美术资料](docs/art/README.md)。商品是真实历史金融产品的游戏映射，未接入 Panda Data 或真实资金。第三方行情及派生快照保留独立署名与非商业许可，不随源码按 MIT 重新授权。赛事资料包、账号凭据和玩家个人原始记录不进入公开仓库。

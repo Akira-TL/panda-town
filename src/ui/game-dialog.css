@@ -1,0 +1,85 @@
+.game-dialog {
+  width: min(820px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid #c9ac71;
+  border-radius: 20px;
+  color: #294c36;
+  background: #fcf6e7;
+  box-shadow: 0 20px 90px #19362655;
+  overflow-y: auto;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+.game-dialog::backdrop {
+  background: #172e2466;
+}
+.game-dialog-inner {
+  padding: 0 20px 20px;
+}
+.game-dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  gap: 12px;
+  padding: 14px 0;
+  background: #fcf6e7;
+}
+.game-dialog-heading h2 {
+  margin: 0;
+  font:
+    700 23px/1.35 "Songti SC",
+    serif;
+}
+.game-dialog-heading button {
+  width: 44px;
+  min-height: 44px;
+  border: 1px solid #c9ac71;
+  border-radius: 50%;
+  background: #fffaf0;
+  color: #294c36;
+  font-size: 23px;
+}
+.game-dialog .game-dialog-return {
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: 12px;
+  border: 1px solid #b89d6b;
+  background: #f0e7d1;
+  color: #294c36;
+  margin-top: 14px;
+}
+.game-dialog :focus-visible {
+  outline: 3px solid #a77c2a;
+  outline-offset: 3px;
+}
+.game-dialog details {
+  padding: 8px 0;
+}
+.game-dialog summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.game-dialog table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.game-dialog th,
+.game-dialog td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #dfd2b6;
+}
+@media (max-width: 700px) {
+  .game-dialog-inner {
+    padding: 0 13px 15px;
+  }
+  .game-dialog-heading h2 {
+    font-size: 20px;
+  }
+}

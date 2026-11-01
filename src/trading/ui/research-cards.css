@@ -1,0 +1,108 @@
+.research-cards {
+  color: #36583f;
+}
+.research-cards-note {
+  font-size: 13px;
+  color: #7c7054;
+}
+.research-date-boundary {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  margin: 12px 0;
+  border: 1px solid #d9c89d;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.research-date-boundary span {
+  padding: 10px;
+  background: #e9efdd;
+  font-size: 13px;
+}
+.research-date-boundary span:last-child {
+  background: #f3ead6;
+  border-left: 2px dashed #bea871;
+}
+.research-date-boundary small {
+  display: block;
+  font-size: 11px;
+  color: #7b745c;
+}
+.research-card {
+  margin: 10px 0;
+  border: 1px solid #d9c393;
+  border-radius: 18px;
+  background: #fff9eb;
+}
+.research-card summary {
+  min-height: 64px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+}
+.research-card summary::-webkit-details-marker {
+  display: none;
+}
+.research-card summary strong {
+  display: block;
+  font-size: 17px;
+}
+.research-card summary small {
+  display: block;
+  font-size: 12px;
+  color: #81724d;
+  margin-top: 3px;
+}
+.research-card summary b {
+  font-size: 22px;
+  color: #80965a;
+}
+.research-card[open] summary b {
+  transform: rotate(45deg);
+}
+.research-card summary:focus-visible {
+  outline: 3px solid #ad843b;
+  outline-offset: 3px;
+  border-radius: 18px;
+}
+.research-card-fact {
+  margin: 0 14px 10px;
+  background: #eaf0de;
+  border-radius: 10px;
+  padding: 9px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.research-card ul {
+  margin: 0;
+  padding: 0 24px 0 34px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.research-card li {
+  margin: 8px 0;
+}
+.research-card-question {
+  border-top: 1px dashed #d9c393;
+  margin: 12px 14px 0;
+  padding: 10px 0;
+}
+.research-card-question small {
+  color: #8a754a;
+}
+.research-card-question p {
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+@media (max-width: 480px) {
+  .research-date-boundary {
+    grid-template-columns: 1fr;
+  }
+  .research-date-boundary span:last-child {
+    border-left: 0;
+    border-top: 2px dashed #bea871;
+  }
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01",
+    "title": "面包店：看懂K线与第一次买入",
+    "file": "01-bakery-kline.png",
+    "width": 1586,
+    "height": 992,
+    "bytes": 2278139,
+    "sha256": "a38d17ba5d98d3a7c852dc66f3db91cb16cefbcfdde104b4677295c23462ff8c",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-d6d1aba8-94fe-4c68-b0c6-4bd701f72d93.png"
+  },
+  {
+    "id": "02",
+    "title": "木材铺：均线与自己的规则",
+    "file": "02-timber-ma-rule.png",
+    "width": 1672,
+    "height": 941,
+    "bytes": 2377338,
+    "sha256": "094498048d0367343269331fe9d79c82fc217a38c08e007064814e9025066bde",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-3b6c601d-561d-4908-ac66-7370b7be1029.png"
+  },
+  {
+    "id": "03",
+    "title": "水果集市：价格与成交量一起看",
+    "file": "03-fruit-volume.png",
+    "width": 1672,
+    "height": 941,
+    "bytes": 2383603,
+    "sha256": "067f8c9e989e836f2357f870d03abffd6f5872aa4e7304411191180b07de4972",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-d7a0d169-0237-4847-89a9-0122fef7e3f8.png"
+  },
+  {
+    "id": "04",
+    "title": "芯片商店：突破回落与浮动盈亏",
+    "file": "04-chips-breakout-pullback.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2394046,
+    "sha256": "8ef2f9b560c682d1b6504e6ff3a867c3138171bfd2d95fdaadf65f0a31e42d32",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-670d43f4-232e-4e67-be08-70ee152283cf.png"
+  },
+  {
+    "id": "05",
+    "title": "金券银行：仓位与现金取舍",
+    "file": "05-bank-position.png",
+    "width": 1586,
+    "height": 992,
+    "bytes": 2367335,
+    "sha256": "a38c182ec752a4c634d71bd344816d5b82af0f4badb78c6e794a08bffdd17c51",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-c69a6ec9-89b3-47ab-9af3-fa27f353aa51.png"
+  },
+  {
+    "id": "06",
+    "title": "花束礼品店：等待与交易费用",
+    "file": "06-flowers-fees.png",
+    "width": 1586,
+    "height": 992,
+    "bytes": 2397288,
+    "sha256": "ef949cc233be80c4098c0e9e120ef2713edeecb1519b74a58e53936564a4d8a4",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-c757aec2-b9f6-4ee3-8b56-7499c69be535.png"
+  },
+  {
+    "id": "07",
+    "title": "咖啡豆店：与按规则行动的电脑商人比较",
+    "file": "07-coffee-rule-comparison.png",
+    "width": 1585,
+    "height": 992,
+    "bytes": 2398948,
+    "sha256": "ea30170568808abc4a9e6d86255c022c39f37dba05d9280be059a8ad1a505bdb",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-1bea504e-efb1-401b-b0fd-83256640494c.png"
+  },
+  {
+    "id": "08",
+    "title": "小镇茶馆：把规则用到新情境",
+    "file": "08-tea-learning-check.png",
+    "width": 1586,
+    "height": 992,
+    "bytes": 2407463,
+    "sha256": "39b99d774404238426fc5c44331f887116390681b958ab0fed8f36e2af2f2723",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-fa7c0405-0d4f-4a91-b5ed-b2691847cc52.png"
+  },
+  {
+    "id": "09",
+    "title": "随时结算：交易画像与PandaAI研究入口",
+    "file": "09-result-pandaai.png",
+    "width": 1585,
+    "height": 992,
+    "bytes": 2329301,
+    "sha256": "5ddb481904403a88927ec47f9fd86ddac28852061116cc0027a322b292471740",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-dfc56061-47c1-44f6-a0c3-7f609abd68b8.png"
+  },
+  {
+    "id": "10",
+    "title": "指标研究视图：MACD与可切换指标",
+    "file": "10-indicator-research.png",
+    "width": 1672,
+    "height": 941,
+    "bytes": 2329237,
+    "sha256": "58e31bc8a40636946007f7fb5ac4c88c174549f511f678807745a7e11751ff31",
+    "generatedOriginal": "C:\\Users\\Akira\\.codex\\generated_images\\01a192cb-21e0-7ac0-81dc-5dda100425df\\exec-6a93f4a5-8b22-4cc4-85ce-76803152b43b.png"
+  }
+]

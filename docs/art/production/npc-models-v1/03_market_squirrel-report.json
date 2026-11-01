@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 3,
+    "stem": "03_market_squirrel",
+    "label": "水果商松鼠",
+    "filename": "cartoon squirrel 3d model.glb",
+    "height": 1.6
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\cartoon squirrel 3d model.glb",
+    "bytes": 65360368,
+    "sha256": "1D5BAF7BAF2D3628083AB86E09C07D8186B73EDDDB80F557C462BC3E77C608A9",
+    "modified_utc": "2026-10-31T17:39:21.765297+00:00",
+    "inspected_utc": "2026-10-31T18:17:01.041914+00:00",
+    "model": {
+      "triangles": 1916498,
+      "vertices": 994701,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.58038,
+        0.94293,
+        0.9794
+      ],
+      "minimum": [
+        -0.290192,
+        -0.471466,
+        0.0
+      ],
+      "maximum": [
+        0.290192,
+        0.471466,
+        0.979401
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_9f15bcb7-3c07-4f65-84fd-720ea83af856"
+      ],
+      "textures": [
+        {
+          "name": "cartoon_squirrel_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "cartoon_squirrel_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "cartoon_squirrel_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\03_market_squirrel-v1.glb",
+    "bytes": 1416592,
+    "sha256": "D6DB4DC96842FCD07ABA88100D8A8F495BC6E6630C3E9FF0B6A19B412FFFE94F",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 20289,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.94837,
+        1.54037,
+        1.59955
+      ],
+      "minimum": [
+        -0.474186,
+        -0.770183,
+        -0.0
+      ],
+      "maximum": [
+        0.474186,
+        0.770183,
+        1.599548
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_9f15bcb7-3c07-4f65-84fd-720ea83af856"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\03_market_squirrel-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\03_market_squirrel-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\03_market_squirrel-mobile-v1.glb",
+    "bytes": 483964,
+    "sha256": "2D6B570C6FAC50C9A97F50BE5EB9DD7F8AE35E3A7AA98810DA5D2449CFA8123D",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 7999,
+      "vertices": 7620,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.94355,
+        1.52984,
+        1.59781
+      ],
+      "minimum": [
+        -0.471776,
+        -0.764919,
+        0.0
+      ],
+      "maximum": [
+        0.471776,
+        0.764919,
+        1.597812
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_9f15bcb7-3c07-4f65-84fd-720ea83af856"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\03_market_squirrel-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\sheep character 3d model.glb",
+  "bytes": 65190336,
+  "sha256": "9FDCFE809F24DA173DFC6E006FBBAA8DAEC9D8433517FE751ADDF3B7ECC2E828",
+  "modified_utc": "2026-10-31T17:44:18.997322+00:00",
+  "inspected_utc": "2026-10-31T18:13:51.343515+00:00",
+  "model": {
+    "triangles": 1948892,
+    "vertices": 1015446,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.63071,
+      0.40619,
+      0.97949
+    ],
+    "minimum": [
+      -0.315353,
+      -0.203094,
+      0.0
+    ],
+    "maximum": [
+      0.315353,
+      0.203094,
+      0.979492
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_b9be7b88-6fcc-4fe8-a5d1-61e32b318b2c"
+    ],
+    "textures": [
+      {
+        "name": "sheep_character_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "sheep_character_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "sheep_character_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

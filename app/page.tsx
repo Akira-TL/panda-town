@@ -1,383 +1,120 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import {
-  dispatch,
-  visibleGame,
-  type PresentedOption,
-} from "../src/game/engine";
-import {
-  getEventDialogue,
-  getEventForLocation,
-  LOCATIONS,
-} from "../src/game/content";
-import { buildProfile } from "../src/game/profile";
-import {
-  STORAGE_KEY,
-  freshSession,
-  restoreSession,
-  type Session,
-  type ActionInput,
-} from "../src/game/session";
-import { ReportPanel } from "../src/ui/ReportPanel";
-import { StudyPanel } from "../src/ui/StudyPanel";
-import { InventoryPanel, FinalAssetNote } from "../src/ui/InventoryPanel";
-import { DecisionPanel } from "../src/ui/DecisionPanel";
-import { DiceFace } from "../src/ui/GameDetails";
-import { SessionActions } from "../src/ui/SessionActions";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { LOCATIONS } from "../src/game/content";
 import type { AssetStatus } from "../src/scene/TownScene";
+import { DiceFace } from "../src/ui/GameDetails";
+import { GameDialog } from "../src/ui/GameDialog";
+import { SessionActions } from "../src/ui/SessionActions";
+import { useTradingSession } from "../src/trading/useTradingSession";
+import { useLearningSession } from "../src/trading/useLearningSession";
+import { getAccountSnapshot } from "../src/trading/engine";
+import { getMarketDate, getQuote, LAST_MARKET_INDEX } from "../src/trading/market";
+import { getLocationProduct, PRODUCTS } from "../src/trading/products";
+import type { TradingAction } from "../src/trading/model";
+import { TradingPanel } from "../src/trading/ui/TradingPanel";
+import { TradingReport } from "../src/trading/ui/TradingReport";
 import "./globals.css";
+import "./research-shell.css";
+import "./shop-shell.css";
 
 const TownScene = dynamic(() => import("../src/scene/TownScene"), {
   ssr: false,
-  loading: () => <div className="scene-loading">正在点亮小镇的灯……</div>,
+  loading: () => <div className="scene-loading">小镇正在醒来……</div>,
 });
-const money = (n: number) => n.toLocaleString("zh-CN");
-function choiceTitle(option: PresentedOption): string {
-  switch (option.effect.kind) {
-    case "work":
-      return "接一份临时工作";
-    case "buy-stall":
-      return "接手集市摊位";
-    case "buy-tool":
-      return option.effect.quality === "used" ? "买二手工具" : "买优质工具";
-    case "cooperate":
-      return "一起采购优质工具";
-    case "consume":
-      return option.label.split(/[，；]/)[0] ?? option.label;
-    default:
-      return option.label;
-  }
-}
-function choiceDescription(option: PresentedOption): string {
-  if (!option.available)
-    return option.shortfall > 0
-      ? `现金还差 ${option.shortfall}`
-      : "当前条件不满足";
-  switch (option.effect.kind) {
-    case "work":
-      return "确定收入，代替本回合其他行动";
-    case "buy-stall":
-      return "次日起每日 +100 · 期末可卖 480";
-    case "buy-tool":
-      return `每次摊位收入 +${option.effect.quality === "used" ? 20 : 40}，需先经营摊位`;
-    case "cooperate":
-      return "明天交货 · 每次摊位收入 +40";
-    case "invest":
-      return "可能盈亏，最多损失已投入金额";
-    case "sell-investment":
-      return "按当前报价全部退出，费用为 0";
-    case "consume":
-      return option.effect.itemId === "repair-service"
-        ? "师傅当场帮忙修好"
-        : "记入本局回顾，不可出售";
-    default:
-      return "不额外花费现金";
-  }
-}
+const money = (value: number) => value.toLocaleString("zh-CN", { maximumFractionDigits: 2 });
+type Menu = "settings" | "holdings" | "data" | null;
+
 export default function Home() {
-  const [session, setSession] = useState<Session | null>(null);
-  const [hydrated, setHydrated] = useState(false);
-  const [notice, setNotice] = useState("");
   const [cameraMode, setCameraMode] = useState<"follow" | "overview">("follow");
+  const [cameraResetKey, setCameraResetKey] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [menu, setMenu] = useState<Menu>(null);
+  const [quantity, setQuantity] = useState(1);
   const [sceneError, setSceneError] = useState("");
   const [assetStatus, setAssetStatus] = useState<AssetStatus | null>(null);
-  const [showIntroduction, setShowIntroduction] = useState(false);
-  const [viewReport, setViewReport] = useState(false);
-  const dialogRef = useRef<HTMLElement>(null);
+  const [hiddenLearningNotice, setHiddenLearningNotice] = useState("");
+  const branchHeading = useRef<HTMLHeadingElement>(null);
+  const { session, hydrated, notice, setNotice, begin, clear, onAction, roll, chooseBranch } =
+    useTradingSession(reducedMotion, menu !== null);
+  const learning = useLearningSession(session?.game ?? null);
+  const visibleNotice = notice || (learning.notice !== hiddenLearningNotice ? learning.notice : "");
   const onError = useCallback((message: string) => setSceneError(message), []);
-  const onAssetStatus = useCallback(
-    (status: AssetStatus) => setAssetStatus(status),
-    [],
-  );
+  const onAssetStatus = useCallback((status: AssetStatus) => setAssetStatus(status), []);
   useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        let restored: Session | null = null;
-        try {
-          restored = restoreSession(raw);
-        } catch {
-          /* 损坏记录与旧规则均不恢复。 */
-        }
-        if (restored) {
-          setSession(restored);
-          setViewReport(restored.game.phase === "report");
-          setNotice("已恢复本标签页的当前一局。");
-        } else {
-          setNotice("记录版本不兼容或内容损坏，请重新开始。");
-          sessionStorage.removeItem(STORAGE_KEY);
-        }
-      }
-    } catch {
-      setNotice("本设备记录不可用，本局仍可进行；刷新后进度可能丢失。");
-    }
-    setReducedMotion(
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    );
-    setHydrated(true);
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
   useEffect(() => {
-    if (!hydrated || !session) return;
-    try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-    } catch {
-      setNotice("进度无法保存，本局仍可继续；刷新可能丢失进度或恢复较早记录。");
-    }
-  }, [session, hydrated]);
-  const game = session?.game;
-  const visible = game ? visibleGame(game) : null;
-  const report = useMemo(
-    () => (game?.phase === "report" ? buildProfile(game.evidence) : null),
-    [game],
-  );
-  const place = LOCATIONS.find((p) => p.id === session?.position);
-  const act = useCallback((input: ActionInput) => {
-    const actionId = crypto.randomUUID();
-    setSession((previous) =>
-      previous
-        ? {
-            ...previous,
-            game: dispatch(previous.game, {
-              ...input,
-              id: actionId,
-              day: previous.game.day,
-            }),
-          }
-        : previous,
-    );
-  }, []);
+    if (session?.branch) branchHeading.current?.focus();
+  }, [session?.branch]);
   useEffect(() => {
-    if (
-      !session ||
-      session.game.phase !== "travel" ||
-      !session.rolled ||
-      session.branch
-    )
-      return;
-    if (session.remaining === 0) {
-      setSession((previous) =>
-        previous && previous.game.phase === "travel"
-          ? {
-              ...previous,
-              game: dispatch(previous.game, {
-                type: "open-event",
-                id: `arrival-${previous.game.day}-${previous.position}`,
-                day: previous.game.day,
-                event: getEventForLocation(previous.game, previous.position),
-              }),
-            }
-          : previous,
-      );
-      return;
-    }
-    const paths = LOCATIONS.find((p) => p.id === session.position)?.next ?? [];
-    if (paths.length > 1) {
-      setSession((previous) =>
-        previous ? { ...previous, branch: true } : previous,
-      );
+    setQuantity(1);
+  }, [session?.game.round, session?.game.location]);
+  function restart() {
+    const deleted = learning.clear();
+    setMenu(null);
+    setHiddenLearningNotice("");
+    begin();
+    if (!deleted) setNotice("新局已开始；设备拒绝删除旧学习存储，旧记录可能残留。");
+  }
+  function clearRecord() {
+    const deleted = learning.clear();
+    setMenu(null);
+    clear();
+    if (!deleted) setNotice("画面已清除，但设备拒绝删除学习存储，旧记录可能残留。");
+  }
+  function action(next: TradingAction) {
+    onAction(next);
+  }
+  function nextShop() {
+    if (session && session.game.marketIndex >= LAST_MARKET_INDEX) {
+      setNotice("这段历史播完了，可在设置中结算。");
       return;
     }
-    const next = paths[0];
-    if (!next) return;
-    const timer = setTimeout(
-      () =>
-        setSession((previous) =>
-          previous &&
-          previous.game.phase === "travel" &&
-          previous.position === session.position &&
-          previous.remaining === session.remaining
-            ? { ...previous, position: next, remaining: previous.remaining - 1 }
-            : previous,
-        ),
-      reducedMotion ? 80 : 650,
-    );
-    return () => clearTimeout(timer);
-  }, [session, reducedMotion]);
-  useEffect(() => {
-    if (
-      game?.phase === "decision" ||
-      game?.phase === "feedback" ||
-      game?.phase === "settlement" ||
-      game?.phase === "report" ||
-      session?.branch
-    )
-      dialogRef.current?.focus();
-  }, [game?.phase, session?.branch, viewReport]);
-  function begin() {
-    setSession(freshSession());
-    setCameraMode("follow");
-    setSceneError("");
-    setNotice("");
-    setShowIntroduction(true);
-    setViewReport(false);
+    roll();
   }
-  function clear() {
-    let message = "本局记录与画像已清除。";
-    try {
-      sessionStorage.removeItem(STORAGE_KEY);
-    } catch {
-      message =
-        "界面已清空，但浏览器拒绝删除旧记录。换人前请在浏览器设置中清除此站点数据。";
-    }
-    setSession(null);
-    setNotice(message);
-    setAssetStatus(null);
-    setSceneError("");
-    setShowIntroduction(false);
-    setViewReport(false);
-  }
-  function roll() {
-    setSession((previous) => {
-      if (!previous || previous.game.phase !== "travel" || previous.rolled)
-        return previous;
-      const die = Math.floor(Math.random() * 6) + 1;
-      return { ...previous, die, remaining: die, rolled: true };
-    });
-  }
-  function endTurn() {
-    setSession((previous) =>
-      previous
-        ? {
-            ...previous,
-            game: dispatch(previous.game, {
-              type: "end-turn",
-              id: `end-${previous.game.day}`,
-              day: previous.game.day,
-            }),
-            remaining: 0,
-            rolled: false,
-            branch: false,
-          }
-        : previous,
-    );
-  }
-  if (!hydrated) return <main className="boot">正在打开小镇的门……</main>;
-  if (!session || !game || !visible)
+  if (!hydrated) return <main className="scene-loading">准备出发……</main>;
+  if (!session)
     return (
       <main className="welcome">
-        <div
-          className="welcome-art"
-          role="img"
-          aria-label="童话小镇概念效果图"
-        />
+        <img className="welcome-art" src="/art/town-overview.webp" alt="童话小镇概念图" />
         <div className="welcome-shade" />
         <section className="welcome-card">
-          <span className="eyebrow">PANDA TOWN · 熊猫小镇</span>
+          <span className="eyebrow">PANDA TOWN · 小镇交易节</span>
           <h1>
-            八天，开一家
+            看懂涨跌，
             <br />
-            <em>自己的咖啡馆。</em>
+            <em>做自己的买卖。</em>
           </h1>
-          <p>
-            掷骰走进小镇，在商店与居民间做选择。工作、经营与投资，慢慢筹齐 3000
-            金币。
-          </p>
-          <button className="primary large" onClick={begin}>
-            出发去小镇 <span>↗</span>
+          <p>带1000枚小镇币，看看自己的办法能走多远。</p>
+          <button className="primary large" onClick={restart} aria-label="开始小镇交易">
+            出发 ↗
           </button>
-          <p className="welcome-footnote">
-            单人 + 电脑店长 · 约 5–8 分钟 · 阅读不限时
-          </p>
-          {notice && (
-            <p role="status" className="notice">
-              {notice}
+          <p className="welcome-footnote">掷骰逛店 · 设置中随时结算</p>
+          {visibleNotice && (
+            <p className="notice" role="status">
+              {visibleNotice}
             </p>
           )}
-          <small>演示数据 · 当前设备保存 · 入口背景为概念效果图</small>
+          <small>模拟资金 · 进度留在本机</small>
         </section>
       </main>
     );
-  if (game.phase === "report" && report && viewReport)
-    return (
-      <main className="report-page">
-        <header className="report-top">
-          <a className="wordmark" href="#report-heading">
-            PANDA TOWN <span>本局画像</span>
-          </a>
-          <span className="data-badge">仅保存在本设备</span>
-        </header>
-        <section
-          className="report-hero"
-          aria-labelledby="report-heading"
-          tabIndex={-1}
-          ref={dialogRef}
-        >
-          <img src="/art/panda-portrait.webp" alt="戴着金色围巾的熊猫" />
-          <div className="report-heading-copy">
-            <span className="eyebrow">本局选择与行为证据</span>
-            <h1 id="report-heading">用户画像</h1>
-            <strong className="report-nickname">{report.title.label}</strong>
-            <p>{report.title.reason}</p>
-          </div>
-          <div className="outcome">
-            <strong>
-              {game.result?.opened ? "咖啡馆开张了！" : "咖啡馆筹备中"}
-            </strong>
-            <div className="outcome-amount">
-              <img src="/art/icon-cash.webp" alt="金币" />
-              <b>{money(game.result?.cashBeforeOpening ?? game.cash)}</b>
-            </div>
-            <small>结算可用现金</small>
-            <span>
-              {game.result?.opened
-                ? `开店后余额 ${money(game.cash)}`
-                : `还差 ${money(game.result?.gap ?? 0)}`}
-            </span>
-          </div>
-        </section>
-        <FinalAssetNote game={game} />
-        <ReportPanel report={report} />
-        <footer className="report-actions">
-          <SessionActions onRestart={begin} onClear={clear} />
-          <span>演示数据 · 无自动上传</span>
-        </footer>
-      </main>
-    );
-  const event = visible.event;
-  const copy = event
-    ? getEventDialogue(game, event.id, session.position)
-    : null;
-  const projectedCash =
-    game.cash +
-    (session.sellStall && game.assets.stall ? 480 : 0) +
-    (session.sellInvestment ? visible.investmentValue : 0);
-  const goalCash = game.result?.cashBeforeOpening ?? game.cash;
-  const investmentOffers =
-    event?.id === "E05"
-      ? event.options
-          .filter((o) => o.effect.kind === "invest" && o.available)
-          .map((o) => {
-            const preview = dispatch(game, {
-              type: "choose",
-              id: `preview-${game.day}-${o.id}`,
-              day: game.day,
-              optionId: o.id,
-            });
-            return `${o.cost} 金币 → ${preview.assets.investment?.shares.toFixed(3)} 份`;
-          })
-          .join(" · ")
-      : null;
+  const game = session.game;
+  const account = getAccountSnapshot(game);
+  const place = LOCATIONS.find((item) => item.id === session.position)!;
+  const decisionOpen = game.phase !== "travel" || session.branch;
   return (
-    <main
-      className={`game-shell ${game.phase !== "travel" || session.branch ? "has-dialogue" : ""}`}
-    >
+    <main className={`game-shell quant-game shop-game ${decisionOpen ? "has-dialogue" : ""}`}>
       <div className="scene">
         <TownScene
           playerLocation={session.position}
           cameraMode={cameraMode}
-          stallOwned={game.assets.stall !== null}
-          cafeOpened={game.result?.opened ?? false}
-          purchasedItems={game.assets.items}
-          toolQuality={
-            game.assets.tool.status === "owned"
-              ? game.assets.tool.quality
-              : null
-          }
-          toolPending={game.assets.tool.status === "pending"}
-          opponentStallOwned={game.opponent.stallBoughtDay !== null}
+          cameraResetKey={cameraResetKey}
+          stallOwned={false}
+          cafeOpened={false}
+          decisionOpen={decisionOpen}
           reducedMotion={reducedMotion}
           onError={onError}
           onAssetStatus={onAssetStatus}
@@ -385,412 +122,230 @@ export default function Home() {
       </div>
       <header className="hud">
         <div className="wordmark">
-          PANDA TOWN <span>熊猫小镇</span>
-        </div>
-        <div className="day-counter">
-          <span>第</span>
-          <strong>{game.day}</strong>
-          <span>/ 8 天</span>
-          <div className="day-beads" aria-hidden="true">
-            {Array.from({ length: 8 }, (_, i) => (
-              <i key={i} className={i < game.day ? "passed" : ""} />
-            ))}
+          <img src="/art/panda-portrait.webp" width={36} height={40} alt="" />
+          <div>
+            熊猫小镇 <span>PANDA TOWN</span>
           </div>
         </div>
-        <div className="cash">
-          <small>手头现金</small>
-          <strong>
-            <img src="/art/icon-cash.webp" alt="" />
-            {money(game.cash)}
-          </strong>
+        <div className="day-counter" aria-label={`第${game.round}轮`}>
+          <strong>{game.round || "—"}</strong>
+          <span>轮</span>
+        </div>
+        <div className="trading-wallet" aria-label="当前账户">
+          <div className="wallet-card">
+            <img src="/art/icon-cash.webp" width={34} height={34} alt="" />
+            <div>
+              <span>现金</span>
+              <b>{money(account.cash)}</b>
+            </div>
+          </div>
+          <div className="wallet-card">
+            <img src="/art/icon-assets.webp" width={34} height={34} alt="" />
+            <div>
+              <span>总资产</span>
+              <b>{money(account.totalAssets)}</b>
+            </div>
+          </div>
         </div>
       </header>
-      <aside className="goal-card">
-        <span className="eyebrow">唯一目标 · 开张咖啡馆</span>
-        <strong>筹齐 3000 金币</strong>
-        <span className="mobile-goal-status">
-          {game.result?.opened
-            ? "目标达成"
-            : goalCash >= 3000
-              ? "资金已够"
-              : `还差 ${money(3000 - goalCash)}`}
-        </span>
-        <div className="progress-track">
-          <span style={{ width: `${Math.min(100, goalCash / 30)}%` }} />
-        </div>
-        <small>
-          {game.result?.opened
-            ? "开店资金已投入，目标达成。"
-            : goalCash >= 3000
-              ? "开店资金已够，记得保留到结算。"
-              : `现金还差 ${money(3000 - goalCash)}`}{" "}
-          · 资产须变现后计入
-        </small>
-        {game.assets.stall && (
-          <small>
-            我的摊位 ·{" "}
-            {game.assets.stall.boughtDay < game.day
-              ? "今日开始经营"
-              : "明天开始经营"}
-          </small>
-        )}
-        {game.assets.investment && (
-          <small>
-            演示持仓 · 当前退出价值 {money(visible.investmentValue)}
-          </small>
-        )}
-        {game.assets.tool.status === "pending" && (
-          <small>工具待交货 · 第 {game.assets.tool.deliveryDay} 天到货</small>
-        )}
-      </aside>
-      <InventoryPanel
-        key={game.sessionId}
-        game={game}
-        onRestart={begin}
-        onClear={clear}
-      />
-      <nav className="view-controls" aria-label="视角和动画">
+      <nav className="view-controls" aria-label="视角和设置">
         <button
           className={cameraMode === "follow" ? "selected" : ""}
-          onClick={() => setCameraMode("follow")}
           aria-pressed={cameraMode === "follow"}
+          onClick={() => {
+            setCameraMode("follow");
+            setCameraResetKey((value) => value + 1);
+          }}
+          title="重新对准主角与门面；可拖动旋转"
         >
           跟随
         </button>
         <button
           className={cameraMode === "overview" ? "selected" : ""}
-          onClick={() => setCameraMode("overview")}
           aria-pressed={cameraMode === "overview"}
+          onClick={() => setCameraMode("overview")}
         >
           全局
         </button>
-        <button
-          onClick={() => setReducedMotion((v) => !v)}
-          aria-pressed={reducedMotion}
-        >
-          {reducedMotion ? "简化动画 ✓" : "简化动画"}
+        <button onClick={() => setMenu("settings")} aria-label="设置，随时结算">
+          设置
         </button>
       </nav>
-      <aside className="opponent-peek">
-        <span className="opponent-avatar">♟</span>
-        <div>
-          <small>隔壁店长也在筹备</small>
-          <strong>
-            {game.opponent.stallBoughtDay ? "正在经营摊位" : "攒钱迎接新机会"}
-          </strong>
-          <span>手头现金 {money(game.opponent.cash)}</span>
-        </div>
-      </aside>
       <div className="scene-status">
-        <span>演示数据</span>
-        {assetStatus?.missing.length ? (
-          <span title={`未加载资源：${assetStatus.missing.join("、")}`}>
-            开发预览 · 部分模型或纹理未加载
-          </span>
-        ) : null}
+        <span>历史映射 · 未接PandaData</span>
+        {assetStatus?.missing.length ? <span>部分素材未加载</span> : null}
       </div>
-      {notice && (
+      {visibleNotice && (
         <div className="toast" role="status">
-          {notice}
-          <button aria-label="关闭提示" onClick={() => setNotice("")}>
+          {visibleNotice}
+          <button
+            aria-label="关闭提示"
+            onClick={() => {
+              setNotice("");
+              setHiddenLearningNotice(learning.notice);
+            }}
+          >
             ×
           </button>
         </div>
       )}
       {sceneError && (
         <aside className="scene-error" role="alert">
-          <strong>三维场景暂时无法显示</strong>
+          <strong>画面暂时中断</strong>
           <p>{sceneError}</p>
           <button onClick={() => location.reload()}>刷新重试</button>
         </aside>
       )}
       {game.phase === "travel" && !session.branch && (
         <section className="travel-panel">
-          <span className="location-label">⌖ {place?.name}</span>
+          <span className="location-label">{place.name}</span>
           {session.rolled ? (
             <>
-              <strong aria-live="polite">
-                沿街前进 · 剩余 {session.remaining} 步
-              </strong>
+              <strong aria-live="polite">还剩{session.remaining}步</strong>
               <DiceFace value={session.die} rolling={!reducedMotion} />
             </>
           ) : (
-            <>
-              <h2>
-                {game.day === 1
-                  ? "让开店计划迈出第一步"
-                  : `第 ${game.day} 天，新的机会`}
-              </h2>
-              {game.day === 4 || game.day === 8 ? (
-                <p>
-                  演示市场报价已更新：{visible.price}
-                  。资料只显示截至今天的情况。
-                </p>
-              ) : (
-                <p>掷一枚骰子，熊猫会自动沿街行走；岔路由你来选。</p>
-              )}
-              <button
-                className="primary roll-button"
-                onClick={roll}
-                aria-label="掷骰出发"
-              >
-                <DiceFace value={session.die || 5} />
-                <span>
-                  掷骰出发 <small>走到哪里，由这一掷开始</small>
-                </span>
-                <b>↗</b>
-              </button>
-              {session.die > 0 && <small>上次掷出 {session.die} 点</small>}
-            </>
+            <button className="primary roll-button" onClick={nextShop} aria-label="掷骰出发">
+              <DiceFace value={5} />
+              <span>掷骰</span>
+              <b>↗</b>
+            </button>
           )}
         </section>
       )}
       {session.branch && (
-        <section
-          className="dialogue compact"
-          aria-label="选择岔路"
-          tabIndex={-1}
-          ref={dialogRef}
-        >
-          <span className="eyebrow">
-            前面有两条街 · 还剩 {session.remaining} 步
-          </span>
-          <h2>这次往哪里走？</h2>
+        <section className="dialogue compact" aria-label="选择岔路">
+          <h2 ref={branchHeading} tabIndex={-1}>
+            往哪边？
+          </h2>
           <div className="choices">
-            {place?.next.map((id) => {
-              const destination = LOCATIONS.find((p) => p.id === id);
+            {place.next.map((id) => {
+              const product = getLocationProduct(id);
               return (
-                <button
-                  className="choice"
-                  key={id}
-                  onClick={() =>
-                    setSession((previous) =>
-                      previous &&
-                      previous.branch &&
-                      previous.remaining > 0 &&
-                      previous.game.phase === "travel" &&
-                      LOCATIONS.find(
-                        (p) => p.id === previous.position,
-                      )?.next.includes(id)
-                        ? {
-                            ...previous,
-                            position: id,
-                            remaining: previous.remaining - 1,
-                            branch: false,
-                          }
-                        : previous,
-                    )
-                  }
-                >
-                  <strong>{destination?.name} ↗</strong>
-                  <small>{destination?.theme}机会 · 走到这里消耗 1 步</small>
+                <button className="choice" key={id} onClick={() => chooseBranch(id)}>
+                  <img src={product.icon} width={44} height={44} alt="" />
+                  <div>
+                    <strong>{LOCATIONS.find((item) => item.id === id)!.name}</strong>
+                    <small>
+                      {product.name} · 已知价{money(getQuote(product.id, game.marketIndex).close)}
+                    </small>
+                  </div>
+                  <span>↗</span>
                 </button>
               );
             })}
           </div>
         </section>
       )}
-      {game.phase === "decision" && event && copy && (
-        <section
-          className="dialogue"
-          aria-label={copy.title}
-          tabIndex={-1}
-          ref={dialogRef}
+      <TradingPanel
+        game={game}
+        onAction={action}
+        quantity={quantity}
+        onQuantityChange={(value) =>
+          setQuantity(Math.max(0.000001, Math.min(100000, Number.isFinite(value) ? value : 1)))
+        }
+        reducedMotion={reducedMotion}
+        onNext={nextShop}
+        learning={learning}
+      />
+      {game.phase === "report" && (
+        <TradingReport game={game} onRestart={restart} onClear={clearRecord} learning={learning} />
+      )}
+      {menu && (
+        <GameDialog
+          title={menu === "settings" ? "设置" : menu === "holdings" ? "我的持仓" : "行情与说明"}
+          onClose={() => setMenu(null)}
         >
-          <div className="dialogue-heading">
-            <div className="speaker-portrait">
-              <img src="/art/panda-portrait.webp" alt="小镇居民" />
-            </div>
-            <div>
-              <span className="eyebrow">
-                {copy.speaker} · {place?.name}
-              </span>
-              <h2>{copy.title}</h2>
-            </div>
-            <span className="event-number">第 {game.day} 天</span>
-          </div>
-          <p className="dialogue-text">{copy.text}</p>
-          {investmentOffers && (
-            <p className="investment-offer-preview">{investmentOffers}</p>
-          )}
-          <StudyPanel
-            key={`${game.day}-${event.id}`}
-            event={event}
-            game={game}
-            inspect={(materialId) => act({ type: "inspect", materialId })}
-            compare={(materialIds) => act({ type: "compare", materialIds })}
-            answer={(questionId, answerId) =>
-              act({ type: "answer", questionId, answerId })
-            }
-          />
-          <div className="choices">
-            {event.options.map((o, index) => (
-              <button
-                className="choice"
-                key={o.id}
-                disabled={!o.available}
-                aria-label={o.label}
-                onClick={() => act({ type: "choose", optionId: o.id })}
-              >
-                <span className="choice-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <strong>{choiceTitle(o)}</strong>
-                <span
-                  className={`choice-price ${o.effect.kind === "work" ? "income" : ""}`}
+          {menu === "settings" ? (
+            <>
+              <div className="shop-settings-actions">
+                <button
+                  className="primary"
+                  disabled={game.phase === "report"}
+                  onClick={() => {
+                    setMenu(null);
+                    onAction({ type: "settle", id: crypto.randomUUID() });
+                  }}
                 >
-                  {o.effect.kind === "work"
-                    ? "+250"
-                    : o.cost > 0
-                      ? `−${o.cost}`
-                      : "0"}
-                  <img src="/art/icon-cash.webp" alt="金币" />
-                </span>
-                <small>{choiceDescription(o)}</small>
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-      {game.phase === "feedback" && (
-        <section
-          className="dialogue compact"
-          aria-label="本回合选择结果"
-          tabIndex={-1}
-          ref={dialogRef}
-        >
-          <DecisionPanel game={game} onContinue={endTurn} />
-        </section>
-      )}
-      {game.phase === "settlement" && (
-        <section
-          className="dialogue settlement"
-          aria-label="开店资金结算"
-          tabIndex={-1}
-          ref={dialogRef}
-        >
-          <span className="eyebrow">第八天 · 最后盘点</span>
-          <h2>让筹备迎来一个结果</h2>
-          <p>
-            今日基础收入和到期经营收入已经到账。资产只有选择出售后才计入开店现金。
-          </p>
-          {game.assets.stall && (
-            <label className="sale-option">
-              <input
-                type="checkbox"
-                checked={session.sellStall}
-                onChange={(e) =>
-                  setSession((p) =>
-                    p ? { ...p, sellStall: e.target.checked } : p,
-                  )
-                }
-              />
-              <span>
-                出售摊位 <strong>+480</strong>
-                <small>也可保留，保留时不计入现金。</small>
-              </span>
-            </label>
+                  {game.phase === "report" ? "本局已结算" : "结算本局 ↗"}
+                </button>
+                <button className="secondary" onClick={() => setMenu("holdings")}>
+                  我的持仓
+                </button>
+                <button className="secondary" onClick={() => setMenu("data")}>
+                  行情与说明
+                </button>
+                <button
+                  className="secondary"
+                  aria-pressed={reducedMotion}
+                  onClick={() => setReducedMotion((value) => !value)}
+                >
+                  {reducedMotion ? "减少动画 ✓" : "减少动画"}
+                </button>
+              </div>
+              <p className="shop-setting-note">可随时结算。持仓按当前市值计入，不自动卖出。</p>
+              <SessionActions onRestart={restart} onClear={clearRecord} />
+            </>
+          ) : menu === "holdings" ? (
+            <>
+              <p>
+                现金 {money(account.cash)} · 持仓市值 {money(account.holdingsValue)}
+              </p>
+              <div className="shop-portfolio-list">
+                {PRODUCTS.filter((product) => game.holdings[product.id].quantity > 0).map(
+                  (product) => {
+                    const holding = game.holdings[product.id];
+                    const value = holding.quantity * getQuote(product.id, game.marketIndex).close;
+                    return (
+                      <article key={product.id}>
+                        <img src={product.icon} alt="" width={48} height={48} />
+                        <strong>{product.name}</strong>
+                        <span>×{money(holding.quantity)}</span>
+                        <span>
+                          {money(value)}
+                          <small>
+                            成本 {money(holding.costBasis)} · 盈亏{" "}
+                            {money(value - holding.costBasis)}
+                          </small>
+                        </span>
+                      </article>
+                    );
+                  },
+                )}
+              </div>
+              {account.holdingsValue === 0 && <p>还没有持仓。</p>}
+            </>
+          ) : (
+            <>
+              <p>
+                {getMarketDate(game.marketIndex)} · 第{game.round}轮 · 日线
+              </p>
+              <p>
+                八家店对应八种商品，各自映射独立真实历史行情。四价、成交量和指标只显示已经走到的信息。
+              </p>
+              <p>
+                按已显示收盘价纸上成交，费用0.1%。商品名和小镇币为游戏设定，未连接PandaData或实盘。
+              </p>
+              <p>
+                历史来源{" "}
+                <a href="https://data.binance.vision/" target="_blank" rel="noopener noreferrer">
+                  Binance Vision
+                </a>
+                ， 按
+                <a
+                  href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CC BY-NC-SA 4.0
+                </a>
+                保留署名与游戏映射说明。
+              </p>
+              <p>游戏与学习进度只留在本标签页；PandaAI链接不携带画像，问题仅在你点击时复制。</p>
+              <p>拖动场景可旋转，滚轮或双指可缩放；点“跟随”重新对准主角。</p>
+            </>
           )}
-          {game.assets.investment && (
-            <label className="sale-option">
-              <input
-                type="checkbox"
-                checked={session.sellInvestment}
-                onChange={(e) =>
-                  setSession((p) =>
-                    p ? { ...p, sellInvestment: e.target.checked } : p,
-                  )
-                }
-              />
-              <span>
-                全部出售演示持仓{" "}
-                <strong>+{money(visible.investmentValue)}</strong>
-                <small>按当前报价 {visible.price}，费用为 0。</small>
-              </span>
-            </label>
-          )}
-          <div className="settlement-total">
-            <span>确认后可用现金</span>
-            <strong>{money(projectedCash)}</strong>
-            <small>
-              {projectedCash >= 3000
-                ? `支付开店款 3000 后剩余 ${money(projectedCash - 3000)}`
-                : `离开张还差 ${money(3000 - projectedCash)}，仍可查看完整画像。`}
-            </small>
-          </div>
-          <button
-            className="primary large"
-            onClick={() =>
-              act({
-                type: "finish",
-                sellStall: session.sellStall,
-                sellInvestment: session.sellInvestment,
-              })
-            }
-          >
-            确认结算，查看本局画像 ↗
-          </button>
-        </section>
-      )}
-      {game.phase === "report" && !viewReport && game.result && (
-        <section
-          className="dialogue compact outcome-dialogue"
-          aria-label="咖啡馆结局"
-          tabIndex={-1}
-          ref={dialogRef}
-        >
-          <span className="eyebrow">八天的筹备，走到这里</span>
-          <h2>
-            {game.result.opened ? "我的咖啡馆，今天开张！" : "咖啡馆仍在筹备中"}
-          </h2>
-          <p>
-            {game.result.opened
-              ? `结算可用现金 ${money(game.result.cashBeforeOpening)}，支付开店款后剩余 ${money(game.cash)}。`
-              : `结算可用现金 ${money(game.result.cashBeforeOpening)}，离开张还差 ${money(game.result.gap)}。你的八天经历同样值得回顾。`}
-          </p>
-          <button className="primary large" onClick={() => setViewReport(true)}>
-            看看本局的选择与画像 ↗
-          </button>
-        </section>
-      )}
-      {showIntroduction && (
-        <div
-          className="intro-overlay"
-          onKeyDown={(event) => {
-            if (event.key === "Tab") {
-              event.preventDefault();
-              event.currentTarget.querySelector("button")?.focus();
-            }
-          }}
-        >
-          <section
-            className="intro-card"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="intro-heading"
-          >
-            <span className="eyebrow">欢迎来到熊猫小镇</span>
-            <h2 id="intro-heading">
-              带着 1000 金币，
-              <br />
-              开始八天的咖啡馆计划。
-            </h2>
-            <p>
-              每回合掷骰沿街自动行走，在岔路和店前选择。每晚基础收入
-              150，也可以选择临时工作多赚 250。
-            </p>
-            <p>
-              第八天筹齐 3000 即可开张。没有淘汰，结尾会回顾你的选择与偏好。
-            </p>
-            <button
-              autoFocus
-              className="primary large"
-              onClick={() => setShowIntroduction(false)}
-            >
-              明白了，开始第一天 ↗
-            </button>
-          </section>
-        </div>
+        </GameDialog>
       )}
     </main>
   );

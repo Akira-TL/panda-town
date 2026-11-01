@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\anthropomorphic deer 3d model.glb",
+  "bytes": 64697744,
+  "sha256": "B00F657B53C0F7E7E689C3E2D5815B6CAF395134FD6A0058ABB935CA0B7836CC",
+  "modified_utc": "2026-10-31T17:49:48.307586+00:00",
+  "inspected_utc": "2026-10-31T18:28:37.082509+00:00",
+  "model": {
+    "triangles": 1902850,
+    "vertices": 980017,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.51773,
+      0.45529,
+      0.97937
+    ],
+    "minimum": [
+      -0.258865,
+      -0.227646,
+      0.0
+    ],
+    "maximum": [
+      0.258865,
+      0.227646,
+      0.97937
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_4521a550-909b-4f99-8c98-e2b0f23457d6"
+    ],
+    "textures": [
+      {
+        "name": "anthropomorphic_deer_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "anthropomorphic_deer_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "anthropomorphic_deer_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

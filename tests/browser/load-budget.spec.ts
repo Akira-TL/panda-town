@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { writeFile } from "node:fs/promises";
-import { arrive, choose, advance, finish } from "./helpers";
+import { arrive, choose, advance } from "./helpers";
+import { readyVisualScene } from "./scene-ready";
 
 interface ResponseRecord {
   requestId: string;
@@ -55,34 +56,37 @@ for (const viewport of [
     );
     await page.getByRole("button", { name: /出发去小镇/ }).click();
     await page.getByRole("button", { name: /明白了，开始第一天/ }).click();
-    const selector = [
-      "panda",
-      "tree",
-      "bakery",
-      "grocery",
-      "market",
-      "research",
-      "bank",
-      "gifts",
-      "rival",
-      "cafe",
-    ]
-      .map((id) => `[data-loaded-models~="${id}"]`)
-      .join("");
-    await expect(
-      page.locator(`${selector}[data-resident-count="7"]`),
-    ).toBeVisible({ timeout: 60_000 });
+    const scene = await readyVisualScene(page);
+    await expect(scene).toHaveAttribute("data-cafe-welcome", "false");
+    expect(Number(await scene.getAttribute("data-cafe-opening"))).toBe(0);
     await page.waitForLoadState("networkidle");
     const loadedSceneBytes = [...resources.values()].reduce(
       (sum, resource) => sum + resource.bytes,
       0,
     );
     for (let day = 1; day <= 8; day++) {
-      await arrive(page, 1);
+      await arrive(page, day === 8 ? 4 : 1);
       await choose(page, "work");
       await advance(page);
     }
-    await finish(page);
+    await page.screenshot({
+      path: `logs/validation-cafe-closed-${viewport.id}.png`,
+    });
+    await page.getByRole("button", { name: /确认结算/ }).click();
+    await expect(
+      page.getByRole("region", { name: "咖啡馆结局" }),
+    ).toBeVisible();
+    await expect
+      .poll(async () => Number(await scene.getAttribute("data-cafe-opening")))
+      .toBeCloseTo(1, 3);
+    await expect(scene).toHaveAttribute("data-cafe-welcome", "true");
+    await page.screenshot({
+      path: `logs/validation-cafe-open-${viewport.id}.png`,
+    });
+    await page.getByRole("button", { name: /看看本局的选择与画像/ }).click();
+    await expect(
+      page.getByRole("button", { name: "清除记录", exact: true }),
+    ).toBeVisible();
     await page.waitForLoadState("networkidle");
     const items = [...resources.values()];
     const totalBytes = items.reduce((sum, resource) => sum + resource.bytes, 0);
@@ -96,7 +100,7 @@ for (const viewport of [
       firstSessionBudgetBytes: 40_000_000,
       resources: items,
       caveat:
-        "CDP禁用HTTP缓存的实际编码传输量，含欢迎页、十模型/七居民及八天工作到报告路径。未枚举所有不同事件的延迟资源；390像素使用同一电脑，并非实体手机网络。",
+        "CDP禁用HTTP缓存的实际编码传输量，含欢迎页、十模型/店内七居民/户外七居民与三地表材质，八天工作在咖啡馆结算并展示开门迎宾后进入报告。未枚举所有事件的延迟资源；390像素为同一电脑，并非实体手机网络。",
     };
     await writeFile(
       `logs/cold-load-${viewport.id}.json`,

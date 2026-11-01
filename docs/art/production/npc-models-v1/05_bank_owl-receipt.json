@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\cute owl 3d model.glb",
+  "bytes": 65906380,
+  "sha256": "99BFAA2204283496C45F0089A4F45DB868B98FE75E20E88F4C6E99ACF007D90E",
+  "modified_utc": "2026-10-31T17:44:23.705013+00:00",
+  "inspected_utc": "2026-10-31T18:19:32.162676+00:00",
+  "model": {
+    "triangles": 1937218,
+    "vertices": 1008254,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.8205,
+      0.49147,
+      0.98013
+    ],
+    "minimum": [
+      -0.410248,
+      -0.245735,
+      0.0
+    ],
+    "maximum": [
+      0.410248,
+      0.245735,
+      0.980133
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_6b20b6d9-9a32-4fa6-a75d-ac3b77086c61"
+    ],
+    "textures": [
+      {
+        "name": "cute_owl_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "cute_owl_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "cute_owl_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

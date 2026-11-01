@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 6,
+    "stem": "06_gifts_sheep",
+    "label": "花店绵羊",
+    "filename": "sheep character 3d model.glb",
+    "height": 1.65
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\sheep character 3d model.glb",
+    "bytes": 65190336,
+    "sha256": "9FDCFE809F24DA173DFC6E006FBBAA8DAEC9D8433517FE751ADDF3B7ECC2E828",
+    "modified_utc": "2026-10-31T17:44:18.997322+00:00",
+    "inspected_utc": "2026-10-31T18:13:51.343515+00:00",
+    "model": {
+      "triangles": 1948892,
+      "vertices": 1015446,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.63071,
+        0.40619,
+        0.97949
+      ],
+      "minimum": [
+        -0.315353,
+        -0.203094,
+        0.0
+      ],
+      "maximum": [
+        0.315353,
+        0.203094,
+        0.979492
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_b9be7b88-6fcc-4fe8-a5d1-61e32b318b2c"
+      ],
+      "textures": [
+        {
+          "name": "sheep_character_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "sheep_character_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "sheep_character_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\06_gifts_sheep-v1.glb",
+    "bytes": 1395740,
+    "sha256": "207F09CA5239AC7009695FCCCF3030641FD2251DEEBC25A7E8E04F4220DBD3F8",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19939,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.06491,
+        0.68208,
+        1.6517
+      ],
+      "minimum": [
+        -0.532804,
+        -0.339852,
+        -0.00022
+      ],
+      "maximum": [
+        0.532102,
+        0.342223,
+        1.651484
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_b9be7b88-6fcc-4fe8-a5d1-61e32b318b2c"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\06_gifts_sheep-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\06_gifts_sheep-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\06_gifts_sheep-mobile-v1.glb",
+    "bytes": 491060,
+    "sha256": "E2EC13CACCD5F3CD73651EB605F66FC8896E444E5E4A94F904F209886CA3C0CE",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 7508,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.06778,
+        0.68427,
+        1.64983
+      ],
+      "minimum": [
+        -0.533258,
+        -0.337841,
+        0.000703
+      ],
+      "maximum": [
+        0.53452,
+        0.346433,
+        1.650538
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_b9be7b88-6fcc-4fe8-a5d1-61e32b318b2c"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\06_gifts_sheep-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

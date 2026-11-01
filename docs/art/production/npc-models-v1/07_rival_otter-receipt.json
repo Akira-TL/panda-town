@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\otter character 3d model.glb",
+  "bytes": 66845332,
+  "sha256": "4789E7EE850CA354973F67A421A5B48B421FC97D9E78E7CF4C5C1CBB56FB1004",
+  "modified_utc": "2026-10-31T17:44:07.579317+00:00",
+  "inspected_utc": "2026-10-31T18:22:21.079938+00:00",
+  "model": {
+    "triangles": 1994016,
+    "vertices": 1033302,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.62442,
+      0.7345,
+      0.98071
+    ],
+    "minimum": [
+      -0.31221,
+      -0.367249,
+      0.0
+    ],
+    "maximum": [
+      0.31221,
+      0.367249,
+      0.980713
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_c20dc0f6-3ea8-4054-82cd-fb1ddbfe8099"
+    ],
+    "textures": [
+      {
+        "name": "otter_character_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "otter_character_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "otter_character_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

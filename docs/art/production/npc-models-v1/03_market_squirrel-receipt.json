@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\cartoon squirrel 3d model.glb",
+  "bytes": 65360368,
+  "sha256": "1D5BAF7BAF2D3628083AB86E09C07D8186B73EDDDB80F557C462BC3E77C608A9",
+  "modified_utc": "2026-10-31T17:39:21.765297+00:00",
+  "inspected_utc": "2026-10-31T18:17:01.041914+00:00",
+  "model": {
+    "triangles": 1916498,
+    "vertices": 994701,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.58038,
+      0.94293,
+      0.9794
+    ],
+    "minimum": [
+      -0.290192,
+      -0.471466,
+      0.0
+    ],
+    "maximum": [
+      0.290192,
+      0.471466,
+      0.979401
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_9f15bcb7-3c07-4f65-84fd-720ea83af856"
+    ],
+    "textures": [
+      {
+        "name": "cartoon_squirrel_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "cartoon_squirrel_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "cartoon_squirrel_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

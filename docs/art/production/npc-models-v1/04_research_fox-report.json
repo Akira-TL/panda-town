@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 4,
+    "stem": "04_research_fox",
+    "label": "芯片店技术员狐",
+    "filename": "anthropomorphic fox 3d model.glb",
+    "height": 1.95
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\anthropomorphic fox 3d model.glb",
+    "bytes": 63670940,
+    "sha256": "8EC2470544A51FC56C1EC2A98997C4708E6AA3B4D3F9920743C0BB23DAFB9DBE",
+    "modified_utc": "2026-10-31T17:39:38.819383+00:00",
+    "inspected_utc": "2026-10-31T18:11:03.828151+00:00",
+    "model": {
+      "triangles": 1915003,
+      "vertices": 990178,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.55441,
+        0.44916,
+        0.97986
+      ],
+      "minimum": [
+        -0.277206,
+        -0.224579,
+        0.0
+      ],
+      "maximum": [
+        0.277206,
+        0.224579,
+        0.979858
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_22260037-9d33-4e5d-b6cd-e0024e1d0ed3"
+      ],
+      "textures": [
+        {
+          "name": "anthropomorphic_fox_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "anthropomorphic_fox_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "anthropomorphic_fox_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\04_research_fox-v1.glb",
+    "bytes": 1354876,
+    "sha256": "D167F8C104D85C321EE9EFA28B9EE125BA60111546819BE8E35ADF8CB816BBA3",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19238,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.10236,
+        0.89504,
+        1.95148
+      ],
+      "minimum": [
+        -0.550024,
+        -0.446107,
+        0.000216
+      ],
+      "maximum": [
+        0.552333,
+        0.448932,
+        1.951697
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_22260037-9d33-4e5d-b6cd-e0024e1d0ed3"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\04_research_fox-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\04_research_fox-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\04_research_fox-mobile-v1.glb",
+    "bytes": 474712,
+    "sha256": "C4D510ECDBD489D7A7263E9095F53C1B44955E229613AB08E0236C82478E511A",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 7200,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.10332,
+        0.89948,
+        1.95388
+      ],
+      "minimum": [
+        -0.550118,
+        -0.450552,
+        -0.004054
+      ],
+      "maximum": [
+        0.553201,
+        0.448932,
+        1.949829
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_22260037-9d33-4e5d-b6cd-e0024e1d0ed3"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\04_research_fox-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "path": "public/art/research/verification-badge.png",
+  "width": 1536,
+  "height": 1024,
+  "mode": "RGBA",
+  "alpha": [
+    0,
+    254
+  ],
+  "corner_alpha": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "bytes": 1643800,
+  "sha256": "357888aba89a20f9c736dcf6137ae7ed8f3f4450da81d4eb0c0ab03f84f7d6fe"
+}

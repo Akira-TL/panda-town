@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 1,
+    "stem": "01_bakery_rabbit",
+    "label": "面包师兔",
+    "filename": "bunny chef 3d model.glb",
+    "height": 1.65
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\bunny chef 3d model.glb",
+    "bytes": 63907460,
+    "sha256": "EBEE44AC20DA4708029D82B3242ED70A0B446E8B3465B6BD99370D816AB44EA1",
+    "modified_utc": "2026-10-31T17:38:51.075400+00:00",
+    "inspected_utc": "2026-10-31T18:07:58.359922+00:00",
+    "model": {
+      "triangles": 1889738,
+      "vertices": 976222,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.63873,
+        0.4771,
+        0.97946
+      ],
+      "minimum": [
+        -0.319366,
+        -0.238548,
+        0.0
+      ],
+      "maximum": [
+        0.319366,
+        0.238548,
+        0.979462
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_5cb6d970-984c-4f92-893c-8b922d0eeea1"
+      ],
+      "textures": [
+        {
+          "name": "bunny_chef_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "bunny_chef_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "bunny_chef_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\01_bakery_rabbit-v1.glb",
+    "bytes": 1317516,
+    "sha256": "54F843471E8F5FF773323521F737D8ECC89920A14AA227EB904DEE84BC2B6C9F",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19757,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.07443,
+        0.80426,
+        1.65114
+      ],
+      "minimum": [
+        -0.537723,
+        -0.402093,
+        6e-06
+      ],
+      "maximum": [
+        0.536707,
+        0.402171,
+        1.651144
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_5cb6d970-984c-4f92-893c-8b922d0eeea1"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\01_bakery_rabbit-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\01_bakery_rabbit-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\01_bakery_rabbit-mobile-v1.glb",
+    "bytes": 443700,
+    "sha256": "634603D355A5414B45847B3FF5BC31C130753FD80B3016CFBC430D1E2C3174BA",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 7999,
+      "vertices": 7262,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.07328,
+        0.80073,
+        1.65308
+      ],
+      "minimum": [
+        -0.537748,
+        -0.399235,
+        -0.002041
+      ],
+      "maximum": [
+        0.535531,
+        0.401496,
+        1.65104
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_5cb6d970-984c-4f92-893c-8b922d0eeea1"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\01_bakery_rabbit-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

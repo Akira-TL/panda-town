@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\frog character 3d model.glb",
+  "bytes": 66682688,
+  "sha256": "990FD215716867418AB2CDC262383249723E6FDA315B506790AF24D36DB862C8",
+  "modified_utc": "2026-10-31T17:49:54.470062+00:00",
+  "inspected_utc": "2026-10-31T18:21:59.031571+00:00",
+  "model": {
+    "triangles": 1945006,
+    "vertices": 1004501,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.7876,
+      0.37173,
+      0.97961
+    ],
+    "minimum": [
+      -0.393799,
+      -0.185867,
+      0.0
+    ],
+    "maximum": [
+      0.393799,
+      0.185867,
+      0.979614
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_c1541f2a-e109-4d2b-af29-219d49d8d12a"
+    ],
+    "textures": [
+      {
+        "name": "frog_character_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "frog_character_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "frog_character_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

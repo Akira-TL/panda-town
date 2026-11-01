@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 7,
+    "stem": "07_rival_otter",
+    "label": "咖啡豆商水獭",
+    "filename": "otter character 3d model.glb",
+    "height": 1.8
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\otter character 3d model.glb",
+    "bytes": 66845332,
+    "sha256": "4789E7EE850CA354973F67A421A5B48B421FC97D9E78E7CF4C5C1CBB56FB1004",
+    "modified_utc": "2026-10-31T17:44:07.579317+00:00",
+    "inspected_utc": "2026-10-31T18:22:21.079938+00:00",
+    "model": {
+      "triangles": 1994016,
+      "vertices": 1033302,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.62442,
+        0.7345,
+        0.98071
+      ],
+      "minimum": [
+        -0.31221,
+        -0.367249,
+        0.0
+      ],
+      "maximum": [
+        0.31221,
+        0.367249,
+        0.980713
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_c20dc0f6-3ea8-4054-82cd-fb1ddbfe8099"
+      ],
+      "textures": [
+        {
+          "name": "otter_character_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "otter_character_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "otter_character_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\07_rival_otter-v1.glb",
+    "bytes": 1363028,
+    "sha256": "7103FF7EBFB08B5F1DBAE97AFBAC1EA11D9ED90C5EE87814109416D6859C93B4",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19915,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.14635,
+        1.35027,
+        1.8
+      ],
+      "minimum": [
+        -0.573176,
+        -0.675136,
+        -0.0
+      ],
+      "maximum": [
+        0.573176,
+        0.675136,
+        1.8
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_c20dc0f6-3ea8-4054-82cd-fb1ddbfe8099"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\07_rival_otter-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\07_rival_otter-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\07_rival_otter-mobile-v1.glb",
+    "bytes": 469664,
+    "sha256": "D5316545DEA1CE73FF69CDB718AB14BB844FAD2DAF61CE525EFD6B74B03D7DA2",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 7479,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.14698,
+        1.34718,
+        1.8
+      ],
+      "minimum": [
+        -0.573491,
+        -0.673589,
+        0.0
+      ],
+      "maximum": [
+        0.573491,
+        0.673589,
+        1.8
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_c20dc0f6-3ea8-4054-82cd-fb1ddbfe8099"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\07_rival_otter-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

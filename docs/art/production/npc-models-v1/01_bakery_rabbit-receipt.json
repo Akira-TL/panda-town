@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\bunny chef 3d model.glb",
+  "bytes": 63907460,
+  "sha256": "EBEE44AC20DA4708029D82B3242ED70A0B446E8B3465B6BD99370D816AB44EA1",
+  "modified_utc": "2026-10-31T17:38:51.075400+00:00",
+  "inspected_utc": "2026-10-31T18:07:58.359922+00:00",
+  "model": {
+    "triangles": 1889738,
+    "vertices": 976222,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.63873,
+      0.4771,
+      0.97946
+    ],
+    "minimum": [
+      -0.319366,
+      -0.238548,
+      0.0
+    ],
+    "maximum": [
+      0.319366,
+      0.238548,
+      0.979462
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_5cb6d970-984c-4f92-893c-8b922d0eeea1"
+    ],
+    "textures": [
+      {
+        "name": "bunny_chef_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "bunny_chef_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "bunny_chef_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

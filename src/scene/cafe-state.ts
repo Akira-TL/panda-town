@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import type { SurfaceTextures } from "./architecture";
 
-/** 依据cafe-opening.png增加可开合的门前栅和营业牌，不修改外部模型。 */
+/** 沿用已有门前栅与营业牌，为正常营业的小镇茶馆展示茶叶招牌。 */
 export function createCafeState(surfaces: SurfaceTextures) {
   const group = new THREE.Group();
   group.name = "CafeEntranceState";
@@ -106,10 +106,10 @@ export function createCafeState(surfaces: SurfaceTextures) {
     context.textBaseline = "middle";
     context.fillStyle = "#3c5e46";
     context.font = 'bold 92px "Microsoft YaHei", "PingFang SC", sans-serif';
-    context.fillText(opened ? "咖啡馆开张" : "咖啡馆筹备中", 384, 140);
+    context.fillText("小镇茶馆", 384, 140);
     context.fillStyle = "#8c754b";
     context.font = '42px "Microsoft YaHei", "PingFang SC", sans-serif';
-    context.fillText(opened ? "欢迎光临" : "期待与你见面", 384, 254);
+    context.fillText(opened ? "茶叶在售 · 欢迎光临" : "小镇茶叶铺", 384, 254);
     const texture = new THREE.CanvasTexture(canvas);
     texture.colorSpace = THREE.SRGBColorSpace;
     return texture;

@@ -1,6 +1,13 @@
-import type { AssetId, AssetQuote, DataIssue, MarketBar } from "./model";
+import type {
+  AssetId,
+  AssetQuote,
+  DataIssue,
+  MarketBar,
+  StudySegment,
+} from "./model";
+import { MARKET_HISTORY } from "./market-history";
 
-export const DATASET_VERSION = "panda-fictional-daily-2025-v1";
+export const DATASET_VERSION = "panda-binance-spot-1d-20250101-20250719-v1";
 
 interface RawQuote {
   open: number;
@@ -13,52 +20,27 @@ interface RawBar {
   pine: RawQuote;
 }
 
-const wave = [0, 55, 90, 35, -45, -90, -30, 45, 95, 25, -55, -100];
-const gaps = [-12, 18, -8, 10, 0];
-
-function closeCents(asset: AssetId, index: number): number {
-  const variation =
-    wave[(index * 5 + (asset === "pine" ? 3 : 0)) % wave.length]!;
-  if (asset === "bamboo") {
-    const drift =
-      index < 65
-        ? 30 * index
-        : index < 135
-          ? 1950 - 42 * (index - 65)
-          : -990 + 18 * (index - 135);
-    return 10000 + drift + variation;
-  }
-  const drift =
-    index < 60
-      ? -14 * index
-      : index < 140
-        ? -840 + 24 * (index - 60)
-        : 1080 - 12 * (index - 140);
-  return 8000 + drift + variation;
-}
-
-function quote(asset: AssetId, index: number): AssetQuote {
-  return {
-    open:
-      (closeCents(asset, Math.max(0, index - 1)) + gaps[index % gaps.length]!) /
-      100,
-    close: closeCents(asset, index) / 100,
-    volume: 900 + ((index * 37 + (asset === "pine" ? 113 : 0)) % 600),
-  };
-}
-
-function marketBar(index: number): MarketBar {
-  return {
-    date: new Date(Date.UTC(2025, 0, 1) + index * 86_400_000)
-      .toISOString()
-      .slice(0, 10),
-    bamboo: quote("bamboo", index),
-    pine: quote("pine", index),
-  };
-}
-
-const source = Array.from({ length: 200 }, (_, index) => marketBar(index));
+const bambooScale = 100 / Number(MARKET_HISTORY[0]![1]);
+const pineScale = 100 / Number(MARKET_HISTORY[0]![4]);
+// 真实历史的相对涨跌保持原样；数量反向换算，避免量价单位不一致。
+// 原始十进制字符串及第三方数据许可保留在market-history.ts与来源文档。
+const source: MarketBar[] = MARKET_HISTORY.map(
+  ([date, btcOpen, btcClose, btcVolume, ethOpen, ethClose, ethVolume]) => ({
+    date,
+    bamboo: {
+      open: Number(btcOpen) * bambooScale,
+      close: Number(btcClose) * bambooScale,
+      volume: Number(btcVolume) / bambooScale,
+    },
+    pine: {
+      open: Number(ethOpen) * pineScale,
+      close: Number(ethClose) * pineScale,
+      volume: Number(ethVolume) / pineScale,
+    },
+  }),
+);
 const received: RawBar[] = source.map(copyBar);
+// 以下四项仅是人为设置的教学传输错误，不是交易所原始数据问题。
 received[42]!.bamboo.close = null;
 received[70]!.pine.volume = null;
 received[86]!.pine.close = 9999;
@@ -81,7 +63,7 @@ for (const [index, bar] of received.entries()) {
         received: raw.close,
         restored: close,
         explanation:
-          "传输收盘价缺失或与原始值不符；重读同日期演示源恢复，未读取后续样本。",
+          "人为教学传输错误：收盘价缺失或被改写；重读同日期已核验历史源恢复，未读取后续样本；非交易所原始坏数据。",
       });
     }
     let volume = raw.volume;
@@ -94,7 +76,7 @@ for (const [index, bar] of received.entries()) {
         received: raw.volume,
         restored: volume,
         explanation:
-          "传输成交量缺失或与原始值不符；重读同日期演示源，不以前日成交量替代本日。",
+          "人为教学传输错误：成交量缺失或被改写；重读同日期已核验历史源，不以前日成交量替代本日；非交易所原始坏数据。",
       });
     }
     return { open: raw.open, close, volume };
@@ -116,4 +98,17 @@ export function getResearchData(): MarketBar[] {
 
 export function getDataIssues(): DataIssue[] {
   return issues.map((issue) => ({ ...issue }));
+}
+
+/** 只供模拟入口分段；界面数据表使用getResearchData，不提前展示留出报价。 */
+export function getSimulationInput(segment: StudySegment): {
+  bars: MarketBar[];
+  warmup: MarketBar[];
+} {
+  const start = segment === "research" ? 20 : 140;
+  const end = segment === "research" ? 140 : 200;
+  return {
+    bars: verified.slice(start, end).map(copyBar),
+    warmup: verified.slice(start - 20, start).map(copyBar),
+  };
 }

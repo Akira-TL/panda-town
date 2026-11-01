@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { begin, arrive, choose, advance } from "./helpers";
+import { readyVisualScene } from "./scene-ready";
 
 for (const location of ["research", "bank"] as const) {
   test(`${location}落点及资料面板的镜头截图供实际遮挡核对`, async ({
@@ -8,10 +9,7 @@ for (const location of ["research", "bank"] as const) {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await begin(page);
-    const scene = page.locator(
-      '[data-loaded-models~="panda"][data-resident-count="7"]',
-    );
-    await expect(scene).toBeVisible();
+    const scene = await readyVisualScene(page);
     if (location === "research") await arrive(page, 5, 0);
     else {
       await arrive(page, 6, 0);

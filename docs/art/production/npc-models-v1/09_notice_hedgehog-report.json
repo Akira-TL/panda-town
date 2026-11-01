@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 9,
+    "stem": "09_notice_hedgehog",
+    "label": "公告管理员刺猬",
+    "filename": "hedgehog explorer 3d model.glb",
+    "height": 1.5
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\hedgehog explorer 3d model.glb",
+    "bytes": 67425444,
+    "sha256": "6F43F09F2805714A4B0CED345409CD2EB5FA8571A4A933E077D9689D801DC638",
+    "modified_utc": "2026-10-31T17:49:38.397515+00:00",
+    "inspected_utc": "2026-10-31T18:25:21.355237+00:00",
+    "model": {
+      "triangles": 1996028,
+      "vertices": 1050731,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.78043,
+        0.71893,
+        0.9787
+      ],
+      "minimum": [
+        -0.390213,
+        -0.359467,
+        0.0
+      ],
+      "maximum": [
+        0.390213,
+        0.359467,
+        0.978699
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_dc61051f-7adc-40f7-bbb5-23b0f8cb9c11"
+      ],
+      "textures": [
+        {
+          "name": "hedgehog_explorer_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "hedgehog_explorer_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "hedgehog_explorer_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\09_notice_hedgehog-v1.glb",
+    "bytes": 1459188,
+    "sha256": "4586032775E1B4D66BE070700A26E0F20ED78F9328A7F9405F545CE26B213701",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 22275,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.19522,
+        1.10437,
+        1.5
+      ],
+      "minimum": [
+        -0.597609,
+        -0.552186,
+        0.0
+      ],
+      "maximum": [
+        0.597609,
+        0.552186,
+        1.5
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_dc61051f-7adc-40f7-bbb5-23b0f8cb9c11"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\09_notice_hedgehog-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\09_notice_hedgehog-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\09_notice_hedgehog-mobile-v1.glb",
+    "bytes": 519936,
+    "sha256": "36310AEB2E7A6D38FF1D4FB8A2779F8E112B71830E13EC38FEF26305C1F30209",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 8677,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.1916,
+        1.10018,
+        1.5
+      ],
+      "minimum": [
+        -0.5958,
+        -0.550091,
+        0.0
+      ],
+      "maximum": [
+        0.5958,
+        0.550091,
+        1.5
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_dc61051f-7adc-40f7-bbb5-23b0f8cb9c11"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\09_notice_hedgehog-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

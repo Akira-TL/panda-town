@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\mouse character 3d model.glb",
+  "bytes": 68712344,
+  "sha256": "7A4F4F4E2057E976A6465B8949E4F7A284738244A9F8B3B2230D4FD7C80CEF6B",
+  "modified_utc": "2026-10-31T17:54:15.208831+00:00",
+  "inspected_utc": "2026-10-31T18:24:50.797442+00:00",
+  "model": {
+    "triangles": 1974385,
+    "vertices": 1022260,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.58319,
+      0.76447,
+      0.97989
+    ],
+    "minimum": [
+      -0.291595,
+      -0.382233,
+      0.0
+    ],
+    "maximum": [
+      0.291595,
+      0.382233,
+      0.979889
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_564d035a-f7a9-4add-a758-f0a61d32a5b9"
+    ],
+    "textures": [
+      {
+        "name": "mouse_character_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "mouse_character_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "mouse_character_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

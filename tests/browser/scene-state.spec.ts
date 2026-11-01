@@ -1,26 +1,12 @@
 import { expect, test } from "@playwright/test";
 import { begin, arrive, choose, advance, resetSession, saved } from "./helpers";
+import { readyVisualScene } from "./scene-ready";
 
-test("七名居民与十类模型加载后的跟随全局手机三图", async ({ page }) => {
+test("居民、十类模型与七处户外装入后的跟随全局手机三图", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  const selector = [
-    "panda",
-    "tree",
-    "bakery",
-    "grocery",
-    "market",
-    "research",
-    "bank",
-    "gifts",
-    "rival",
-    "cafe",
-  ]
-    .map((id) => `[data-loaded-models~="${id}"]`)
-    .join("");
-  const ready = page.locator(`${selector}[data-resident-count="7"]`);
   await begin(page);
-  await expect(ready).toBeVisible({ timeout: 60_000 });
+  await readyVisualScene(page);
   await page.waitForTimeout(250);
   await page.screenshot({ path: "logs/validation-follow.png" });
   await page.getByRole("button", { name: "全局", exact: true }).click();
@@ -28,7 +14,7 @@ test("七名居民与十类模型加载后的跟随全局手机三图", async ({
   await page.screenshot({ path: "logs/validation-overview.png" });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.reload();
-  await expect(ready).toBeVisible({ timeout: 60_000 });
+  await readyVisualScene(page);
   await page.waitForTimeout(250);
   await page.screenshot({ path: "logs/validation-mobile.png" });
   expect(errors).toEqual([]);
@@ -38,8 +24,7 @@ test("真实购买使场景物件和工具出现，第二天对手开摊且清�
   page,
 }) => {
   await begin(page);
-  const scene = page.locator('[data-resident-count="7"]');
-  await expect(scene).toBeVisible();
+  const scene = await readyVisualScene(page);
   await expect(scene).toHaveAttribute("data-scene-items", "");
   await expect(scene).toHaveAttribute("data-tool-state", "none");
   await expect(scene).toHaveAttribute("data-opponent-stall", "false");
@@ -74,8 +59,7 @@ test("真实购买使场景物件和工具出现，第二天对手开摊且清�
 
 test("桥上真实合作先显示待交货，第三天才显示优质工具", async ({ page }) => {
   await begin(page);
-  const scene = page.locator('[data-resident-count="7"]');
-  await expect(scene).toBeVisible();
+  const scene = await readyVisualScene(page);
   await arrive(page, 5, 0);
   await choose(page, "work");
   await advance(page);
@@ -113,8 +97,7 @@ for (const item of [
     page,
   }) => {
     await begin(page);
-    const scene = page.locator('[data-resident-count="7"]');
-    await expect(scene).toBeVisible();
+    const scene = await readyVisualScene(page);
     if (item.bakery) await arrive(page, 1);
     else {
       await arrive(page, 6, 0);

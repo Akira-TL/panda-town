@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\furry beaver 3d model.glb",
+  "bytes": 66525684,
+  "sha256": "B83BA77D0B77765B1BCDBC462D2E610E0C8DD9B63A18FF1131C5F260839EB5FE",
+  "modified_utc": "2026-10-31T17:39:03.824385+00:00",
+  "inspected_utc": "2026-10-31T18:07:58.528745+00:00",
+  "model": {
+    "triangles": 1923665,
+    "vertices": 1007493,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.82446,
+      0.85165,
+      0.97833
+    ],
+    "minimum": [
+      -0.412231,
+      -0.425827,
+      0.0
+    ],
+    "maximum": [
+      0.412231,
+      0.425827,
+      0.978333
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_9feeface-c1e2-4a0c-b885-8ba76f583353"
+    ],
+    "textures": [
+      {
+        "name": "furry_beaver_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "furry_beaver_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "furry_beaver_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

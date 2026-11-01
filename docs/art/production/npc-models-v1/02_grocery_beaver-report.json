@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 2,
+    "stem": "02_grocery_beaver",
+    "label": "木材商河狸",
+    "filename": "furry beaver 3d model.glb",
+    "height": 1.75
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\furry beaver 3d model.glb",
+    "bytes": 66525684,
+    "sha256": "B83BA77D0B77765B1BCDBC462D2E610E0C8DD9B63A18FF1131C5F260839EB5FE",
+    "modified_utc": "2026-10-31T17:39:03.824385+00:00",
+    "inspected_utc": "2026-10-31T18:07:58.528745+00:00",
+    "model": {
+      "triangles": 1923665,
+      "vertices": 1007493,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.82446,
+        0.85165,
+        0.97833
+      ],
+      "minimum": [
+        -0.412231,
+        -0.425827,
+        0.0
+      ],
+      "maximum": [
+        0.412231,
+        0.425827,
+        0.978333
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_9feeface-c1e2-4a0c-b885-8ba76f583353"
+      ],
+      "textures": [
+        {
+          "name": "furry_beaver_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "furry_beaver_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "furry_beaver_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\02_grocery_beaver-v1.glb",
+    "bytes": 1448772,
+    "sha256": "EE172D268B82E47FDBD561BD883C50B218000CC14D71D346F6B93F2AA5B17F86",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 21581,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.47572,
+        1.52342,
+        1.75087
+      ],
+      "minimum": [
+        -0.738086,
+        -0.760629,
+        -0.002464
+      ],
+      "maximum": [
+        0.737635,
+        0.762786,
+        1.748404
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_9feeface-c1e2-4a0c-b885-8ba76f583353"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\02_grocery_beaver-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\02_grocery_beaver-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\02_grocery_beaver-mobile-v1.glb",
+    "bytes": 495824,
+    "sha256": "444152DA483331E2E5C4CC75999CC80A7584F86B31179EED830ED4A140368D8A",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 8248,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.47603,
+        1.5261,
+        1.75015
+      ],
+      "minimum": [
+        -0.7394,
+        -0.763313,
+        -0.002464
+      ],
+      "maximum": [
+        0.736635,
+        0.762786,
+        1.747685
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_9feeface-c1e2-4a0c-b885-8ba76f583353"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\02_grocery_beaver-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

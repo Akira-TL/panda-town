@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 10,
+    "stem": "10_repair_automaton",
+    "label": "机器人修理师",
+    "filename": "steampunk robot 3d model.glb",
+    "height": 1.65
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\steampunk robot 3d model.glb",
+    "bytes": 68491276,
+    "sha256": "D8B16E7001EADFDE5CFA275183E111838505D5C46A1D63CD7B24906EDE7E8AA3",
+    "modified_utc": "2026-10-31T17:49:43.319417+00:00",
+    "inspected_utc": "2026-10-31T18:19:13.796166+00:00",
+    "model": {
+      "triangles": 1919088,
+      "vertices": 993817,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.6004,
+        0.35413,
+        0.97968
+      ],
+      "minimum": [
+        -0.300201,
+        -0.177063,
+        0.0
+      ],
+      "maximum": [
+        0.300201,
+        0.177063,
+        0.979675
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_d6e2c028-f961-4647-9352-67cb23a5088f"
+      ],
+      "textures": [
+        {
+          "name": "steampunk_robot_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "steampunk_robot_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "steampunk_robot_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\10_repair_automaton-v1.glb",
+    "bytes": 1599480,
+    "sha256": "A00A4DC4FEA71A4F47B61EB4E7030E4059B17EFAA9F980F734372CE1B7E0426C",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19515,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.01064,
+        0.59693,
+        1.64943
+      ],
+      "minimum": [
+        -0.5053,
+        -0.299055,
+        0.000203
+      ],
+      "maximum": [
+        0.50534,
+        0.297872,
+        1.649635
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_d6e2c028-f961-4647-9352-67cb23a5088f"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\10_repair_automaton-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\10_repair_automaton-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\10_repair_automaton-mobile-v1.glb",
+    "bytes": 551928,
+    "sha256": "2F4491C42341A86481C917124CEA32661CDDFCF6C28F16E88A558817905EAC97",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 7212,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.01025,
+        0.59962,
+        1.6488
+      ],
+      "minimum": [
+        -0.50237,
+        -0.300061,
+        -0.000702
+      ],
+      "maximum": [
+        0.507885,
+        0.299555,
+        1.648098
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_d6e2c028-f961-4647-9352-67cb23a5088f"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\10_repair_automaton-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

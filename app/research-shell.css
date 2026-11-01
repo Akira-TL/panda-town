@@ -1,0 +1,149 @@
+.quant-game {
+  min-height: 0;
+}
+.quant-game.has-dialogue .scene {
+  bottom: 0;
+}
+.quant-game .hud {
+  top: max(16px, env(safe-area-inset-top));
+  left: max(20px, env(safe-area-inset-left));
+  right: max(20px, env(safe-area-inset-right));
+}
+.quant-game .wordmark,
+.quant-game .day-counter,
+.quant-game .cash {
+  border-radius: 18px;
+  padding: 10px 16px;
+}
+.quant-game .wordmark span {
+  font-size: 11px;
+}
+.quant-game .day-counter {
+  min-width: 68px;
+  gap: 3px;
+}
+.quant-game .cash strong {
+  font-variant-numeric: tabular-nums;
+  font-size: 28px;
+}
+.quant-game .cash small {
+  font-size: 10px;
+}
+.quant-game .view-controls {
+  top: 104px;
+  right: 20px;
+}
+.quant-game .scene-status {
+  top: 112px;
+  bottom: auto;
+  left: 20px;
+  max-width: calc(100vw - 40px);
+  pointer-events: none;
+}
+.quant-game .travel-panel {
+  width: auto;
+  min-width: 220px;
+  bottom: 22px;
+  padding: 12px 22px 16px;
+}
+.quant-game .travel-panel .location-label {
+  display: block;
+  margin-bottom: 6px;
+}
+.quant-game .roll-button {
+  min-width: 200px;
+}
+.quant-game .dialogue.compact {
+  width: min(540px, calc(100vw - 32px));
+  padding: 18px 22px;
+}
+.quant-game .dialogue.compact h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+@media (max-width: 700px) {
+  .quant-game .hud {
+    top: max(10px, env(safe-area-inset-top));
+    left: 10px;
+    right: 10px;
+    gap: 7px;
+  }
+  .quant-game .wordmark {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .quant-game .wordmark span {
+    font-size: 9px;
+  }
+  .quant-game .day-counter {
+    min-width: 46px;
+    padding: 9px;
+  }
+  .quant-game .day-counter strong {
+    font-size: 24px;
+  }
+  .quant-game .cash {
+    padding: 7px 10px;
+  }
+  .quant-game .cash strong {
+    font-size: 21px;
+  }
+  .quant-game .cash strong img {
+    width: 20px;
+    height: 20px;
+  }
+  .quant-game .cash small {
+    font-size: 9px;
+  }
+  .quant-game .view-controls {
+    top: 82px;
+    bottom: auto;
+    right: 10px;
+  }
+  .quant-game .scene-status {
+    top: 89px;
+    bottom: auto;
+    left: 10px;
+    font-size: 9px;
+  }
+  .quant-game .scene-status span {
+    padding: 3px 5px;
+  }
+  .quant-game .dialogue.compact {
+    bottom: 12px;
+    border-image: none;
+  }
+  .quant-game .dialogue.compact .choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.quant-game.has-dialogue .cash {
+  display: none;
+}
+.quant-game.has-dialogue .view-controls {
+  top: 20px;
+}
+@media (max-width: 700px) {
+  .quant-game.has-dialogue .view-controls {
+    top: 14px;
+  }
+}
+
+.report-page.research-result-page {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+}
+.report-page.research-result-page::before,
+.report-page.research-result-page::after {
+  content: none;
+}

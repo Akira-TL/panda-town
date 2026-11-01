@@ -12,9 +12,12 @@
     "stop": "bash scripts/stop.sh",
     "build": "next build",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test src/game/*.test.ts",
-    "test:browser": "playwright test --config tests/playwright.config.ts",
-    "test:paths": "node --import tsx --test tests/gameplay-paths.test.ts"
+    "test": "node --import tsx --test src/trading/*.test.ts src/trading/learning/*.test.ts src/scene/decision-framing.test.ts src/scene/camera-framing.test.ts",
+    "test:browser": "playwright test --config tests/playwright.config.ts learning- trading-",
+    "test:paths": "node --import tsx --test tests/gameplay-paths.test.ts",
+    "test:trading": "node --import tsx --test src/trading/*.test.ts",
+    "test:browser:trading": "playwright test --config tests/playwright.config.ts trading-",
+    "test:browser:learning": "playwright test --config tests/playwright.config.ts learning-"
   },
   "dependencies": {
     "next": "15.4.11",

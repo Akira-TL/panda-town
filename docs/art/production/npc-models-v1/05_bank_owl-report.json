@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 5,
+    "stem": "05_bank_owl",
+    "label": "金券银行猫头鹰",
+    "filename": "cute owl 3d model.glb",
+    "height": 1.7
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\cute owl 3d model.glb",
+    "bytes": 65906380,
+    "sha256": "99BFAA2204283496C45F0089A4F45DB868B98FE75E20E88F4C6E99ACF007D90E",
+    "modified_utc": "2026-10-31T17:44:23.705013+00:00",
+    "inspected_utc": "2026-10-31T18:19:32.162676+00:00",
+    "model": {
+      "triangles": 1937218,
+      "vertices": 1008254,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.8205,
+        0.49147,
+        0.98013
+      ],
+      "minimum": [
+        -0.410248,
+        -0.245735,
+        0.0
+      ],
+      "maximum": [
+        0.410248,
+        0.245735,
+        0.980133
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_6b20b6d9-9a32-4fa6-a75d-ac3b77086c61"
+      ],
+      "textures": [
+        {
+          "name": "cute_owl_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "cute_owl_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "cute_owl_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\05_bank_owl-v1.glb",
+    "bytes": 1477592,
+    "sha256": "53040F0C675A26B1AE06FF12B69CFF78C1032E6BCB6BBFCC15DE29A0365FED85",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19923,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.42617,
+        0.85263,
+        1.7
+      ],
+      "minimum": [
+        -0.713085,
+        -0.426313,
+        0.0
+      ],
+      "maximum": [
+        0.713086,
+        0.426313,
+        1.7
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_6b20b6d9-9a32-4fa6-a75d-ac3b77086c61"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\05_bank_owl-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\05_bank_owl-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\05_bank_owl-mobile-v1.glb",
+    "bytes": 520980,
+    "sha256": "6BC6936A7864B7B1ECED5757683051F9CC3A31D93464880970E896ED9074D778",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 8000,
+      "vertices": 7499,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.43276,
+        0.84807,
+        1.7
+      ],
+      "minimum": [
+        -0.716381,
+        -0.424034,
+        0.0
+      ],
+      "maximum": [
+        0.716381,
+        0.424034,
+        1.7
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_6b20b6d9-9a32-4fa6-a75d-ac3b77086c61"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\05_bank_owl-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

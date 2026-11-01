@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\turtle character 3d model.glb",
+  "bytes": 67248168,
+  "sha256": "E48767E6C531C1DB5B3BD67A8F0E957C5F3570AD89FB8F66B49FF0DD3B3AAD9C",
+  "modified_utc": "2026-10-31T17:54:09.565807+00:00",
+  "inspected_utc": "2026-10-31T18:31:04.386767+00:00",
+  "model": {
+    "triangles": 1908257,
+    "vertices": 988424,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.89731,
+      0.69418,
+      0.9791
+    ],
+    "minimum": [
+      -0.448654,
+      -0.347092,
+      0.0
+    ],
+    "maximum": [
+      0.448654,
+      0.347092,
+      0.979095
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_406ba946-6628-4f65-abc5-4551b3bb417b"
+    ],
+    "textures": [
+      {
+        "name": "turtle_character_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "turtle_character_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "turtle_character_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

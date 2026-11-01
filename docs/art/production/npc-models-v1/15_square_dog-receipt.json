@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\adventurer corgi 3d model.glb",
+  "bytes": 64514624,
+  "sha256": "3907077FC16672D5D6C5905A96DF98B0A3AFF8A10CB180AC4C6B1CD0556CE899",
+  "modified_utc": "2026-10-31T17:54:19.943674+00:00",
+  "inspected_utc": "2026-10-31T18:29:44.305648+00:00",
+  "model": {
+    "triangles": 1932546,
+    "vertices": 994865,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.71075,
+      0.70016,
+      0.97876
+    ],
+    "minimum": [
+      -0.355377,
+      -0.350082,
+      0.0
+    ],
+    "maximum": [
+      0.355377,
+      0.350082,
+      0.97876
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_205445bf-5287-458d-a444-b287a0f63c21"
+    ],
+    "textures": [
+      {
+        "name": "adventurer_corgi_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "adventurer_corgi_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "adventurer_corgi_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

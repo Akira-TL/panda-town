@@ -1,0 +1,221 @@
+{
+  "resident": {
+    "number": 11,
+    "stem": "11_garden_deer",
+    "label": "园丁鹿",
+    "filename": "anthropomorphic deer 3d model.glb",
+    "height": 1.95
+  },
+  "blender": "5.2.3 LTS",
+  "source": {
+    "path": "C:\\Users\\Akira\\Downloads\\anthropomorphic deer 3d model.glb",
+    "bytes": 64697744,
+    "sha256": "B00F657B53C0F7E7E689C3E2D5815B6CAF395134FD6A0058ABB935CA0B7836CC",
+    "modified_utc": "2026-10-31T17:49:48.307586+00:00",
+    "inspected_utc": "2026-10-31T18:28:37.082509+00:00",
+    "model": {
+      "triangles": 1902850,
+      "vertices": 980017,
+      "mesh_objects": 1,
+      "dimensions": [
+        0.51773,
+        0.45529,
+        0.97937
+      ],
+      "minimum": [
+        -0.258865,
+        -0.227646,
+        0.0
+      ],
+      "maximum": [
+        0.258865,
+        0.227646,
+        0.97937
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_4521a550-909b-4f99-8c98-e2b0f23457d6"
+      ],
+      "textures": [
+        {
+          "name": "anthropomorphic_deer_3d_model_basecolor.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "anthropomorphic_deer_3d_model_rm.jpg",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "anthropomorphic_deer_3d_model_normal.png",
+          "width": 4096,
+          "height": 4096,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    }
+  },
+  "desktop": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\11_garden_deer-v1.glb",
+    "bytes": 1406968,
+    "sha256": "4C1AD07DD7D7326A9C5F13D30E5D2161AB4F24B1A56298957057D718E0F259C8",
+    "triangle_target": 24000,
+    "texture_limit": 1024,
+    "normal_texture_limit": 512,
+    "model": {
+      "triangles": 24000,
+      "vertices": 19006,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.03021,
+        0.90645,
+        1.95
+      ],
+      "minimum": [
+        -0.515103,
+        -0.453226,
+        0.0
+      ],
+      "maximum": [
+        0.515103,
+        0.453224,
+        1.95
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_4521a550-909b-4f99-8c98-e2b0f23457d6"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\11_garden_deer-v1-front.png",
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\11_garden_deer-v1-back.png"
+    ]
+  },
+  "mobile": {
+    "path": "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\public\\models\\npc\\11_garden_deer-mobile-v1.glb",
+    "bytes": 483540,
+    "sha256": "C6FA21181A11B19BDB2C9A664AFFF52754C109368F9038EF9E2439AC03ADD8A7",
+    "triangle_target": 8000,
+    "texture_limit": 512,
+    "normal_texture_limit": 256,
+    "model": {
+      "triangles": 7999,
+      "vertices": 6987,
+      "mesh_objects": 1,
+      "dimensions": [
+        1.0304,
+        0.9043,
+        1.95
+      ],
+      "minimum": [
+        -0.515199,
+        -0.452148,
+        -0.0
+      ],
+      "maximum": [
+        0.515199,
+        0.452148,
+        1.95
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "tripo_material_4521a550-909b-4f99-8c98-e2b0f23457d6"
+      ],
+      "textures": [
+        {
+          "name": "texture-00",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "sRGB",
+          "role": "color",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-01",
+          "width": 512,
+          "height": 512,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "material-data",
+          "file_format": "JPEG"
+        },
+        {
+          "name": "texture-02",
+          "width": 256,
+          "height": 256,
+          "channels": 4,
+          "color_space": "Non-Color",
+          "role": "normal",
+          "file_format": "PNG"
+        }
+      ],
+      "armatures": 0,
+      "joints": 0,
+      "animations": []
+    },
+    "previews": [
+      "C:\\Users\\Akira\\Documents\\ChatGPT\\大富翁\\docs\\art\\production\\npc-models-v1\\11_garden_deer-mobile-v1-front.png"
+    ]
+  },
+  "coordinate_convention": "glTF导出Y向上，Blender的-Y作为正面对应glTF的+Z；高度按全角色包围盒归一、脚底为0。",
+  "limitations": [
+    "用户在Tripo生成并提供的模型；当前账号计划及再分发许可仍需协调者核实，不声明MIT。",
+    "未新增骨骼或伪造动画；源没有动作时成品也没有动作。",
+    "桌面与手机分别从原GLB独立简化；未使用需额外解码器的网格压缩。",
+    "单体预览用于确认朝向、轮廓与材质，最终游戏内遮挡与比例由接入阶段检查。"
+  ]
+}

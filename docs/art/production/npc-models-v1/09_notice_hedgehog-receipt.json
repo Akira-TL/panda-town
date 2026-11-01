@@ -1,0 +1,65 @@
+{
+  "path": "C:\\Users\\Akira\\Downloads\\hedgehog explorer 3d model.glb",
+  "bytes": 67425444,
+  "sha256": "6F43F09F2805714A4B0CED345409CD2EB5FA8571A4A933E077D9689D801DC638",
+  "modified_utc": "2026-10-31T17:49:38.397515+00:00",
+  "inspected_utc": "2026-10-31T18:25:21.355237+00:00",
+  "model": {
+    "triangles": 1996028,
+    "vertices": 1050731,
+    "mesh_objects": 1,
+    "dimensions": [
+      0.78043,
+      0.71893,
+      0.9787
+    ],
+    "minimum": [
+      -0.390213,
+      -0.359467,
+      0.0
+    ],
+    "maximum": [
+      0.390213,
+      0.359467,
+      0.978699
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "materials": [
+      "tripo_material_dc61051f-7adc-40f7-bbb5-23b0f8cb9c11"
+    ],
+    "textures": [
+      {
+        "name": "hedgehog_explorer_3d_model_basecolor.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "sRGB",
+        "role": "color",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "hedgehog_explorer_3d_model_rm.jpg",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "material-data",
+        "file_format": "JPEG"
+      },
+      {
+        "name": "hedgehog_explorer_3d_model_normal.png",
+        "width": 4096,
+        "height": 4096,
+        "channels": 4,
+        "color_space": "Non-Color",
+        "role": "normal",
+        "file_format": "PNG"
+      }
+    ],
+    "armatures": 0,
+    "joints": 0,
+    "animations": []
+  }
+}

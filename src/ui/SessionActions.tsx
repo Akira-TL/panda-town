@@ -70,9 +70,7 @@ export function SessionActions({ onRestart, onClear }: SessionActionsProps) {
           }}
         >
           <h3 id={heading}>
-            {request === "restart"
-              ? "重新开始八天旅程？"
-              : "清除这一局的记录？"}
+            {request === "restart" ? "重新开始一局？" : "清除这一局的记录？"}
           </h3>
           <p id={description}>
             {request === "restart"

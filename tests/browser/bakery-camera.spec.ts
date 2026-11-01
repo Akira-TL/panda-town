@@ -7,15 +7,13 @@ import {
   finish,
   resetSession,
 } from "./helpers";
+import { readyVisualScene } from "./scene-ready";
 
 test("真实面包店门前双镜头及390双移动模型", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await begin(page);
-  const scene = page.locator(
-    '[data-loaded-models~="panda"][data-loaded-models~="bakery"]',
-  );
-  await expect(scene).toBeVisible();
+  const scene = await readyVisualScene(page);
   await arrive(page, 1);
   await page.waitForTimeout(200);
   await expect(scene).toHaveAttribute("data-camera-obstructed", "0");
@@ -33,7 +31,7 @@ test("真实面包店门前双镜头及390双移动模型", async ({ page }) => 
   await page.reload();
   expect((await bakeryResponse).status()).toBe(200);
   expect((await pandaResponse).status()).toBe(200);
-  await expect(scene).toBeVisible();
+  await readyVisualScene(page);
   await page.waitForTimeout(200);
   await page.screenshot({ path: "logs/validation-bakery-mobile.png" });
   expect(errors).toEqual([]);
@@ -49,7 +47,7 @@ test("十六个实际落点的第三人称视线与截图证据", async ({ page 
   ];
   for (const tour of tours) {
     await begin(page);
-    await expect(page.locator('[data-loaded-models~="panda"]')).toBeVisible();
+    await readyVisualScene(page);
     for (let index = 0; index < 8; index++) {
       const session = await arrive(
         page,
